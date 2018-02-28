@@ -1,0 +1,43 @@
+.regions-matching__info {
+    overflow: hidden;
+    &__con {
+        float: left;
+        width: 294px;
+        height: 138px;
+        margin-bottom: 24px;
+        padding: 20px 24px 20px 24px;
+        background: #FFFFFF;
+        box-shadow: 0 1px 2px 0 rgba(23, 35, 61, 0.25);
+        overflow: hidden;
+        .ivu-card-body {
+            padding: 0;
+        }
+        &--title {
+            line-height: 24px;
+            font-family: PingFangSC-Medium;
+            font-size: 16px;
+            color: #17233D;
+        }
+        &__subcon {
+            float: left;
+            height: 74px;
+            /*设计稿94px未计算padding-bottom=20px,所以实际高度是height=94-20*/
+            &--title {
+                line-height: 22px;
+                font-family: PingFangSC-Regular;
+                font-size: 14px;
+                color: rgba(23, 35, 61, 0.55);
+            }
+            &--num {
+                padding-top: 20px;
+                line-height: 28px;
+                font-family: HelveticaNeue;
+                font-size: 20px;
+                color: #17233D;
+            }
+        }
+        &--margin {
+            margin-left: 23px;
+        }
+    }
+}

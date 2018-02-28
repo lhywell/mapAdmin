@@ -1,0 +1,14 @@
+#drivingTool {
+    font-size: 14px;
+}
+#drivingModal {
+    .ivu-modal-mask {
+        background-color: inherit;
+    }
+}
+
+#drivingInfo {
+    .ivu-modal-mask {
+        background-color: inherit;
+    }
+}

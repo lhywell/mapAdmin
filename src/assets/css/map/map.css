@@ -1,0 +1,50 @@
+#allmap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+#app,
+.map {
+    height: 100%;
+}
+
+
+#infoModel {
+    .ivu-modal-mask {
+        background-color: inherit;
+    }
+}
+
+
+/*自定义的弹框样式*/
+.infoModel {
+    .ivu-modal {
+        top: 0;
+    }
+    .ivu-modal-body {
+        font-size: 14px;
+        color: var(--color-title);
+        ul {
+            li {
+                height: 40px;
+                line-height: 40px;
+                span {
+                    width: 56px;
+                    display: inline-block;
+                    text-align: right;
+                    margin-right: 40px;
+                }
+            }
+        }
+        .toLocation {
+            border-radius: 4px;
+            margin-top: 8px;
+            padding: 4px 15px 4px 15px;
+            width: 100%;
+        }
+    }
+    .ivu-modal-footer {
+        display: none;
+    }
+}

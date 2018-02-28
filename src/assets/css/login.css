@@ -1,0 +1,129 @@
+.background_layer{
+  background:url(../images/login-bg.jpg) no-repeat center center ;
+  background-size:100% 100%;
+  z-index:1;
+  width:100%;
+  height:100%;
+  position: fixed;
+/*  opacity: 0.40;*/
+/*  background-color: ;*/
+}
+
+.color_layer{
+ /* background:url(../images/login-bg.jpg) no-repeat center center ;*/
+  background-size:100% 100%;
+  z-index:5;
+  width:100%;
+  height:100%;
+  position: fixed;
+  opacity: 0.40;
+  background-color:#2D8CF0 ;
+}
+.login_layer{
+  width:394px;
+  height:438px;
+  margin:auto;
+  padding:43px;
+  box-shadow: 0 0 10px #ccc;
+  background: #ffffff;
+  z-index:5;
+  position: absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+
+  .company_label{
+    margin-left:10px;
+    height:36px;
+
+    .tencent_logo_container{
+      float:left;
+      .tencent_logo{
+        width:118px;
+        height:36px;
+      }
+    }
+  
+    .td_logo_container{
+      margin:5px 0 0 40px;
+      float:left;
+
+      .td_logo{
+        width:120px;
+        height:30px;
+      }
+    }
+
+    .clear_float{
+      clear:both;
+      height:0;
+      overflow:hidden;
+    }
+  }
+
+  .product{
+    margin-top:30px;
+
+    .name{
+      /*font-family: PingFangSC-Medium;*/
+      font-size: 22px;
+      color: #17233D;
+      letter-spacing: 0;
+      line-height: 32px;
+      margin-left:130px;
+      font-weight: bold;
+    }
+
+    .describe{
+      /*font-family: PingFangSC-Regular;*/
+      margin-top:10px;
+      margin-left:70px;
+      font-size: 14px;
+      color: rgba(11,17,-2147483648,0.75);
+      letter-spacing: 0;
+      line-height: 32px;
+    }
+  }
+
+  .form{
+    margin-top:20px;
+
+    .username{
+      height:40px;
+      width:308px;
+      display: block;
+    }
+
+    .name_error{
+      color:red;
+      font-size:12px;
+    }
+
+    .password{
+      display: block;
+      margin-top:10px;
+      height:40px;
+      width:308px;
+      /*margin-top:10px;*/
+    }
+
+    .password_error{
+      color:red;
+      font-size:12px;
+      display: block;
+    }
+    
+    .check{
+      font-size:14px;
+      line-height: 22px;
+    }
+
+    .submit_btn{
+      margin-top: 15px;
+      width:100%;
+      height:40px;
+      background-color: rgba(0,140,248,1);
+    }
+  }
+}

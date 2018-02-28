@@ -1,0 +1,57 @@
+#Location {
+    .ivu-poptip-body {
+        padding: 0;
+    }
+    .poptip {
+        .ivu-poptip-arrow {
+            display: none;
+        }
+        .ivu-btn-ghost {
+            border: 0;
+            color: #fff;
+            font-size: 14px;
+        }
+        .ivu-poptip-popper {
+            top: 56px!important;
+        }
+        .ivu-icon {
+            margin-left: 16px;
+            font-size: 10px;
+        }
+    }
+    .brandSelect {
+        .title {
+            @include boxTitle;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--color-title);
+            position: relative;
+            .icon-add {
+                font-size: 22px;
+                color: #2D8CF0;
+            }
+        }
+        ul {
+            padding: 0 16px 0 16px;
+            li {
+                height: 48px;
+                line-height: 48px;
+                border-bottom: 1px solid var(--border-color);
+                a {
+                    @include flexcenter;
+                    color: var(--color-detail);
+                }
+                img {
+                    margin-right: 14px;
+                }
+            }
+            li:last-child {
+                border: 0;
+            }
+        }
+    }
+    .ivu-icon-ios-location {
+        color: #fff;
+        margin-left: 30px;
+        font-size: var(--font-icon);
+    }
+}

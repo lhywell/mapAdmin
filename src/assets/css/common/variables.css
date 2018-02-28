@@ -1,0 +1,24 @@
+:root {
+
+    /*Font*/
+    --font-family: "Helvetica Neue",
+    Helvetica,
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    "微软雅黑",
+    Arial,
+    sans-serif;
+
+    --font-icon: 18px;
+
+    /*Colors */
+    --color-title: #17233D;
+    --color-detail: rgba(23, 35, 61, 0.75);
+    --color-icon: rgba(23, 35, 61, 0.55);
+    --color-icon1: rgba(23, 35, 61, 0.25);
+
+    /*Border */
+    --border-radius: 2px;
+    --border-color: #e7e9eb;
+}

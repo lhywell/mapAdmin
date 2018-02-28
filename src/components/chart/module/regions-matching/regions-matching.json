@@ -1,0 +1,308 @@
+{
+    "info": [
+    {
+        "name": "周边小区",
+        "value": [
+        {
+            "name": "小区总数",
+            "value": 31
+        },
+        {
+            "name": "总户数",
+            "value": 24321
+        }]
+    },
+    {
+        "name": "周边办公",
+        "value": [
+        {
+            "name": "写字楼",
+            "value": 25
+        },
+        {
+            "name": "总面积(m²)",
+            "value": 27726851
+        }]
+    },
+    {
+        "name": "周边商业",
+        "value": [
+        {
+            "name": "购物",
+            "value": 24
+        },
+        {
+            "name": "餐饮",
+            "value": 678
+        },
+        {
+            "name": "休闲娱乐",
+            "value": 24
+        }]
+    },
+    {
+        "name": "交通配套",
+        "value": [
+        {
+            "name": "公交",
+            "value": 25
+        },
+        {
+            "name": "地铁",
+            "value": 15
+        },
+        {
+            "name": "停车场",
+            "value": 50
+        }]
+    }],
+    "analyse":
+    {
+        "info": [
+        {
+            "name": "全部门店",
+            "value": [
+            {
+                "value": 5410
+            }]
+        },
+        {
+            "name": "全部品牌",
+            "value": [
+            {
+                "value": 1800
+            }]
+        },
+        {
+            "name": "餐饮门店",
+            "value": [
+            {
+                "value": 1410
+            }]
+        },
+        {
+            "name": "餐饮品牌",
+            "value": [
+            {
+                "value": 30
+            }]
+        },
+        {
+            "name": "服饰门店",
+            "value": [
+            {
+                "value": 110
+            }]
+        },
+        {
+            "name": "服饰品牌",
+            "value": [
+            {
+                "value": 27
+            }]
+        }],
+        "list": [
+            {
+                "name": "KFC肯德基",
+                "value": 100,
+                "type": "餐饮"
+            },
+            {
+                "name": "MCDONALD'S麦当劳",
+                "value": 94,
+                "type": "餐饮"
+            },
+            {
+                "name": "必胜客 ",
+                "value": 88,
+                "type": "餐饮"
+            },
+            {
+                "name": "海底捞",
+                "value": 82,
+                "type": "餐饮"
+            },
+            {
+                "name": "真功夫",
+                "value": 76,
+                "type": "餐饮"
+            },
+            {
+                "name": "永和大王",
+                "value": 70,
+                "type": "餐饮"
+            },
+            {
+                "name": "小肥羊",
+                "value": 64,
+                "type": "餐饮"
+            },
+            {
+                "name": "味千拉面",
+                "value": 58,
+                "type": "餐饮"
+            },
+            {
+                "name": "Dicos德克士",
+                "value": 52,
+                "type": "餐饮"
+            },
+            {
+                "name": "大娘水饺",
+                "value": 46,
+                "type": "餐饮"
+            },
+            {
+                "name": "庆丰包子铺 ",
+                "value": 40,
+                "type": "餐饮"
+            },
+            {
+                "name": "谷子帝",
+                "value": 34,
+                "type": "餐饮"
+            },
+            {
+                "name": "吉野家",
+                "value": 28,
+                "type": "餐饮"
+            },
+            {
+                "name": "永和豆浆",
+                "value": 22,
+                "type": "餐饮"
+            },
+            {
+                "name": "丽华快餐",
+                "value": 16,
+                "type": "餐饮"
+            },
+            {
+                "name": "东方既白",
+                "value": 10,
+                "type": "餐饮"
+            },
+            {
+                "name": "面点王",
+                "value": 4,
+                "type": "餐饮"
+            },
+            {
+                "name": "BurgerKing汉堡王",
+                "value": 3,
+                "type": "餐饮"
+            },
+            {
+                "name": "乡村基",
+                "value": 2,
+                "type": "餐饮"
+            },
+            {
+                "name": "马兰拉面Malan",
+                "value": 1,
+                "type": "餐饮"
+            },
+            {
+                "name": "韩都衣舍HSTYLE ",
+                "value": 100,
+                "type": "服饰"
+            },
+            {
+                "name": "海澜之家HLA",
+                "value": 94,
+                "type": "服饰"
+            },
+            {
+                "name": "Zara飒拉",
+                "value": 88,
+                "type": "服饰"
+            },
+            {
+                "name": "UNIQLO优衣库",
+                "value": 82,
+                "type": "服饰"
+            },
+            {
+                "name": "H&M",
+                "value": 76,
+                "type": "服饰"
+            },
+            {
+                "name": "太平鸟PEACEBIRD",
+                "value": 70,
+                "type": "服饰"
+            },
+            {
+                "name": "罗蒙ROMON ",
+                "value": 64,
+                "type": "服饰"
+            },
+            {
+                "name": "七匹狼SEPTWOLVES",
+                "value": 58,
+                "type": "服饰"
+            },
+            {
+                "name": "美特斯邦威。",
+                "value": 52,
+                "type": "服饰"
+            },
+            {
+                "name": "森马Semir",
+                "value": 46,
+                "type": "服饰"
+            },
+            {
+                "name": "柒牌SEVEN",
+                "value": 40,
+                "type": "服饰"
+            },
+            {
+                "name": "乐町LEDIN",
+                "value": 34,
+                "type": "服饰"
+            },
+            {
+                "name": "劲霸K-BOXING",
+                "value": 28,
+                "type": "服饰"
+            },
+            {
+                "name": "鄂尔多斯ERDOS",
+                "value": 22,
+                "type": "服饰"
+            },
+            {
+                "name": "秋水伊人CHIUSHUI ",
+                "value": 16,
+                "type": "服饰"
+            },
+            {
+                "name": "唐狮Tonlion",
+                "value": 10,
+                "type": "服饰"
+            },
+            {
+                "name": "GAP盖璞 ",
+                "value": 4,
+                "type": "服饰"
+            },
+            {
+                "name": "JEANSWEST真维斯",
+                "value": 3,
+                "type": "服饰"
+            },
+            {
+                "name": "波司登BOSIDENG",
+                "value": 2,
+                "type": "服饰"
+            },
+            {
+                "name": "裂帛LIEBO",
+                "value": 1,
+                "type": "服饰"
+            }
+        ]
+    }
+
+}

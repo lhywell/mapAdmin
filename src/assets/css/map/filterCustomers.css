@@ -1,0 +1,12 @@
+#FilterCustomers {
+    position: relative;
+    margin-left: 8px;
+    .customer-swich {
+        position: absolute;
+        left: 114px;
+        top: 13px;
+    }
+    .operator {
+        @include shadow;
+    }
+}

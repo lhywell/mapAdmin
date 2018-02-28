@@ -1,0 +1,135 @@
+$radius:#488EF1;
+$radius2:#7EBB7D;
+$radius3:#F8B617;
+
+
+@define-mixin tag-bg {
+    border-radius: 50%;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+}
+@define-mixin num {
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    padding: 0 4px;
+    height: 24px;
+    line-height: 24px;
+    display: inline-block;
+    color: var(--color-icon);
+}
+
+@define-mixin title {
+    height: 40px;
+    line-height: 40px;
+}
+
+@define-mixin item {
+    height: 40px;
+    line-height: 40px;
+}
+
+.filterTools {
+    position: absolute;
+    right: 118px;
+    top: 0;
+    display: flex;
+    .ivu-btn {
+        font-size: 14px;
+    }
+    .ivu-btn-ghost {
+        background: #fff;
+        padding: 7px 11px;
+        color: var(--color-detail);
+        span {
+            @include flexcenter;
+        }
+        .icon-mall_directory,
+        .icon-attraction,
+        .icon-account_child {
+            font-size: var(--font-icon);
+            color: var(--color-icon);
+            margin-right: 10px;
+        }
+        .ivu-icon-chevron-down {
+            margin-left: 10px;
+            font-size: 10px;
+        }
+        .switchBox {
+            border-left: 1px solid var(--border-color);
+            height: 24px;
+            width: 40px;
+            margin-left: 8px;
+        }
+    }
+    .ivu-poptip-body {
+        padding: 0;
+    }
+    .poptip {
+        .ivu-poptip-arrow {
+            display: none;
+        }
+    }
+    .brandSelect {
+        font-size: 14px;
+        .title {
+            @include boxTitle;
+            position: relative;
+            color: var(--color-title);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: bold;
+            .config {
+                position: absolute;
+                right: 14px;
+                top: 0;
+                font-size: 17px;
+                color: var(--color-icon1);
+                cursor: pointer;
+            }
+        }
+        .filterContent {
+            padding: 0 16px;
+            color: var(--color-detail);
+            .ivu-checkbox-wrapper {
+                margin: 0;
+            }
+            .first_child {
+                height: 40px;
+                line-height: 40px;
+                width: 100%;
+                @include flexcenter;
+                justify-content: space-between;
+                .tag {
+                    background: $radius;
+                    @mixin tag-bg
+                }
+                .num {
+                    @mixin num;
+                    margin-right: 11px;
+                }
+            }
+            .child_title {
+                @mixin title;
+                color: var(--color-title);
+            }
+        }
+        ul {
+            li {
+                @mixin item;
+                .li{
+                    @include flexcenter;
+                }
+                .ivu-checkbox-wrapper {
+                    font-size: 14px;
+                    position: relative;
+                    width: 223px;
+                }
+                .ivu-checkbox {
+                    position: absolute;
+                    right: 0;
+                    top: 12px;
+                }
+            }
+        }
+    }
+}

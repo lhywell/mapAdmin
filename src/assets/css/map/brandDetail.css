@@ -1,0 +1,106 @@
+.brand_detail_modal {
+    .detail_header {
+        .closeBtn {
+            background-color: white;
+            color: black;
+            border: none;
+        }
+        .right_tools {
+            float: right;
+            .my_poptip {
+                cursor: pointer;
+            }
+            .delete_brand_btn {
+                color: red;
+                margin: -5px 20px 0 0;
+            }
+        }
+    }
+    .detail_tab_container {
+        background-color: white;
+        .attr_tab{
+            background-color: rgba(23,35,61,0.06);
+            .basic_info {
+                font-size: 14px;
+                margin: 25px 45px 0 45px;
+                height: 140px;
+                .content {
+                    padding: 18px 0;
+                    .basic_info_title {
+                        color: rgba(23, 35, 61, 1);
+                        padding-left: 10px;
+                        font-size: 16px;
+                        font-weight: normal;
+                    }
+                    .brand_name_container {
+                        display: inline;
+                        .brand_name_title {
+                            color: rgba(23, 35, 61, 1);
+                            font-style: 'Medium';
+                        }
+                        .brand_name {
+                            color: rgba(23, 35, 61, 0.75);
+                            margin-left: 25px;
+                            font-style: 'Regular';
+                        }
+                    }
+                    .brand_category_container {
+                        display: inline;
+                        margin-left: 100px;
+                        .brand_category_title {
+                            color: rgba(23, 35, 61, 1);
+                        }
+                        .brand_category {
+                            color: rgba(23, 35, 61, 0.75);
+                            margin-left: 25px;
+                        }
+                    }
+                    .brand_position_container {
+                        display: inline;
+                        margin-left: 100px;
+                        .brand_position_title {
+                            color: rgba(23, 35, 61, 1);
+                        }
+                        .brand_position {
+                            color: rgba(23, 35, 61, 0.75);
+                            margin-left: 25px;
+                        }
+                    }
+                }
+            }
+
+            .settings_container{
+                margin-top:30px;
+       /*         height:400px;*/
+                height:calc(100% - 243px);
+                overflow-y :auto;
+               /* background-color: rgba(23,35,61,0.06);*/
+   /*             background-color: white;*/
+
+                .gain_brand_setting {
+                    float: left;
+                    margin: 0 28px 0 46px;
+                    width: 444px;
+                }
+                .compete_brand_setting {
+                    float: left;
+                    width: 444px;
+                }
+                .clear_float{
+                    clear:both;
+                    height:0;
+                    overflow:hidden;
+                }
+            }
+            
+        }
+
+        .opened_tab{
+             background-color: rgba(23,35,61,0.06);
+        }
+
+        .remained_tab{
+             background-color: rgba(23,35,61,0.06);
+        }
+    }
+}

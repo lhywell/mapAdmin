@@ -1,0 +1,58 @@
+#seletctBrand {
+    .ivu-poptip-body {
+        padding: 0;
+    }
+    .poptip {
+        .ivu-icon {
+            margin-left: 16px;
+            font-size: 10px;
+        }
+        .ivu-poptip-arrow {
+            display: none;
+        }
+        .ivu-btn-ghost {
+            border: 0;
+            color: #fff;
+            font-size: 14px;
+        }
+        .ivu-poptip-popper {
+            top: 56px!important;
+        }
+    }
+    .brandSelect {
+        width: 278px;
+        .title {
+            @include boxTitle;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--color-title);
+            position: relative;
+            .icon-add {
+                font-size: 22px;
+                color: #2D8CF0;
+            }
+        }
+        ul {
+            padding: 0 16px 40px 16px;
+
+            li {
+                height: 48px;
+                line-height: 48px;
+                border-bottom: 1px solid var(--border-color);
+                a {
+                    display: flex;
+                    align-items: center;
+                    color: var(--color-detail);
+                }
+                img {
+                    margin-right: 14px;
+                    border-radius: 50%;
+                }
+            }
+        }
+        .addbrand {
+            position: absolute;
+            top: 0;
+            right: 8px;
+        }
+    }
+}

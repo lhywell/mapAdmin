@@ -1,0 +1,68 @@
+.regions-matching__analyse {
+    overflow: hidden;
+    width: 612px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 2px 0 rgba(23, 35, 61, 0.25);
+    overflow: hidden;
+    /*周边竞品分析*/
+    &__con {
+        width: 100%;
+        &__head {
+            height: 48px;
+            padding: 12px 16px 12px 24px;
+            line-height: 24px;
+            border-bottom: 1px solid #DCDEE2;
+            &--title {
+                font-family: PingFangSC-Medium;
+                font-size: 16px;
+                color: #17233D;
+            }
+            &--extra {
+                float: right;
+                margin-top: -4px;
+                &__types {
+                    width: 120px;
+                    height: 32px;
+                    .ivu-select-selection .ivu-select-selected-value,
+                    .ivu-select-dropdown-list .ivu-select-item {
+                        padding: 5px 35px 5px 12px;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+        &__info {
+            float: left;
+            height: 94px;
+            width:306px;/*612/2(门店、品牌)*/
+            padding: 20px 24px;
+            overflow: hidden;
+            &--title {
+                line-height: 24px;
+                font-family: PingFangSC-Regular;
+                font-size: 14px;
+                color: rgba(23, 35, 61, 0.55);
+            }
+            &__subcon {
+                float: left;
+                width:258px;/*306-24*2(paddingleft、 paddingright)*/
+                &--num {
+                    font-family: HelveticaNeue;
+                    font-size: 20px;
+                    color: #17233D;
+                    line-height: 28px;
+                }
+            }
+        }
+        &__table{
+            clear: both;
+            &__tr{
+                height: 40px;
+            }
+        }
+        &__page{
+            float: right;
+            padding: 20px 24px;
+        }
+    }
+}

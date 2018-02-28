@@ -1,0 +1,43 @@
+.headerTop {
+    height: 64px;
+    background: linear-gradient(to right, #1831A9, #2C83F9, #1885F1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 402;
+    @include flexcenter;
+    justify-content: space-between;
+    font-size: 14px;
+    .headerLeft {
+        @include flexcenter;
+        .logo {
+            margin-left: 24px;
+            margin-right: 72px;
+        }
+        .brand {
+            margin-right: 7px;
+            img {
+                margin-left: 72px;
+            }
+        }
+        .components {
+            @include flexcenter;
+        }
+    }
+    .email {
+        color: #fff;
+        font-size: 14px;
+        margin-right: 24px;
+        .icon-account_circle {
+            font-size: 20px;
+            margin-right: 12px;
+        }
+        a {
+            color: #fff;
+        }
+    }
+    .ivu-select {
+        color: #fff;
+    }
+}

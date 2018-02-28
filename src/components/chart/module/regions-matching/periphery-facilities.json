@@ -1,0 +1,30 @@
+{
+    "code": 200,
+    "msg": "ok",
+    "data":
+    {
+        "community":
+        {
+            "total": 31,
+            "householdNum": 24321
+        },
+        "office":
+        {
+            "total": 25,
+            "householdNum": 27726851
+        },
+        "commerce":
+        {
+            "shopping": 24,
+            "dining": 678,
+            "amusement": 24
+        },
+        "traffic":
+        {
+            "bus": 25,
+            "subway": 15,
+            "park": 50
+        }
+    }
+
+}

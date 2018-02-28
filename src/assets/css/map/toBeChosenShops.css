@@ -1,0 +1,98 @@
+.to_be_chosen_shops_container{
+	padding:25px 0 0 45px;
+	
+/*	overflow-y:auto; 
+	overflow-x:hidden;*/
+	.top_cards{
+		display:inline;
+		
+		.city_container{
+			width:288px;
+			float:left;
+
+			.city{
+				width:288px;
+				height:96px;
+
+				.label{
+					margin-top:5px;
+					text-align:center;
+					line-height:20px;
+					color:rgba(23,35,61,0.55);
+					font-size:14px;
+				}
+
+				.content{
+					text-align:center;
+					line-height:20px;
+					color:rgba(23,35,61,1);
+					margin-top:10px;
+					font-size:20px;
+				}
+			}
+		}
+		.shop_container{
+			width:288px;
+			float:left;
+			margin-left:25px;
+
+			.shop{
+				width:288px;
+				height:96px;
+				
+				.label{
+					margin-top:5px;
+					text-align:center;
+					line-height:20px;
+					color:rgba(23,35,61,0.55);
+					font-size:14px;
+				}
+
+				.content{
+					text-align:center;
+					line-height:20px;
+					color:rgba(23,35,61,1);
+					margin-top:10px;
+					font-size:20px;
+				}
+			}
+		}
+		.total_area{
+			width:288px;
+			float:left;
+			margin-left:25px;
+
+			.area{
+				width:288px;
+				height:96px;
+			
+				.label{
+					margin-top:5px;
+					text-align:center;
+					line-height:20px;
+					color:rgba(23,35,61,0.55);
+					font-size:14px;
+				}
+
+				.content{
+					text-align:center;
+					line-height:20px;
+					color:rgba(23,35,61,1);
+					margin-top:10px;
+					font-size:20px;
+				}
+			}
+		}
+
+		.clear_float{
+			clear:both;
+			height:0;
+			overflow:hidden;
+		}
+	}
+
+	.table_container{
+		margin-top:25px;
+		width:912px;
+	}
+}

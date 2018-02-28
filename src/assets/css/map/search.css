@@ -1,0 +1,74 @@
+#Search {
+    display: flex;
+    @include shadow;
+    .searchType {
+        .title {
+            margin-right: 4px;
+        }
+        .ivu-icon-chevron-down:before {
+            font-size: 10px;
+        }
+        .ivu-btn {
+            border-radius: var(--border-radius);
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            padding: 10px 12px;
+            background: #fff;
+            border-color: var(--border-color);
+            margin: 0 -1px 0 0;
+            color: var(--color-detail);
+        }
+        .ivu-select-dropdown {
+            padding: 0;
+        }
+        .ivu-dropdown-menu {
+            li {
+                padding: 11px 0 11px 10px;
+                width: 120px;
+                color: var(--color-detail);
+                div {
+                    display: flex;
+                }
+                i {
+                    width: 26px;
+                    color: var(--color-icon);
+                    display: inline-block;
+                }
+                .ivu-icon-ios-location {
+                    padding-left: 2px
+                }
+                .ivu-icon-ios-location:before {
+                    font-size: var(--font-icon);
+                }
+                .icon-attraction:before {
+                    font-size: var(--font-icon);
+                }
+            }
+
+            .ivu-dropdown-item:hover {
+                background: #f3f8fe;
+                div,
+                .ivu-icon-ios-location,
+                .icon-attraction {
+                    color: #2d8cf0;
+                }
+            }
+        }
+    }
+    .searchInput {
+        .ivu-input {
+            height: 40px;
+            border-radius: var(--border-radius);
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-color: var(--border-color);
+        }
+        .ivu-icon-close-circled:before {
+            color: var(--color-icon1);
+        }
+        .ivu-input-icon {
+            line-height: 40px;
+            cursor: pointer;
+        }
+    }
+}

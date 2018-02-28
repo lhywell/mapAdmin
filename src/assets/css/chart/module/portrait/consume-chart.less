@@ -1,0 +1,54 @@
+.consume-chart {
+    &__head {
+        padding-bottom: 20px;
+        line-height: 22px;
+        font-family: PingFangSC-Medium;
+        font-size: 14px;
+        color: rgba(23, 35, 61, 0.75);
+    }
+    &__chart {
+        padding-bottom: 24px;
+    }
+    &__info {
+        height: 41px;
+        div {
+            float: left;
+        }
+        &--description {
+            padding: 0 22px;
+            border-right: 1px solid #DDDEE1;
+            text-align: center;
+            span {
+                display: block;
+            }
+            &--name {
+                padding-bottom: 2px;
+                font-family: PingFangSC-Regular;
+                font-size: 14px;
+                color: #17233D;
+                letter-spacing: 0;
+                line-height: 22px;
+            }
+            &--num {
+                font-family: HelveticaNeue;
+                font-size: 16px;
+                color: rgba(23, 35, 61, 0.75);
+                letter-spacing: 0;
+                line-height: 20px;
+            }
+            &--color {
+                height: 4px;
+                width: 19px;
+                margin: 4px auto;
+                background: #2489F3;
+                border-radius: 2px;
+            }
+        }
+        &--description:nth-child(1) {
+            padding-left: 8px;
+        }
+        &--description:last-child {
+            border: none;
+        }
+    }
+}

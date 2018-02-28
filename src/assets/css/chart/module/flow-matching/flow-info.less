@@ -1,0 +1,37 @@
+.flow-matching__info {
+    overflow: hidden;
+    &__con {
+        float: left;
+        width: 294px;
+        height: 94px;
+        padding: 20px 24px 20px 24px;
+        margin-bottom: 24px;
+        background: #FFFFFF;
+        box-shadow: 0 1px 2px 0 rgba(23, 35, 61, 0.25);
+        overflow: hidden;
+        .ivu-card-body {
+            padding: 0;
+        }
+        &--title {
+            margin-bottom: 4px;
+            line-height: 22px;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: rgba(23, 35, 61, 0.75);
+        }
+        &__subcon {
+            float: left;
+            width: 123px;/*(294-24*2(padding-left padding-right))/2(周、月) */
+            height: 28px;
+            &--num {
+                line-height: 28px;
+                font-family: HelveticaNeue;
+                font-size: 20px;
+                color: #17233D;
+            }
+        }
+        &--margin {
+            margin-left: 23px;
+        }
+    }
+}

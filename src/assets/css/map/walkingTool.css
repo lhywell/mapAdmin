@@ -1,0 +1,14 @@
+#walkingTool {
+    font-size: 14px;
+}
+#walkingModal {
+    .ivu-modal-mask {
+        background-color: inherit;
+    }
+}
+
+#walkingInfo {
+    .ivu-modal-mask {
+        background-color: inherit;
+    }
+}

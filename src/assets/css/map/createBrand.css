@@ -1,0 +1,44 @@
+.brandModal{
+	.brand_header{
+		height:36px;
+		font-size: 16px;
+		font-weight:bold;
+		color:black;
+		line-height:24px;
+		/*border-bottom:1px solid #e9eaec;*/
+	}
+
+	.brand_name{
+		margin-top:20px;
+
+
+		.brand_name_lab{
+			font-size: 14px;
+			display:block;
+		}
+		.brand_name_value{
+			width:288px;
+			margin-top:10px;
+		}
+		.brand_name_err{
+			color:red;
+		}
+	}
+
+	.brand_position{
+		margin:20px 0;
+
+		.brand_position_lab{
+			font-size: 14px;
+			display:block;
+		}
+		.brand_position_value{
+			width:288px;
+			margin-top:10px;
+		}
+		.brand_position_err{
+			color:red;
+		}
+	}
+	
+}

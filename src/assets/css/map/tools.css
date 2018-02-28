@@ -1,0 +1,8 @@
+.tools {
+    position: absolute;
+    top: 76px;
+    left: 24px;
+    right: 24px;
+    z-index: 401;
+    display: flex;
+}

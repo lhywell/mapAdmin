@@ -1,0 +1,18 @@
+.addressConfig {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-content: center;
+    .ivu-btn {
+        font-size: 14px;
+    }
+    .ivu-btn-ghost {
+        background: #fff;
+        padding: 9px 16px;
+        color: var(--color-detail);
+        height: 40px;
+        @include flexcenter;
+        @include shadow;
+    }
+}

@@ -1,0 +1,52 @@
+.page_table{
+	width:912px;
+
+	.header_tool{
+		background-color: #fff;
+		width:912px;
+		height:56px;
+		padding:6px 0 0 20px;
+
+		.upload{
+			float:left;
+			Button{
+				margin-top:5px;
+			}
+			.tips{
+				margin: 10px 0 0 15px;
+				.helpIcon{
+					font-size:20px;
+				}
+			}
+		}
+
+		.clear_float{
+			clear:both;
+			height:0;
+			overflow:hidden;
+		}
+
+		.search{
+			float:right;
+			margin:8px 20px 0 0;
+		}
+	}
+
+	.table_container{
+
+	}
+	.page_container{
+
+		width:912px;
+		height:50px;
+		background-color: #fff;
+		margin-right:10px;
+		padding:0 20px;
+		border:1px solid rgb(233, 234, 236);
+	
+		.page{
+			margin-top:10px;
+			float:right;
+		}
+	}
+}

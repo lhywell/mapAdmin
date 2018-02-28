@@ -1,0 +1,16 @@
+#circleTool {
+    font-size: 14px;
+}
+
+#circleModal {
+    .ivu-modal-mask {
+        background-color: inherit;
+    }
+}
+
+
+#circleInfo {
+    .ivu-modal-mask {
+        background-color: inherit;
+    }
+}

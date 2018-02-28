@@ -1,0 +1,179 @@
+.choose_brand_container{
+	height:100%;
+	background-color:#fff;
+	
+	.header{
+		position:relative;
+		width:auto;
+		padding:25px;
+
+		.close_btn{
+			color:#000;
+		}
+		.title{
+			margin-left:25px;
+			font-size:16px;
+			color:rgba(23,35,61,1);
+		}
+		.right_tool{
+			float:right;
+			margin-top:-10px;
+
+			.error_tips{
+				font-size:12px;
+				color:red;
+				margin-right:;
+			}
+			.submit_btn{
+				background-color: rgba(45,140,240,1);
+				width:75px;
+			}
+		}
+	}
+
+	.search_and_statistics{
+		height:64px;
+		border-top:1px solid rgba(23,35,61,0.1);
+		border-bottom:1px solid rgba(23,35,61,0.1);
+
+		.search_container{
+			/*display: inline;*/
+			float:left;
+			position: relative;
+			width:450px;
+			padding:15px 25px;
+			border-right:1px solid rgba(23,35,61,0.1);
+
+			.search_btn{
+				display: inline;
+				top:30px;
+			}
+			.keyword{
+				display:inline;
+				margin-left:10px;
+			}
+		}
+
+		.statistics_container{
+			/*display: inline;*/
+			float: right;
+			position: relative;
+			font-size:14px;
+			line-height:24px;
+			width:260px;
+			padding:21px 25px;
+		}
+
+		.clear_float{
+			clear:both;
+			height:0;
+			overflow:hidden;
+		}
+	}
+
+	.choose_body{
+		width:450px;
+		height:calc(100% - 62px);  /*62px为搜索栏高度*/
+		float:left;
+
+		.layer_one{
+			float:left;
+			width:190px;
+			height:100%;
+			overflow-y:auto; 
+			overflow-x:hidden;
+
+			.category{
+				cursor:pointer;
+				width:100%;
+				padding:18px 20px;
+				height:48px;
+			}
+
+			.is_focus{
+				background-color: rgba(45,140,240,0.1);
+			}
+
+		}
+		.layer_two{
+			float:left;
+			width:260px;
+			height:100%;
+			overflow-y:auto; 
+			overflow-x:hidden;
+			border-right:1px solid rgba(23,35,61,0.1);
+			border-left: 1px solid rgba(23,35,61,0.1);
+
+			/*background-color: blue;*/
+			.single_option{
+				width:100%;
+				padding:20px 20px;
+				height:48px;
+			}
+
+			.show_current{
+				display:'';
+			}
+
+			.not_show_current{
+				display:none;
+			}
+		}
+		
+	}
+
+	.search_nothing{
+		width:450px;
+		height:calc(100% - 65px);    /*65px为搜索栏高度*/
+		border-right:1px solid rgba(23,35,61,0.1);;
+		float:left;
+
+		.not_find_icon{
+			font-size:40px;
+			color:rgba(23,35,61,0.2);
+			margin:100px 0 0 200px
+		}
+		.not_find_tips{
+			font-size:14px;
+			text-align: center;
+			color:rgba(23,35,61,0.75);
+			margin:20px 0 0 0;
+			line-height:20px;
+		}
+	}
+
+	.chosen{
+		float:right;
+		width:262px;
+		height:calc(100% - 65px);  /*65px为搜索栏高度*/
+		overflow-y:auto; 
+		overflow-x:hidden;
+
+		/*background-color: red;*/
+		.brand_label_container{
+			height:48px;
+			width:100%;
+			font-size:16px;
+			line-height:22px;
+			padding:15px 40px;
+
+			.chosen_brand_label{
+				float:left;
+				width:130px;
+				text-align: center;
+				border:1px solid rgba(23,35,61,0.1);
+			}
+			.delete_brand_btn{
+				float:left;
+				width:22px;
+				border:1px solid rgba(23,35,61,0.1);
+			}
+		}
+	}
+
+	.clear_float{
+		clear:both;
+		height:0;
+		overflow:hidden;
+	}
+}

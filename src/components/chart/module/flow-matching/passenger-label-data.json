@@ -1,0 +1,104 @@
+{
+    "code": 200,
+    "msg": "ok",
+    "data":
+    {
+        "gender": [
+        {
+            "key": "male",
+            "value": 58.6
+        },
+        {
+            "key": "female",
+            "value": 41.4
+        }],
+        "age": [
+        {
+            "key": "<19",
+            "value": 2.45
+        },
+        {
+            "key": "19-25",
+            "value": 19.27
+        },
+        {
+            "key": "26-35",
+            "value": 51.99
+        },
+        {
+            "key": "36-45",
+            "value": 19.15
+        },
+        {
+            "key": "46-55",
+            "value": 5.37
+        },
+        {
+            "key": ">55",
+            "value": 1.77
+        }],
+        "consume": [
+        {
+            "key": "high",
+            "value": 30
+        },
+        {
+            "key": "middle",
+            "value": 45
+        },
+        {
+            "key": "low",
+            "value": 25
+        }],
+        "income": [
+        {
+            "key": "6000以上",
+            "value": 7.7
+        },
+        {
+            "key": "4000~6000",
+            "value": 56.0
+        },
+        {
+            "key": "2500~4000",
+            "value": 30.4
+        },
+        {
+            "key": "1200~2500",
+            "value": 3.4
+        },
+        {
+            "key": "0~1200",
+            "value": 2.5
+        }],
+        "education": [
+        {
+            "key": "associate",
+            "value": 21406169
+        },
+        {
+            "key": "university",
+            "value": 142154441
+        },
+        {
+            "key": "master",
+            "value": 454247659
+        },
+        {
+            "key": "doctor",
+            "value": 167317612
+        },
+        {
+            "key": "postDoctoral",
+            "value": 46918829
+        },
+        {
+            "key": "other",
+            "value": 15464865
+        }],
+        "house": 84.40,
+        "car": 24.74,
+        "married": 59.2,
+        "haveKids": 46
+    }
+}

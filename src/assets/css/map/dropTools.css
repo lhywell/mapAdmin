@@ -1,0 +1,131 @@
+.dropTools {
+    .wl {
+        font-size: 14px;
+        .title {
+            margin-right: 8px;
+            .ivu-icon {
+                margin-right: 5px;
+                vertical-align: middle;
+            }
+            .i {
+                vertical-align: middle;
+            }
+        }
+        .ivu-icon-chevron-down {
+            transform: scale(0.75);
+        }
+        .ivu-icon-ios-plus-outline:before {
+            color: #fff;
+            font-size: var(--font-icon);
+        }
+    }
+    .ivu-dropdown {
+        margin-left: 8px;
+        box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.2);
+        .ivu-btn-primary {
+            height: 40px;
+            width: 158px;
+            @include shadow;
+        }
+        .ivu-select-dropdown {
+            margin: 8px 0 0 0;
+            border-radius: 0;
+            padding: 0;
+            .ivu-dropdown-menu {
+                min-width: 158px;
+            }
+
+            .ivu-dropdown-item {
+                height: 40px;
+                line-height: 40px;
+                padding: 0 20px;
+                color: var(--color-detail);
+                .icon-circular,
+                .icon-directions_walk,
+                .icon-directions_car {
+                    color: var(--color-icon);
+                }
+                .icon-directions_car:before {
+                    font-size: var(--font-icon);
+                    margin-right: 10px;
+                }
+                .icon-circular:before {
+                    font-size: var(--font-icon);
+                    margin-right: 10px;
+                }
+                .icon-directions_walk:before {
+                    font-size: var(--font-icon);
+                    margin-right: 10px;
+                }
+            }
+            .ivu-dropdown-item:hover {
+                background: #f3f8fe;
+                div,
+                .icon-circular,
+                .icon-directions_walk,
+                .icon-directions_car {
+                    color: #2d8cf0;
+                }
+            }
+        }
+    }
+}
+
+/*自定义的弹框样式*/
+
+.circleModal {
+    color: var(--color-title);
+    overflow: inherit;
+    .ivu-modal {
+        top: 0;
+    }
+    .ivu-modal-footer {
+        display: none;
+    }
+    .ivu-modal-header-inner {
+        font-size: 16px;
+    }
+
+    .ivu-modal-body {
+        font-size: 14px;
+        .ivu-form-item {
+            margin-bottom: 0;
+            .ivu-form-item-label {
+                font-size: 14px;
+                color: var(--color-title);
+            }
+        }
+        .time {
+            position: relative;
+            .head {
+                margin-top: 20px;
+                .minute {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+            .slider {
+                .text {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+        .footer {
+            margin-top: 28px;
+            .cancle {
+                border: 0
+            }
+            .ivu-form-item-content {
+                display: flex;
+                justify-content: flex-end;
+            }
+            .ivu-btn-large {
+                padding: 4px 15px;
+                font-size: 14px;
+                border-radius: var(--border-radius);
+            }
+        }
+    }
+}

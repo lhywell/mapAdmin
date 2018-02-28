@@ -1,0 +1,117 @@
+@define-mixin box {
+    width: 15px;
+    height: 8px;
+    display: inline-block;
+}
+;
+
+$color1:#FEF0D9;
+$color2:#FDD59E;
+$color3:#FEBB84;
+$color4:#FC8D59;
+$color5:#E34A33;
+$color6:#B30000;
+
+#legend {
+    position: absolute;
+    bottom: 16px;
+    left: 24px;
+    z-index: 401;
+    width: 434px;
+    font-size: 14px;
+    .open {
+        width: 64px;
+        text-align: center;
+    }
+    .ivu-card {
+        border-radius: var(--border-radius);
+        border: 0;
+    }
+    .ivu-card-body {
+        padding: 0;
+    }
+    .legendshop,
+    .legendbrand {
+        margin-bottom: 16px;
+        @include shadow;
+    }
+    .legendshop .ivu-card-body,
+    .legendbrand .ivu-card-body,
+    .legendhot .ivu-card-body {
+        @include flexcenter;
+    }
+    .legendshop .l,
+    .legendbrand .l {
+        position: relative;
+        padding: 6px 16px;
+        width: 272px;
+        border-right: 1px solid var(--border-color);
+        .title {
+            color: var(--color-title);
+            margin-top: 6px;
+        }
+        .subtitle {
+            color: var(--color-icon);
+            margin-top: 10px;
+        }
+        .check {
+            position: absolute;
+            right: 18px;
+            top: 10px;
+            @include flexcenter;
+        }
+        .ivu-checkbox-wrapper {
+            color: var(--color-detail);
+        }
+    }
+    .legendhot {
+        display: inline-block;
+        @include shadow;
+        .l {
+            @include flexcenter;
+            padding: 6px;
+            border-right: 1px solid var(--border-color);
+            .ivu-btn {
+                padding: 2px 13px;
+                border-radius: var(--border-radius);
+            }
+        }
+        .hot {
+            padding: 6px;
+            height: 36px;
+            border-right: 1px solid var(--border-color);
+            @include flexcenter;
+            .ph {
+                @include flexcenter;
+                div {
+                    margin-right: 1px;
+                    @mixin box;
+                }
+            }
+            .min {
+                margin-right: 10px;
+            }
+            .max {
+                margin-left: 10px;
+            }
+            .ld1 {
+                background: $color1;
+            }
+            .ld2 {
+                background: $color2;
+            }
+            .ld3 {
+                background: $color3;
+            }
+            .ld4 {
+                background: $color4;
+            }
+            .ld5 {
+                background: $color5;
+            }
+            .ld6 {
+                background: $color6;
+            }
+        }
+    }
+}

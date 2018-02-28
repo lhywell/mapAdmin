@@ -1,0 +1,60 @@
+$radius:#488EF1;
+$radius2:#a54bff;
+$radius3:#F8B617;
+
+@define-mixin tag-bg {
+    border-radius: 50%;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+}
+@define-mixin num {
+    border-radius: 4px;
+    border: 1px solid #DCDEE2;
+    padding: 0 4px;
+    height: 24px;
+    line-height: 24px;
+    display: inline-block;
+}
+#brandTools {
+    position: relative;
+    margin-left: 8px;
+    .brand-swich {
+        position: absolute;
+        left: 134px;
+        top: 13px;
+        z-index: 1;
+    }
+    .cover {
+        width: 125px;
+        height: 38px;
+        position: absolute;
+        top: 1px;
+        left: 0;
+        z-index: 1;
+        border-radius: 2px;
+    }
+    .brand-poptip {
+        @include shadow;
+        ul {
+            li {
+                position: relative;
+                .atag {
+                    background: $radius2;
+                    margin-right: 11px;
+                    @mixin tag-bg;
+                }
+                .btag {
+                    background: $radius3;
+                    margin-right: 11px;
+                    @mixin tag-bg;
+                }
+                .num {
+                    position: absolute;
+                    right: 30px;
+                    @mixin num;
+                }
+            }
+        }
+    }
+}

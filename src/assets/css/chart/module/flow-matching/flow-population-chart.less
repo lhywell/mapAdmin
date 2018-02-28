@@ -1,0 +1,49 @@
+.flow-matching__populationechart {
+    /*人口分析*/
+    &__con {
+        width: 100%;
+        background: #FFFFFF;
+        &__head {
+            height: 48px;
+            padding: 12px 16px 12px 24px;
+            line-height: 24px;
+            border-bottom: 1px solid #DCDEE2;
+            &--title {
+                font-family: PingFangSC-Medium;
+                font-size: 16px;
+                color: #17233D;
+            }
+        }
+        &__main {
+            padding: 18px 24px;
+            overflow: hidden;
+            &__sex,
+            &__age {
+                height: 214px;
+                margin-bottom: 20px;
+            }
+            &__sex,
+            &__consume {
+                float: left;
+                width: 226px;
+            }
+            &__age,&__income {
+                float: left;
+                width: 337px;
+                padding: 0 0 0 24px;
+                border-left: 1px solid rgba(23, 35, 61, 0.10);
+            }
+            &__consume,&__income {
+                height: 220px;
+                margin: 20px 0;
+            },
+            &__education{
+                height: 206px;
+                margin: 20px 0;
+            },
+            &__other{
+                margin:20px 0;
+            }
+        }
+    }
+}
