@@ -9,15 +9,16 @@
 
 ### Build Setup
 
-You should config hosts
+You should config hosts:
 
-Open the computer system disk. C:\Windows\System32\drivers\etc,add hosts 127.0.0.1 www.tendcloud.com
+1. Open the computer system disk. C:\Windows\System32\drivers\etc
+2. add hosts 127.0.0.1 www.tendcloud.com
 
 ``` bash
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at http://www.tendcloud.com:7777
 npm run dev
 
 # build for production with minification
