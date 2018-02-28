@@ -30,17 +30,17 @@ npm run build --report
 
 ### Features
 - Users login
-- User login for the first time, new brand.
-- Brand location allocation: include brand attributes, open shop, store and area.
+- User login for the first time，build a new brand.
+- Brand location allocation: include brand attributes, opened shop, store and area in the plan.
 - Set up competitive brands.
 - Upload store information
-- Add the location to be selected.
+- Add the shop location to be selected.
 - Delete the brand
 - Map city switching
 - Layer switches include: store distribution, brand distribution, customer distribution.
-- Add stores, including circular driving time.
-- The crowd supported the thermal force.
-- Support passenger flow ratio, passenger flow trend chart.
+- Add store include: circular shop location, driving time, walking time.
+- Support population distribution heat map.
+- Support guest flow statistics ratio, guest flow trend chart.
 
 ### Live DEMO
 Live Demo http://smartdata.b0.upaiyun.com/mapAdmin/
