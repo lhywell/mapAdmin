@@ -56,7 +56,7 @@
                 <div class='brand_label_container'>
                     <div class='chosen_brand_label'>{{item}}</div>
                     <div class='delete_brand_btn'>
-                        <a class="icon-close" style='color:#000' @click='deleteBrand'></a>
+                        <a class="icon-close close_btn" @click='deleteBrand'></a>
                     </div>
                 </div>
             </template>

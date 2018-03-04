@@ -1,4 +1,9 @@
 .dropTools {
+    position: absolute;
+    top: 76px;
+    left: 380px;
+    z-index: 401;
+    display: flex;
     .wl {
         font-size: 14px;
         .title {
@@ -59,17 +64,19 @@
                 }
             }
             .ivu-dropdown-item:hover {
-                background: #f3f8fe;
+                background: var(--color-hover-bg);
                 div,
                 .icon-circular,
                 .icon-directions_walk,
                 .icon-directions_car {
-                    color: #2d8cf0;
+                    color: var(--color-hover);
+                    font-weight: var(--font-bold);
                 }
             }
         }
     }
 }
+
 
 /*自定义的弹框样式*/
 

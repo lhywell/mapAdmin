@@ -5,6 +5,7 @@
         left: 135px;
         top: 13px;
         z-index: 1;
+        overflow: hidden;
     }
     .cover {
         width: 125px;

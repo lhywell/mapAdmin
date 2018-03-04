@@ -41,8 +41,11 @@
         <div v-if='showBody' class='choose_body'>
             <div class='layer_one'>
                 <template v-for="(item,index) in datas">
-                    <div :class="item['displayStyle']" @click='clickCategory'>
+                   <!--  <div :class="item['displayStyle']" @click='clickCategory'>
                         <Checkbox :indeterminate="item['indeterminate']" :value="item['checkAll']" @click.stop.prevent.native="handleCheckAll">{{item.category}} </Checkbox>
+                    </div> -->
+                    <div :class="item['displayStyle']" @click='clickCategory'>
+                        {{item.category}}                    
                     </div>
                 </template>  
             </div>       
@@ -65,10 +68,11 @@
         <div class='chosen'>
             <template  v-for="(item,index) in allSelectedBrands">
                 <div class='brand_label_container'>
-                    <div class='chosen_brand_label' :paraId='item.id'>{{item.name}}</div>
-                    <div class='delete_brand_btn'>
-                        <a class="icon-close" style='color:#000' @click='deleteBrand'></a>
-                    </div>
+                        <div v-if='item.name.length > 8' :title='item.name' class='chosen_brand_label' :paraId='item.id' :brandName='item.name'>{{item.name.substr(0,8)}}...</div>
+                        <div v-else class='chosen_brand_label' :title='item.name' :paraId='item.id' :brandName='item.name'>{{item.name}}</div>
+                        <div class='delete_brand_btn'>
+                            <a class="icon-close close_btn" @click='deleteBrand'></a>
+                        </div>
                 </div>
             </template>
         </div>
@@ -130,12 +134,11 @@ export default {
                                     'class': {},
                                     attrs: {
                                         src: re,
-                                        
                                     },
                                     style:{
                                         height:'32px',
                                         width:'32px',
-                                        verticalAlign:'middle'
+                                        verticalAlign:'middle',
                                     },
                                     domProps:{}
                                 }),
@@ -158,7 +161,7 @@ export default {
                         width:160
                     },
                     {
-                        title: '操作',
+                        title: ' ',
                         key: 'action',
                         align: 'center',
                         render: (h, params) => {
@@ -169,17 +172,18 @@ export default {
                                     },
                                     style: {
                                         // backgroundColor: 'white',
-                                        color: 'rgba(23,35,61,0.55)',
+                                        // color: 'rgba(23,35,61,0.55)',
                                         border:'none',
                                         pointer:'cursor',
-                                        fontSize:'16px'
+                                        fontSize:'16px',
+                                        visibility:'hidden'
                                     },
                                     on: {
                                         click: () => {
                                             //删除品牌竞品/增益关系，调用接口deleteBrandRelation
                                             this.removeRow(params.index)
                                         }
-                                    }
+                                    },
                                 }, '')
                             ]);
                         }
@@ -204,6 +208,14 @@ export default {
                 },
                 deep: false,
                 immediate: true
+            },
+            'showModal':{
+                handler:function(val,oldVal){
+                    if(val === true){
+                        this.keyword = '';
+                        this.showBody = true;
+                    }
+                }
             }
         },
     components: {
@@ -521,13 +533,11 @@ export default {
                         }
                     }
                 }
-                //移动后面到最左边
+                //移动后面模态框到最左边
                 var left = window.screen.width - 1006 - 712;
                 if(left < 0 )
                     left = 0
-                var resultLeft = left+'px'
-                //console.log('resultLeft is ',resultLeft)
-                // console.log('left is ',left)
+                var resultLeft = left + 'px';
                 this.changeBrandModalStyle({
                     modalStyle:{
                         height:'100%',
@@ -553,6 +563,7 @@ export default {
         removeRow(index) {
             this.tableData.splice(index, 1);
         },
+        //补全checkbox组所需要数据项
         initChosenBrandData(){
             for(var i = 0 ; i <this.datas.length;i++){
                 var iSelect = []
@@ -572,6 +583,7 @@ export default {
                 }
             }
         },
+        //计算得出当前已选中的全部品牌
         calAllSelectedBrand(){
             var all = [];
             for(var val of this.datas){
@@ -584,7 +596,6 @@ export default {
                 }
                 all = all.concat(te);
             }
-            // debugger
             this.allSelectedBrands = all;
         },
         close(){
@@ -610,13 +621,17 @@ export default {
 
         },
         submitData(){
-            if(this.allSelectedBrands.length > 5 )
-                this.error_tips = '选择的品牌数量不能超过5个'
+            if(this.allSelectedBrands.length > 5 ){
+                
+                //this.error_tips = '选择的品牌数量不能超过5个'
+            }
             else{
                 //提交所选择品牌，调用接口createBrandRelation,创建成功后调用brandRelation查询品牌数据
+                this.allSelectedBrands = [];
                 this.close();
             }
         },
+        //搜索框搜索处理
         searchBrand(){
             var key = this.keyword.trim();
             var searchResult = false;
@@ -637,6 +652,7 @@ export default {
                     this.showBody = false;
             }
         },
+        //，搜索框无输入，则显示checkbox内容
         reset(){
             var key = this.keyword.trim();
             if( key === '')
@@ -665,8 +681,10 @@ export default {
                     this.datas[i].displayStyle = 'category'
             }
         },
+        //点击类别层checkbox，计算所有checkbox值
         handleCheckAll(event) {
             this.clickCategory(event)
+            //反选类别层checkbox状态
             const index = this.currentCategoryIndex;
             if (this.datas[index].indeterminate) {
                 this.datas[index].checkAll = false;
@@ -674,7 +692,7 @@ export default {
                 this.datas[index].checkAll = !this.datas[index].checkAll;
             }
             this.datas[index].indeterminate = false;
-
+            //选中该类别所有的checkbox状态
             if (this.datas[index].checkAll) {
                 var arr = _.flattenDepth(this.datas[index].node,1);
                 for(var val of arr)
@@ -684,6 +702,7 @@ export default {
             }
             this.calAllSelectedBrand();
         },
+        //点击品牌曾checkbox，计算所有checkbox值
         checkAllGroupChange(data,index) {
             if(index === undefined ||index === '')
                 index = this.currentCategoryIndex;
@@ -699,14 +718,16 @@ export default {
             }
             this.calAllSelectedBrand();
         },
+        //删除已选品牌部分的某个品牌
         deleteBrand(event){
-            var name = event.path[2].innerText.trim();
+            var name = event.path[2].childNodes[0].attributes.brandName.value
             //var id = parseInt(event.path[2].childNodes[0].attributes.paraId.value);
             for(var i=0;i<this.datas.length;i++){
                 var arr = this.datas[i].selected;
                 if(arr){
                     for(var j = 0;j<arr.length;j++){
                         if(arr[j].trim() === name){
+                            //删除该值在checkbox组中的值
                             this.datas[i].selected.splice(j,1);
                             var arr2 = _.flattenDepth(this.datas[i].selected,1)
                             this.checkAllGroupChange(arr2,i);
@@ -746,37 +767,51 @@ export default {
 }
 
 .choose_brand_container{
-        .ivu-modal-header{
-            padding: 0;
-            height:64px;
-        }
-        .ivu-modal-body{
-           padding:0;
-           height:calc(100% - 67px);  /*67px为header高度*/
-        }
-        .ivu-modal-content{
-            height:100%;
-            border-radius:1px;
-        }
-        .ivu-modal-footer{
-            padding:0;
-        }
+    .ivu-modal-header{
+        padding: 0;
+        height:64px;
     }
-
-
-    .layer_two{
-         .ivu-checkbox-wrapper{
-            font-size:14px;
-            color:rgba(23,35,61,0.75);
-         }
+    .ivu-modal-body{
+        padding:0;
+        height:calc(100% - 67px);  /*67px为header高度*/
     }
-
-    .layer_one{
-        .ivu-checkbox-wrapper{
-            font-size:14px;
-            color:rgba(23,35,61,0.75);
-        }
+    .ivu-modal-content{
+        height:100%;
+        border-radius:1px;
     }
+    .ivu-modal-footer{
+        padding:0;
+    }
+}
+
+.layer_two{
+    .ivu-checkbox-wrapper{
+        font-size:14px;
+        color:rgba(23,35,61,0.75);
+    }
+}
+
+.layer_one{
+    .ivu-checkbox-wrapper{
+        font-size:14px;
+        color:rgba(23,35,61,0.75);
+    }
+}
+
+.ivu-table-cell{
+    .icon-delete{
+        color:rgba(23,35,61,0.55);
+    }
+    .icon-delete:hover{
+        color:#2D8CF0;
+    }
+}
+
+.setting_box{
+    .ivu-table-row:hover a{
+         visibility:visible !important;
+    }
+}
 </style>
    
 </style>

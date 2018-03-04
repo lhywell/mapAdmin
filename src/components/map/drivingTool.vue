@@ -29,25 +29,6 @@
                 </Form-item>
             </Form>
         </Modal>
-        <Modal v-model="infoModel" width="262" :mask-closable="true" :title="tobeShop.name" id="drivingInfo" class-name="infoModel drivingInfo">
-            <!--内容-->
-            <template v-if="tobeShop.display">
-                <ul>
-                    <li>
-                        <span>所在城市</span>{{tobeShop.city}}
-                    </li>
-                    <li>
-                        <span>驾车时间</span>{{tobeShop.time}}分钟
-                    </li>
-                    <li>
-                        <span>服务区域</span>{{tobeShop.area}}㎡
-                    </li>
-                </ul>
-                <div class="">
-                    <Button type="ghost" size="large" class="toLocation" @click="toLocation()">区域洞察</Button>
-                </div>
-            </template>
-        </Modal>
     </div>
 </template>
 <script>
@@ -67,15 +48,7 @@ export default {
                 ]
             },
             sliderValue: 5,
-            drivingModel: false,
-            infoModel: false,
-            tobeShop: {
-                display: false,
-                city: '',
-                name: '',
-                time: '',
-                area: ''
-            },
+            drivingModel: false
         }
     },
     mixins: [mixin],
@@ -85,15 +58,6 @@ export default {
         },
         modalClose() {
             this.drivingModel = false;
-        },
-        toLocation() {
-            this.infoModel = false;
-            this.$store.dispatch('setStoreInfo', {
-                id: 10000,
-                name: '西单概念店', //商店名称
-                coverage: 5, //辐射半径
-                serviceArea: 6800, //服务区域
-            });
         }
     }
 }

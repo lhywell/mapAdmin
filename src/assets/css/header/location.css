@@ -31,14 +31,22 @@
             }
         }
         ul {
-            padding: 0 16px 0 16px;
             li {
-                height: 48px;
-                line-height: 48px;
-                border-bottom: 1px solid var(--border-color);
                 a {
+                    padding: 0 16px 0 16px;
                     @include flexcenter;
                     color: var(--color-detail);
+                    div {
+                        height: 48px;
+                        line-height: 48px;
+                        width: 100%;
+                        border-bottom: 1px solid var(--border-color);
+                    }
+                }
+                a:hover {
+                    background: var(--color-hover-bg);
+                    color: var(--color-hover);
+                    font-weight: var(--font-bold);
                 }
                 img {
                     margin-right: 14px;

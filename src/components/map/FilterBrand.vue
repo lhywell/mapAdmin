@@ -1,4 +1,4 @@
-﻿<template>
+<template>
     <div id="brandTools" class="brandTools">
         <i-switch v-model="visible" @on-change="switchChange" class="brand-swich"></i-switch>
         <!-- 增加遮罩层，图层开关关闭，筛选不可以点击 -->
@@ -100,7 +100,6 @@ export default {
         },
         brandCover: {
             handler(newVal, val) {
-                console.log(newVal)
                 if (newVal == true) {
                     this.visible_cover = true;
                 } else {

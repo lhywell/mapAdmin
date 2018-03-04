@@ -5,6 +5,9 @@
             color: black;
             border: none;
         }
+        .closeBtn:hover{
+            color:#2D8CF0;
+        }
         .right_tools {
             float: right;
             .my_poptip {
@@ -97,10 +100,14 @@
 
         .opened_tab{
              background-color: rgba(23,35,61,0.06);
+             overflow-x:hidden;
+             overflow-y:auto;
         }
 
         .remained_tab{
-             background-color: rgba(23,35,61,0.06);
+            background-color: rgba(23,35,61,0.06);
+            overflow-x:hidden;
+            overflow-y:auto;
         }
     }
 }

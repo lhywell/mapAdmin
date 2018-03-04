@@ -2,19 +2,19 @@
     <div class='to_be_chosen_shops_container'>
         <div class='top_cards'>
             <div class='city_container'>
-                <Card class='city'>
+                <Card class='city' dis-hover>
                     <div class='label'>意向城市</div>
                     <div class='content'>{{toBeChosenShopsBasicInfo.cityNum}}个城市</div>
                 </Card>
             </div>
             <div class='shop_container'>
-                <Card class='shop'>
+                <Card class='shop' dis-hover>
                     <div class='label'>意向店铺</div>
                     <div class='content'>{{toBeChosenShopsBasicInfo.storeNum}}个店铺</div>
                 </Card>
             </div>
             <div class='total_area'>
-                <Card class='area'>
+                <Card class='area' dis-hover>
                     <div class='label'>辐射区域总面积</div>
                     <div class='content'>{{toBeChosenShopsBasicInfo.serviceAreaSum}}km²</div>
                 </Card>
@@ -41,8 +41,7 @@ export default {
         return {
             defaults: {
                 table: {
-                    btnWords: '添加待选门店',
-                    height: '410',
+                    btnWords: '添加意向门店',
                     callback: '',
                     tips: '文件上传',
                     columns: [{
@@ -63,10 +62,15 @@ export default {
                             var re = ''
                             if (address.length > lengthLimit) {
                                 re = address.substr(0, lengthLimit) + '...'
-                                return re;
                             } else {
-                                return address;
+                                re = address
                             }
+                            return h('span', {
+                                attrs: {
+                                    title: address
+                                }
+                            },
+                            re);
                         }
                     }, {
                         title: '服务范围',
@@ -91,10 +95,10 @@ export default {
                                     },
                                     style: {
                                         // backgroundColor: 'white',
-                                        color: 'rgba(23,35,61,0.55)',
                                         border: 'none',
                                         pointer: 'cursor',
-                                        fontSize: '20px'
+                                        fontSize: '20px',
+                                        visibility:'hidden'
                                     },
                                     on: {
                                         click: () => {
@@ -161,7 +165,7 @@ export default {
                 address: '中国广东省深圳市罗湖区人民北路2022号',
                 serviceScope: '半径 500米',
                 serviceArea: '7.85'
-            }, ]
+            }]
         },
         removeRow(index) {
             this.defaults.table.data.splice(index, 1);
@@ -176,6 +180,22 @@ export default {
 .table_container {
     .ivu-table-wrapper {
         border: none;
+    }
+}
+
+.ivu-table-cell{
+    .icon-delete{
+        color:rgba(23,35,61,0.55);
+    }
+    .icon-delete:hover{
+       
+        color:#2D8CF0;
+    }
+}
+
+.table_container{
+    .ivu-table-row:hover a{
+         visibility:visible !important;
     }
 }
 </style>

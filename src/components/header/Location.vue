@@ -16,7 +16,9 @@
                         </div>
                         <ul>
                             <li v-for="item in cityList">
-                                <a href="#" @click="changeCity(item)">{{item.name}}</a>
+                                <a href="#" @click="changeCity(item)">
+                                    <div>{{item.name}}</div>
+                                </a>
                             </li>
                         </ul>
                     </div>

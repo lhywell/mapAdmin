@@ -31,9 +31,10 @@ $radius3:#F8B617;
 
 .filterTools {
     position: absolute;
-    right: 118px;
-    top: 0;
+    right: 143px;
+    top: 76px;
     display: flex;
+    z-index: 1;
     .ivu-btn {
         font-size: 14px;
     }
@@ -86,6 +87,9 @@ $radius3:#F8B617;
                 color: var(--color-icon1);
                 cursor: pointer;
             }
+            .ivu-icon-android-settings:hover {
+                color: var(--color-hover);
+            }
         }
         .filterContent {
             padding: 0 16px;
@@ -116,7 +120,7 @@ $radius3:#F8B617;
         ul {
             li {
                 @mixin item;
-                .li{
+                .li {
                     @include flexcenter;
                 }
                 .ivu-checkbox-wrapper {
@@ -131,5 +135,10 @@ $radius3:#F8B617;
                 }
             }
         }
+    }
+}
+@media screen and (max-width: 1228px) {
+    .filterTools {
+        left: 555px;
     }
 }

@@ -3,6 +3,7 @@ import {
     mapGetters,
     mapMutations
 } from 'vuex'
+import selfModel from './selfModel'
 
 export default {
     data() {
@@ -18,6 +19,7 @@ export default {
     computed: {
         ...mapGetters(['circleListener', 'walkListener', 'driveListener'])
     },
+    mixins: [selfModel],
     methods: {
         handler(e) {
             this.removeEvent();
@@ -53,7 +55,7 @@ export default {
 
             //画中心点标记
             var marker = this.$utils.drawMarker(point, 2);
-
+            marker.addEventListener("click", this.elementClick);
             /*****保存属性*****/
             //画意向门店包括点和围栏,并且定义类型为2
             marker.type = 2;
@@ -69,26 +71,13 @@ export default {
                 this.clickinit();
 
                 this.drawMarker(e);
-                let obj = {
-                    x: e.clientX,
-                    y: e.clientY
-                }
+
                 //获取像素坐标,弹出弹框
-                this.setPosition(obj, document.getElementsByClassName(this.mode + 'Modal')[0])
+                this.setPosition(e, document.getElementsByClassName(this.mode + 'Modal')[0], 'new')
 
                 //显示弹出框
                 this.modalOpen();
             }
-        },
-        setPosition(pixel, dom) {
-            let left = pixel.x;
-            let top = pixel.y
-
-            dom.style.position = 'absolute';
-            dom.style.left = left + 'px';
-            dom.style.top = top + 'px';
-            dom.style.right = 'inherit';
-            dom.style.bottom = 'inherit';
         },
         removeEvent() {
             if (this.walkListener) {
@@ -155,6 +144,7 @@ export default {
                 let object = {
                     name: this.formValidate.name,
                     type: 2,
+                    mode: this.mode,
                     time: this.sliderValue,
                     area: area
                 }
@@ -175,35 +165,10 @@ export default {
             reachAsync();
         },
         elementClick(e) {
-            let item = e.target.item;
-            let obj = {
-                x: e.clientX,
-                y: e.clientY
-            }
-            //获取像素坐标弹出框
-            this.setPosition(obj, document.getElementsByClassName(this.mode + 'Info')[0])
-            this.infoModel = true;
-
-            this.tobeShop.display = true;
-            this.tobeShop.city = '深圳';
-            this.tobeShop.name = item.name;
-            this.tobeShop.time = item.time;
-            this.tobeShop.area = item.area;
-
-            this.selectedFence(e);
-        },
-        selectedFence(e) {
-            //清除掉其他围栏的当前状态
-            let list = this.$Baidu.getOverlays();
-            list.map((item, index) => {
-                if (item.type == 1 || item.type == 2) {
-                    item.element.setFillOpacity(0.1);
-                }
+            this.$store.dispatch('setSelfModal', {
+                infoModal: true,
+                infoTarget: e
             })
-
-            //增加选中围栏当前状态
-            let element = e.target.element;
-            element.setFillOpacity(0.6);
         },
         handleSubmit(name) {
             //解决2次点击的问题

@@ -85,7 +85,6 @@ export default {
     watch: {
         switchShop: {
             handler(newVal, val) {
-                console.log(newVal)
                 if (newVal == true) {
                     this.commonOpen();
                 } else {
@@ -96,7 +95,6 @@ export default {
         },
         shopCover: {
             handler(newVal, val) {
-                console.log(newVal)
                 if (newVal == true) {
                     this.visible_cover = true;
                 } else {

@@ -2,19 +2,19 @@
     <div class='opened_shops_container'>
         <div class='top_cards'>
             <div class='city_container'>
-                <Card class='city'>
+                <Card class='city' dis-hover>
                     <div class='label'>城市</div>
                     <div class='content'>{{openShopsBasicInfo.cityNum}}个城市</div>
                 </Card>
             </div>
             <div class='shop_container'>
-                <Card class='shop'>
+                <Card class='shop' dis-hover>
                     <div class='label'>店铺</div>
                     <div class='content'>{{openShopsBasicInfo.storeNum}}个店铺</div>
                 </Card>
             </div>
             <div class='month_trade_container'>
-                <Card class='month_trade'>
+                <Card class='month_trade' dis-hover>
                     <div class='label'>月总流水</div>
                     <div class='content'>￥{{openShopsBasicInfo.incomeSum}}</div>
                 </Card>
@@ -37,30 +37,35 @@ export default {
                 table:{
                     btnWords:'文件上传',
                     tips:'文件上传',
-                    height:'400',
                     callback:function(){
                         console.log('open')
                     },
                     columns:[{
                         title:'店名',
-                        key:'name'
+                        key:'name',
+                        width:250
                     },{
                         title:'城市',
-                        key:'city'
+                        key:'city',
+                        width:200
                     },{
                         title:'详细地址',
                         key:'address',
                         render: (h, params) => {
-                            const lengthLimit = util.maxTableColumnLength; 
+                            const lengthLimit = util.maxTableColumnLength;
                             var address = params.row.address
                             var re = ''
-                            if(address.length > lengthLimit){
-                                re = address.substr(0,lengthLimit)+'...'
-                                return re;
+                            if (address.length > lengthLimit) {
+                                re = address.substr(0, lengthLimit) + '...'
+                            } else {
+                                re = address
                             }
-                            else{
-                                return address;
-                            }
+                            return h('span', {
+                                attrs: {
+                                    title: address
+                                }
+                            },
+                            re);
                         }
                     },{
                         title:'月流水',

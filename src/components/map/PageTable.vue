@@ -17,11 +17,10 @@
             </div>
         </div>
         <div class='table_container'>
-            <Table       
+            <Table     
                :height='defaults.table.height'
                :columns="defaults.table.columns"
                :data="defaults.table.showData"
-               ref=table
                 >
             </Table>
         </div>
@@ -82,16 +81,34 @@ export default {
                 this.init()
             },
             deep: true
-        }
+        },
+        'map.brandDetailModal': {
+                handler: function(val, oldVal) {
+                    if(val === true){
+                        this.keyword = '';
+                        this.search();
+                    }
+                },
+                deep: false,
+                immediate: true
+            }
     },
     mounted() {
         this.init()
+    },
+    computed:{
+         ...mapState(['map']),
     },
     methods: {
         ...mapActions({
             swtichBrandDetailModal: 'swtichBrandDetailModal',
             // setDropDownShop:'setDropDownShop'
         }),
+        // teset(param,index){
+        //     // debugger
+        //     console.log('param is ',param,',index is ',index)
+        //     // this.refs.table
+        // },
         init() {
             if (this.defaults.table.columns.length) {
           
@@ -99,6 +116,9 @@ export default {
             if (this.defaults.table.data.length) {
                 this.defaults.table.newData = this.defaults.table.data;
                 this.changePage(1);
+            }
+            document.getElementsByTagName('tr').onmouseover=function(){
+                alert('mouseover')
             }
         },
         changePage(pageNum) {                     //页码改变的回调
@@ -117,7 +137,7 @@ export default {
         search(){
             if(this.keyword.trim() === ''){
                 this.defaults.table.newData = this.defaults.table.data;
-                console.log('search in kong:this.defaults.table.newData is ',this.defaults.table.newData,'this.defaults.table.data is ',this.defaults.table.data )
+                // console.log('search in kong:this.defaults.table.newData is ',this.defaults.table.newData,'this.defaults.table.data is ',this.defaults.table.data )
                 this.changePage(1);
             }
             else{

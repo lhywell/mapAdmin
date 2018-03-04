@@ -1,7 +1,7 @@
 .addressConfig {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 24px;
+    top: 76px;
     display: flex;
     align-content: center;
     .ivu-btn {
@@ -14,5 +14,10 @@
         height: 40px;
         @include flexcenter;
         @include shadow;
+    }
+}
+@media screen and (max-width: 1228px) {
+    .addressConfig {
+        left: 1088px;
     }
 }

@@ -76,6 +76,9 @@ export default {
                 seriesData.push(item.value);
             });
             series.data = seriesData;
+            chartUtil.mergeRecursive(this.ageChart.options.tooltip, {
+                show: false
+            });
             this.ageChart.options.xAxis = this.ageChart.options.xAxis.map(item => {
                 return chartUtil.mergeRecursive(item, { data: xAxisData });
             });

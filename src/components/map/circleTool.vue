@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div id="circleTool">
         <div @click="handler"><span class="icon-circular"></span>辐射半径</div>
         <!--弹出层-->
@@ -32,25 +32,6 @@
                 </Form-item>
             </Form>
         </Modal>
-        <Modal v-model="infoModel" width="262" :mask-closable="true" :title="tobeShop.name" id="circleInfo" class-name="infoModel circleInfo">
-            <!--内容-->
-            <template v-if="tobeShop.display">
-                <ul>
-                    <li>
-                        <span>所在城市</span>{{tobeShop.city}}
-                    </li>
-                    <li>
-                        <span>辐射半径</span>{{tobeShop.range}}m
-                    </li>
-                    <li>
-                        <span>服务区域</span>{{tobeShop.area}}㎡
-                    </li>
-                </ul>
-                <div class="">
-                    <Button type="ghost" size="large" class="toLocation" @click="toLocation()">区域洞察</Button>
-                </div>
-            </template>
-        </Modal>
     </div>
 </template>
 <script>
@@ -61,6 +42,7 @@ import {
 } from 'vuex'
 
 import qs from 'qs';
+import selfModel from '@/assets/js/selfModel'
 
 export default {
     name: 'circleTool',
@@ -89,25 +71,10 @@ export default {
             },
         }
     },
-    props: {
-        // drop: ''
-    },
-    watch: {
-        // drop: {
-        //     handler(newVal, val) {
-        //         console.log(newVal)
-        //         // if (newVal == true) {
-        //         //     this.visible = true;
-        //         // } else {
-        //         //     this.visible = false;
-        //         // }
-        //     },
-        //     deep: true
-        // },
-    },
     computed: {
         ...mapGetters(['circleListener', 'walkListener', 'driveListener'])
     },
+    mixins: [selfModel],
     methods: {
         //添加点标注
         handler() {
@@ -139,8 +106,10 @@ export default {
 
             // circle.item = obj;
             circle.addEventListener("click", this.elementClick);
+            // circle.addEventListener("mouseover", this.elementClick);
 
-
+            marker.addEventListener("click", this.elementClick);
+            // marker.addEventListener("mouseover", this.elementClick);
             /*****保存属性*****/
 
             //画意向门店包括点和围栏,并且定义类型为2
@@ -164,43 +133,18 @@ export default {
                 this.clickinit();
 
                 this.drawElement(e);
-                let obj = {
-                    x: e.clientX,
-                    y: e.clientY
-                }
+
                 //获取像素坐标弹出框
-                this.setPosition(obj, document.getElementsByClassName('circleModal')[0])
+                this.setPosition(e, document.getElementsByClassName('circleModal')[0], 'new')
                 this.circleModel = true;
             }
 
         },
         elementClick(e) {
-            let item = e.target.item;
-            let obj = {
-                x: e.clientX,
-                y: e.clientY
-            }
-            //获取像素坐标
-            this.setPosition(obj, document.getElementsByClassName('circleInfo')[0])
-
-            this.infoModel = true;
-            this.tobeShop.display = true;
-            this.tobeShop.city = '深圳';
-            this.tobeShop.name = item.name;
-            this.tobeShop.range = item.radius;
-            this.tobeShop.area = item.area;
-
-            this.selectedFence(e);
-        },
-        setPosition(pixel, dom) {
-            let left = pixel.x;
-            let top = pixel.y
-
-            dom.style.position = 'absolute';
-            dom.style.left = left + 'px';
-            dom.style.top = top + 'px';
-            dom.style.right = 'inherit';
-            dom.style.bottom = 'inherit';
+            this.$store.dispatch('setSelfModal', {
+                infoModal: true,
+                infoTarget: e
+            })
         },
         dataChange(item) {
             let circle = this.circles;
@@ -217,6 +161,7 @@ export default {
                     let obj = {
                         name: this.formValidate.name,
                         type: 2,
+                        mode: 'circle',
                         radius: this.range,
                         area: Math.floor(Math.PI * Math.pow(this.range, 2))
                     }
@@ -250,28 +195,6 @@ export default {
             if (this.circleListener) {
                 this.$Baidu.removeEventListener("click", this.circleListener);
             }
-        },
-        selectedFence(e) {
-            //清除掉其他围栏的当前状态
-            let list = this.$Baidu.getOverlays();
-            list.map((item, index) => {
-                if (item.type == 1 || item.type == 2) {
-                    item.element.setFillOpacity(0.1);
-                }
-            })
-
-            //增加选中围栏当前状态
-            let element = e.target.element;
-            element.setFillOpacity(0.6);
-        },
-        toLocation() {
-            this.infoModel = false;
-            this.$store.dispatch('setStoreInfo', {
-                id: 10000,
-                name: '西单概念店', //商店名称
-                coverage: 5, //辐射半径
-                serviceArea: 6800, //服务区域
-            });
         }
     }
 }

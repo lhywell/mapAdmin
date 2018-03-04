@@ -210,6 +210,10 @@ input::-webkit-input-placeholder {
 
 
 
+
+
+
+
 /*去掉百度左下角版权信息*/
 
 .BMap_cpyCtrl {
@@ -219,12 +223,20 @@ input::-webkit-input-placeholder {
     display: none;
 }
 
+
+/*全局的圆角设置*/
+
 .ivu-poptip-inner,
 .ivu-select-dropdown,
 .ivu-btn-primary,
 .ivu-btn-ghost {
     border-radius: var(--border-radius);
 }
+
+
+
+
+
 
 
 
@@ -239,7 +251,17 @@ input::-webkit-input-placeholder {
 }
 .ivu-modal-header-inner {
     font-size: 16px;
+    width: 88%;
 }
+.ivu-modal-close .ivu-icon-ios-close-empty:hover {
+    color: var(--color-hover);
+}
+
+
+
+
+
+
 
 
 /*放大缩小*/
@@ -259,6 +281,10 @@ input::-webkit-input-placeholder {
 
 
 
+
+
+
+
 /*Switch 开关*/
 
 .ivu-switch {
@@ -266,6 +292,7 @@ input::-webkit-input-placeholder {
     height: 16px;
     line-height: 16px;
     border-radius: 16px;
+    overflow: hidden;
 }
 .ivu-switch:after {
     content: '';
@@ -275,4 +302,17 @@ input::-webkit-input-placeholder {
 }
 .ivu-switch-checked:after {
     left: 16px;
+}
+
+
+
+
+/*下拉框样式同 dropdown样式一致*/
+
+.ivu-select-item:hover,
+.ivu-select-item-selected,
+.ivu-select-item-selected:hover {
+    background: var(--background-color-hover);
+    color: var(--font-color-hover);
+    font-weight: var(--font-bold);
 }

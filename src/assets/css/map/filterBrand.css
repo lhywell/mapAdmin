@@ -24,6 +24,7 @@ $radius3:#F8B617;
         left: 134px;
         top: 13px;
         z-index: 1;
+        overflow: hidden;
     }
     .cover {
         width: 125px;

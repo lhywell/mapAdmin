@@ -28,8 +28,7 @@ let drawOption = {
 
 /**
  * 画圆.
- * @param {position} lng - 矩形区域的西南角经纬度坐标.
- * @param {position} lat - 矩形区域的东北角经纬度坐标.
+ * @param {BMap.Point} point - 实例一个经纬度坐标点.
  * @param {number} radius - 矩形区域的透明度值.
  */
 export function drawCircle(point, radius) {
@@ -82,26 +81,81 @@ export function drawPolygon(path) {
     return new BMap.Polygon(path, opts);
 }
 
+/**
+ * 画图标.
+ * @param {number} type - 类型.
+ * 已开门店包括点和围栏,并且定义类型为1
+ * 意向门店包括点和围栏,并且定义类型为2
+ * 增益品牌的点,并且定义类型为3
+ * 竞品品牌的点,并且定义类型为4
+ * 已开门店hover效果,并且定义类型为5
+ * 意向门店hover效果,并且定义类型为6
+ * 增益品牌hover效果,并且定义类型为7
+ * 竞品品牌hover效果,并且定义类型为8
+ */
+export function drawIcon(type) {
+    let icon;
+    switch (type) {
+        case 1:
+            icon = new BMap.Icon($static + "/dot_blue.png", new BMap.Size(12, 12));
+            icon.setImageSize(new BMap.Size(12, 12));
+            break;
+        case 2:
+            icon = new BMap.Icon($static + "/marker.png", new BMap.Size(24, 24));
+            icon.setImageSize(new BMap.Size(24, 24));
+            break;
+        case 3:
+            icon = new BMap.Icon($static + "/dot_zi.png", new BMap.Size(12, 12));
+            icon.setImageSize(new BMap.Size(12, 12));
+            break;
+        case 4:
+            icon = new BMap.Icon($static + "/dot_yellow.png", new BMap.Size(12, 12));
+            icon.setImageSize(new BMap.Size(12, 12));
+            break;
+        case 5:
+            icon = new BMap.Icon($static + "/dot_blue.png", new BMap.Size(14, 14));
+            icon.setImageSize(new BMap.Size(14, 14));
+            break;
+        case 6:
+            icon = new BMap.Icon($static + "/marker_blue.png", new BMap.Size(24, 24));
+            icon.setImageSize(new BMap.Size(24, 24));
+            break;
+        case 7:
+            icon = new BMap.Icon($static + "/dot_zi.png", new BMap.Size(14, 14));
+            icon.setImageSize(new BMap.Size(14, 14));
+            break;
+        case 8:
+            icon = new BMap.Icon($static + "/dot_yellow.png", new BMap.Size(14, 14));
+            icon.setImageSize(new BMap.Size(14, 14));
+            break;
+    };
+
+    return icon;
+}
 
 /**
  * 画标注.
- * @param {number} lng - 经度坐标.
- * @param {number} lat - 纬度坐标.
+ * @param {BMap.Point} point - 实例一个经纬度坐标点.
+ * @param {number} type - 类型.
+ * 已开门店包括点和围栏,并且定义类型为1
+ * 意向门店包括点和围栏,并且定义类型为2
+ * 增益品牌的点,并且定义类型为3
+ * 竞品品牌的点,并且定义类型为4
  */
 export function drawMarker(point, type) {
     let opts = {};
     switch (type) {
         case 1:
-            opts.icon = new BMap.Icon($static + "/dot_blue.png", new BMap.Size(12, 12));
+            opts.icon = drawIcon(1);
             break;
         case 2:
-            opts.icon = new BMap.Icon($static + "/marker.png", new BMap.Size(15, 24));
+            opts.icon = drawIcon(2);
             break;
         case 3:
-            opts.icon = new BMap.Icon($static + "/dot_zi.png", new BMap.Size(12, 12));
+            opts.icon = drawIcon(3);
             break;
         case 4:
-            opts.icon = new BMap.Icon($static + "/dot_yellow.png", new BMap.Size(12, 12));
+            opts.icon = drawIcon(4);
             break;
 
     }

@@ -1,5 +1,6 @@
 <template>
-    <Modal v-model="map.brandDetailModal" :closable="false" :transition-names='animate' :styles='map.brandModalStyle' class='brand_detail_modal'  width='1006px' :mask-closable='false'>
+<div class='brand_detail_container'>
+    <Modal v-model="map.brandDetailModal" :closable="false" :transition-names='animate' :styles='map.brandModalStyle' class='brand_detail_modal'  width='1006px' :mask-closable='true'>
         <div slot="header" class='detail_header'>
             <a class="icon-close closeBtn" @click='close'></a>
             <span>{{brandBasicInfo.name}}</span>
@@ -14,7 +15,7 @@
         <div class='detail_tab_container'>
             <Tabs :value="currentTab">
                 <TabPane label="品牌属性" class ='attr_tab' name="attribute">
-                    <Card class='basic_info'>
+                    <Card class='basic_info' dis-hover>
                         <p slot="title" class='basic_info_title'>基本信息</p>
                         <div class = 'content'>
                             <div class='brand_name_container'>
@@ -49,9 +50,21 @@
         <div slot="footer">
         </div>
     </Modal>
-
-    <!-- <ChooseBrand></ChooseBrand> -->
-    </div>
+    <Modal
+        title="Title"
+        v-model="showConfirmModal"
+        class="vertical_center_modal"
+        width='340px'
+        :styles='confirmModalStyle'
+        @on-ok='confirmSuccess'
+        @on-cancel='confirmFail'>
+        <div slot="header" class='vertical_modal_header'>
+           <Icon type="android-warning" class='warning_icon' size='26'></Icon>
+           <span class='confirm_modal_title'>确定删除当前品牌</span>
+        </div>
+        <div class='vertical_modal_body'>删除后此品牌所有数据将被清除，包括已保存图层操作、上传门店等。</div>
+    </Modal>
+</div>
 </template>
 <script>
 import {
@@ -72,8 +85,11 @@ export default {
         return {
             currentTab: 'attribute',
             animate:['move-right', 'fade'],
-            title:'周黑鸭',
             brandBasicInfo:{},
+            confirmModalStyle:{
+                'z-index':1500
+            },
+            showConfirmModal:false,
             // brand: {
             //     name: '',
             //     position: '轻奢侈'
@@ -107,10 +123,6 @@ export default {
     },
     computed: {
         ...mapState(['map']),
-        // text:function(){
-        //     //console.log('tse')
-        //     return this.map.brandDetailModal
-        // }
     },
     mounted() {
         this.init()
@@ -167,17 +179,26 @@ export default {
             this.confirmDelete();
         },
         confirmDelete(){
-            this.$Modal.confirm({
-                    title: '确定删除当前品牌',
-                    content: '<p>删除后此品牌所有数据将被清除，包括已保存图层操作、上传门店等。</p>',
-                    onOk: () => {
-                        //调用deleteBrand接口
-                    },
-                    onCancel: () => {
+            // this.$Modal.confirm({
+            //         title: '确定删除当前品牌',
+            //         content: '<p>删除后此品牌所有数据将被清除，包括已保存图层操作、上传门店等。</p>',
+            //         onOk: () => {
+            //             //调用deleteBrand接口
+            //         },
+            //         onCancel: () => {
 
-                    }
-                });
+            //         }
+            //     });
+            this.showConfirmModal = true;
         },
+        confirmSuccess(){
+            //调用deleteBrand接口
+            console.log('success')
+        },
+        confirmFail(){
+            console.log('fail')
+        }
+
     }
 }
 </script>
@@ -188,13 +209,11 @@ export default {
 
 <style>
 .brand_detail_modal {
-    height:100%;
     .ivu-modal-content{
         height:100%;
         border-radius:1px;
         .ivu-modal-body {
-            /*height:calc( 100% - 47px);*/
-            min-height:710px;
+            height:calc( 100% - 51px);     /*51px位header高度*/
             background-color: rgba(23, 35, 61, 0.06);
             padding: 0px;
 
@@ -231,21 +250,80 @@ export default {
     }
 }
 
-/*.brand_detail_modal{
-    .ivu-modal-wrap{
+/*.brand_detail_container{*/
+    .vertical_center_modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         .ivu-modal{
-            .ivu-modal-content{
-                overflow-y:hidden;
-                overflow-x:hidden;
+            top: 200px;
+
+            .ivu-modal-close{
+                .ivu-icon-ios-close-empty:hover{
+                    color:#2D8CF0;
+                }
+            }
+
+            .ivu-modal-header{
+                padding:10px;
+                border-bottom: none;
+            }
+
+            .vertical_modal_header{
+                /*display:table-cell;
+                vertical-align:middle;
+                text-align:center;
+                line-height: 24px;*/
+
+                .warning_icon{
+                    color:rgba(255,153,0,1);
+                    margin:5px 0 0 10px;
+                }
+
+                .confirm_modal_title{
+                    color:rgba(23,35,61,1);
+                    font-family: PingFangSC-Medium;
+                    font-size: 16px;
+                    font-weight:bold;
+                    line-height: 24px;
+                  /*  margin-top: 5px;*/
+                    margin-left:5px;
+                }
+            }
+
+            .vertical_modal_body{
+                margin-left:35px;
+                font-family: PingFangSC-Regular;
+                font-size: 14px;
+                color: rgba(23,35,61,0.75);
+                line-height: 22px;
+            }
+
+            .ivu-modal-footer{
+                border-top:none;
+                .ivu-btn{
+                    border-radius:5px;
+                }
             }
         }
-    }
 
-}*/
+
+    }
+/*}*/
 
 .my_poptip {
     .btn_container {
         margin: 5px 0px 5px 20px;
     }
 }
+
+.brand_detail_modal{
+    .ivu-modal-wrap{
+        position:absolute;
+        right:0;
+        bottom:0;
+    }
+}
+
 </style>

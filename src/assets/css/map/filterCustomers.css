@@ -5,6 +5,7 @@
         position: absolute;
         left: 114px;
         top: 13px;
+        overflow: hidden;
     }
     .operator {
         @include shadow;

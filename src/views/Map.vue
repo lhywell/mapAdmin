@@ -4,64 +4,28 @@
         <CreateBrand></CreateBrand>
         <BrandDetail></BrandDetail>
         <div id="allmap" style="width:100%;height:100%"></div>
-        <map-tools></map-tools>
+        <Search></Search>
+        <FilerTools></FilerTools>
+        <addressConfig></addressConfig>
         <chart-panel></chart-panel>
         <Legend></Legend>
-        <Modal v-model="infoModel" width="262" :mask-closable="true" :title="name" id="infoModel" class-name="infoModel mapModel">
-            <!--内容-->
-            <template v-if="openShop.display">
-                <ul>
-                    <li>
-                        <span>所在城市</span>{{openShop.city}}
-                    </li>
-                    <li>
-                        <span>月流水</span>{{openShop.amount}}
-                    </li>
-                    <li>
-                        <span>辐射半径</span>{{openShop.range}}m
-                    </li>
-                    <li>
-                        <span>服务区域</span>{{openShop.area}}㎡
-                    </li>
-                </ul>
-                <div class="">
-                    <Button type="ghost" size="large" class="toLocation" @click="toLocation()">区域洞察</Button>
-                </div>
-            </template>
-            <template v-else-if="tobeShop.display">
-                <ul>
-                    <li>
-                        <span>所在城市</span>{{tobeShop.city}}
-                    </li>
-                    <li>
-                        <span>辐射半径</span>{{tobeShop.range}}m
-                    </li>
-                    <li>
-                        <span>服务区域</span>{{tobeShop.area}}㎡
-                    </li>
-                </ul>
-                <div class="">
-                    <Button type="ghost" size="large" class="toLocation" @click="toLocation()">区域洞察</Button>
-                </div>
-            </template>
-            <template v-else="other.display">
-                <ul>
-                    <li>
-                        <span>所在城市</span>{{other.city}}
-                    </li>
-                </ul>
-            </template>
-        </Modal>
+        <infoModal></infoModal>
+        <DropTools></DropTools>
     </div>
 </template>
 <script>
 import Vue from 'vue'
 import smartHeader from "@/components/header/smartHeader"
-import mapTools from "@/components/map/mapTools"
 import CreateBrand from '@/components/map/CreateBrand'
 import BrandDetail from '@/components/map/BrandDetail'
 import Legend from '@/components/map/Legend'
 import ChartPanel from '@/components/chart/ChartPanel'
+import Search from '@/components/map/Search'
+import DropTools from '@/components/map/DropTools'
+import FilerTools from '@/components/map/FilerTools'
+import addressConfig from '@/components/map/addressConfig'
+import infoModal from '@/components/map/infoModal'
+
 //待选门店
 import fenceTobe from './fence_tobe.json'
 
@@ -85,46 +49,33 @@ import {
     BAIDU_MAP_DRAWING_STYLE
 } from './config';
 
-
 export default {
     name: 'baiduMap',
     data() {
         return {
-            infoModel: false,
-            name: '',
-            openShop: {
-                display: false,
-                city: '',
-                amount: '',
-                range: '200',
-                area: '125,600'
-            },
-            tobeShop: {
-                display: false,
-                city: '',
-                range: '200',
-                area: '125,600'
-            },
-            other: {
-                display: false,
-                city: '',
-            }
+            inmap: null
         }
     },
     components: {
         smartHeader,
-        mapTools,
         CreateBrand,
         BrandDetail,
         ChartPanel,
-        Legend
+        Legend,
+        Search,
+        DropTools,
+        FilerTools,
+        addressConfig,
+        infoModal,
     },
     mounted() {
         this.createMap();
         this.responseFence();
+        //初始化热力图
+        this.initGriddingMap();
     },
     computed: {
-        ...mapState(['map']),
+        ...mapState(['map', 'chart']),
     },
     methods: {
         ...mapActions(['setGriddingMapOverlays']),
@@ -149,7 +100,10 @@ export default {
             map.setMapStyle({
                 styleJson: BAIDU_MAP_STYLE
             });
-
+            map.addEventListener('click', e => {
+                this.closePanel();
+                this.closeDropDown();
+            });
             //锁定城市，不可以移动到所选城市之外的区域
             // let b = new BMap.Bounds(new BMap.Point(120.629629, 30.410977), new BMap.Point(122.015846, 31.839066));
             // try {
@@ -157,14 +111,13 @@ export default {
             // } catch (e) {
             //     alert(e);
             // }
+            this.inmap = inmap;
 
             Vue.prototype.$inMap = inmap;
             Vue.prototype.$Baidu = map;
 
-            //初始化热力图
-            this.initGriddingMap(inmap);
         },
-        initGriddingMap(inmap) {
+        initGriddingMap() {
             var overlay = new inMap.GriddingOverlay({
                 style: {
                     normal: {
@@ -186,7 +139,7 @@ export default {
             });
             //设定图层类型为5
             overlay.type = 5;
-            inmap.add(overlay);
+            this.inmap.add(overlay);
             //默认初始化隐藏
             overlay.hide();
             overlay.setPoints(heatmapPopulation);
@@ -286,6 +239,7 @@ export default {
                 marker.item = item;
                 element.item = item;
                 element.element = element;
+                element.marker = marker;
 
                 if (type == 1) {
                     marker.type = 1;
@@ -302,86 +256,98 @@ export default {
 
         },
         drawPoint(marker) {
+            marker.addEventListener("mouseover", this.elementHover);
+            marker.addEventListener("mouseout", this.elementOut);
             marker.addEventListener("click", this.elementClick);
             this.$Baidu.addOverlay(marker);
         },
         drawFence(element) {
             //增加点击事件
+            element.addEventListener("mouseover", this.elementHover);
+            element.addEventListener("mouseout", this.elementOut);
             element.addEventListener("click", this.elementClick);
 
             //默认围栏隐藏
             element.hide()
             this.$Baidu.addOverlay(element);
         },
-        elementClick(e) {
-            // console.log(e.target.type)
-            let pixel = e.pixel;
-            this.setPosition(pixel);
-
-            this.infoModel = true;
-            let item = e.target.item;
-            this.name = item.name;
+        setStrokeWeight(e, number) {
+            let element = e.target.element;
+            element.setStrokeWeight(number);
+        },
+        drawIcon(e, number) {
+            let targetE = e.target;
+            if (e.target.type == 1 || e.target.type == 2) {
+                //增加选中围栏当前状态
+                let icon = this.$utils.drawIcon(number);
+                if (targetE instanceof(BMap.Marker)) {
+                    //悬浮在marker上
+                    targetE.setIcon(icon);
+                } else {
+                    //悬浮在围栏上
+                    targetE.marker.setIcon(icon);
+                }
+            }
+            if (e.target.type == 3 || e.target.type == 4) {
+                let icon = this.$utils.drawIcon(number);
+                targetE.setIcon(icon);
+            }
+        },
+        elementHover(e) {
+            let targetE = e.target;
+            // console.log(marker)
             if (e.target.type == 1) {
-                this.openShop.display = true;
-                this.tobeShop.display = false;
-                this.openShop.city = item.city;
-                this.openShop.amount = item.amount;
-                this.openShop.area = item.area;
+                //增加选中围栏当前状态
+                this.setStrokeWeight(e, 4);
 
-                this.selectedFence(e);
+                this.drawIcon(e, 5);
             }
             if (e.target.type == 2) {
-                this.tobeShop.display = true;
-                this.openShop.display = false;
-                this.tobeShop.city = item.city;
-                this.tobeShop.area = item.area;
+                //增加选中围栏当前状态
+                this.setStrokeWeight(e, 4);
 
-                this.selectedFence(e);
+                this.drawIcon(e, 6);
             }
-
-            if (e.target.type == 3 || e.target.type == 4) {
-                this.other.display = true;
-                this.openShop.display = false;
-                this.tobeShop.display = false;
-                this.other.city = item.city;
+            if (e.target.type == 3) {
+                this.drawIcon(e, 7);
             }
-
-
+            if (e.target.type == 4) {
+                this.drawIcon(e, 8);
+            }
         },
-        selectedFence(e) {
-            //清除掉其他围栏的当前状态
-            let list = this.$Baidu.getOverlays();
-            list.map((item, index) => {
-                if (item.type == 1 || item.type == 2) {
-                    item.element.setFillOpacity(0.1);
-                }
+        elementOut(e) {
+            if (e.target.type == 1) {
+                this.setStrokeWeight(e, 1);
+                this.drawIcon(e, 1);
+            }
+            if (e.target.type == 2) {
+                this.setStrokeWeight(e, 1);
+                this.drawIcon(e, 2);
+            }
+            if (e.target.type == 3) {
+                this.drawIcon(e, 3);
+            }
+            if (e.target.type == 4) {
+                this.drawIcon(e, 4);
+            }
+        },
+        elementClick(e) {
+            this.$store.dispatch('setSelfModal', {
+                infoModal: true,
+                infoTarget: e
             })
-
-            //增加选中围栏当前状态
-            let element = e.target.element;
-            element.setFillOpacity(0.6);
         },
-        setPosition(pixel) {
-            let dom = document.getElementsByClassName('mapModel')[0];
-            let left = pixel.x;
-            let top = pixel.y
-
-            dom.style.position = 'absolute';
-            dom.style.left = left + 'px';
-            dom.style.top = top + 'px';
-            dom.style.right = 'inherit';
-            dom.style.bottom = 'inherit';
+        /**
+         * [closePanel 关闭右侧面板]
+         */
+        closePanel() {
+            if (this.chart.switchPanel) {
+                this.$store.dispatch('setSwitchPanel', false);
+                this.$store.dispatch('setTabSelected', this.chart.tabs[0].value);
+            }
         },
-        toLocation() {
-            this.infoModel = false;
-            this.$store.dispatch('setStoreInfo', {
-                id: 10000,
-                name: '西单概念店', //商店名称
-                coverage: 5, //辐射半径
-                serviceArea: 6800, //服务区域
-            });
-            //开启右侧面板
-            this.$store.dispatch('setSwitchPanel', true);
+        closeDropDown() {
+            this.$store.dispatch('setDropDownShop', false);
         }
     }
 }

@@ -1,5 +1,4 @@
 <template>
-    <!-- map.newBrandModal -->
     <Modal v-model="map.newBrandModal" :closable="false" width='332px' class='brandModal' :mask-closable='false'>
             <div slot="header" class='brand_header'>
                 <span>新建选址品牌</span>
@@ -170,32 +169,6 @@ export default {
                     'modalState':false
                 })
             },
-             handleCheckAll () {
-                if (this.indeterminate) {
-                    this.checkAll = false;
-                } else {
-                    this.checkAll = !this.checkAll;
-                }
-                this.indeterminate = false;
-
-                if (this.checkAll) {
-                    this.checkAllGroup = ['香蕉', '苹果', '西瓜'];
-                } else {
-                    this.checkAllGroup = [];
-                }
-            },
-            checkAllGroupChange (data) {
-                if (data.length === 3) {
-                    this.indeterminate = false;
-                    this.checkAll = true;
-                } else if (data.length > 0) {
-                    this.indeterminate = true;
-                    this.checkAll = false;
-                } else {
-                    this.indeterminate = false;
-                    this.checkAll = false;
-                }
-            }
     }
 }
 </script>

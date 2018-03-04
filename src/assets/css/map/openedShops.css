@@ -1,5 +1,5 @@
 .opened_shops_container{
-	padding:25px 0 0 45px;
+	padding:25px 0 25px 45px;
 	/*height:640px;*/
 /*	background-color: rgba(23, 35, 61, 0.06);*/
 	overflow-y:auto; 
@@ -94,10 +94,11 @@
 
 	.table_container{
 		margin-top:25px;
+		margin-bottom:50px;
 		width:912px;
-		height:506px;
-		overflow-y:auto; 
+		/*height:506px;*/
+		overflow-y:hidden; 
 		overflow-x:hidden;
-		position: relative;
+		/*position: relative;*/
 	}
 }

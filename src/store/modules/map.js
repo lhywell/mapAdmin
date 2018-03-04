@@ -28,7 +28,9 @@ const state = {
     circleListener: null,
     walkListener: null,
     driveListener: null,
-    currentBrandId: ''
+    currentBrandId: '',
+    infoModal: '',
+    infoTarget: '',
 }
 
 const getters = {
@@ -46,7 +48,9 @@ const getters = {
     circleListener: state => state.circleListener,
     walkListener: state => state.walkListener,
     driveListener: state => state.driveListener,
-    currentBrandId: state => state.currentBrandId
+    currentBrandId: state => state.currentBrandId,
+    infoModal: state => state.infoModal,
+    infoTarget: state => state.infoTarget
 }
 
 const mutations = {
@@ -94,6 +98,10 @@ const mutations = {
     },
     [types.SETDRIVELINSTENER]: (state, driveListener) => {
         state.driveListener = driveListener
+    },
+    [types.SETSELFMODAL]: (state, { infoModal, infoTarget }) => {
+        state.infoModal = infoModal
+        state.infoTarget = infoTarget
     }
 }
 
@@ -144,6 +152,9 @@ const actions = {
     },
     setDriveListener({ commit }, driveListener) {
         commit(types.SETDRIVELINSTENER, driveListener);
+    },
+    setSelfModal({ commit }, { infoModal, infoTarget }) {
+        commit(types.SETSELFMODAL, { infoModal, infoTarget });
     }
 }
 

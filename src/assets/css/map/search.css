@@ -1,6 +1,13 @@
 #Search {
-    display: flex;
-    @include shadow;
+    position: absolute;
+    top: 76px;
+    left: 24px;
+    width: 356px;
+    z-index: 401;
+    .box {
+        display: flex;
+        @include shadow;
+    }
     .searchType {
         .title {
             margin-right: 4px;
@@ -9,10 +16,11 @@
             font-size: 10px;
         }
         .ivu-btn {
+            font-size: 14px;
             border-radius: var(--border-radius);
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
-            padding: 10px 12px;
+            height: 40px;
             background: #fff;
             border-color: var(--border-color);
             margin: 0 -1px 0 0;
@@ -28,6 +36,7 @@
                 color: var(--color-detail);
                 div {
                     display: flex;
+                    font-size: 14px;
                 }
                 i {
                     width: 26px;
@@ -46,17 +55,19 @@
             }
 
             .ivu-dropdown-item:hover {
-                background: #f3f8fe;
+                background: var(--color-hover-bg);
                 div,
                 .ivu-icon-ios-location,
                 .icon-attraction {
-                    color: #2d8cf0;
+                    color: var(--color-hover);
+                    font-weight: var(--font-bold);
                 }
             }
         }
     }
     .searchInput {
         .ivu-input {
+            font-size: 14px;
             height: 40px;
             border-radius: var(--border-radius);
             border-top-left-radius: 0;
@@ -69,6 +80,36 @@
         .ivu-input-icon {
             line-height: 40px;
             cursor: pointer;
+        }
+    }
+    .searchResult {
+        background: #fff;
+        margin: 8px 0 0 68px;
+        white-space: nowrap;
+        overflow: hidden;
+        ul {
+            li {
+
+                height: 36px;
+                line-height: 36px;
+                a {
+                    padding: 0 12px;
+                    color: #666666;
+                    font-size: 14px;
+                    display: block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    i {
+                        margin-right: 12px;
+                    }
+                    em {
+                        color: #999999;
+                    }
+                }
+                a:hover {
+                    background: #ebebeb;
+                }
+            }
         }
     }
 }
