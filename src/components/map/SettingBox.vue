@@ -2,12 +2,12 @@
     <Card class='setting_box' :padding = 'padVal'>
         <p slot="title" class='setting_title'>
             <span>{{settings.title}}</span>
-            <Poptip trigger="hover" placement="top" transfer>
+            <Tooltip  trigger="hover" :placement='settings.placement' transfer>
                 <Icon type="ios-help-outline" class="helpIcon"></Icon>
-                <div slot="content">                 
+                <div slot="content" style='white-space: normal'>                 
                     {{this.tips}} 
                 </div>
-            </Poptip>
+            </Tooltip >
            <!--  <Button type='info' @click='addData'>adddata</Button> -->
         </p>
         <a href="#" slot="extra" @click='add' class="icon-add-big setting_add">

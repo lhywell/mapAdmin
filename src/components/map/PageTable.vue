@@ -2,7 +2,8 @@
     <div class='page_table'>
         <div class='header_tool'>
             <div class='upload'>
-                <Button type="primary" @click='doIt' style='width:102px'>{{defaults.table.btnWords}}</Button>
+                <Button v-if='defaults.table.btnWords==="文件上传"' type="primary" @click='doIt' style='width:102px'>{{defaults.table.btnWords}}</Button>
+                <Button v-else type="primary" icon="ios-plus-outline" @click='doIt' style='width:138px'>{{defaults.table.btnWords}}</Button>
                 <!-- <Poptip trigger="hover" placement="top" class='tips' transfer>
                     <Icon type="ios-help-outline" class="helpIcon"></Icon>
                     <div slot="title">说明</div>
@@ -158,4 +159,14 @@ export default {
 @import './map/pageTable.css';
 </style>
 <style>
+.page_container{
+    font-size:14px !important;
+
+    .ivu-page-options-sizer{
+        width:96px;
+    }
+    .ivu-select-selected-value{
+        font-size:14px !important;
+    }
+}
 </style>

@@ -26,6 +26,7 @@
     }
     .brandSelect {
         width: 278px;
+        font-size: 14px;
         .title {
             @include boxTitle;
             border-bottom: 1px solid var(--border-color);

@@ -11,10 +11,23 @@
                     <Location></Location>
                 </div>
             </div>
-            <span class="email">
+            <div class="email">
                 <span class="icon-account_circle"></span>
-            <a href="javascript:void(0)" @click="toLocation">demo@tendcloud.com</a>
-            </span>
+                <span class="com">demo@tendcloud.com</span>
+                <Dropdown placement="bottom-end">
+                    <Button type="primary" class="wl">
+                        <span class="icon-fence"></span>
+                        <Icon type="chevron-down"></Icon>
+                    </Button>
+                    <Dropdown-menu slot="list">
+                        <Dropdown-item>
+                            <div class="quit" @click="quit">
+                                <Icon type="android-exit"></Icon>退出登录
+                            </div>
+                        </Dropdown-item>
+                    </Dropdown-menu>
+                </Dropdown>
+            </div>
         </div>
     </div>
 </template>
@@ -40,7 +53,7 @@ export default {
     },
     computed: {},
     methods: {
-        toLocation() {
+        quit() {
             this.$router.push('/login');
         }
     }

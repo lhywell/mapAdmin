@@ -71,14 +71,12 @@ export default {
     mounted() {
         this.createMap();
         this.responseFence();
-        //初始化热力图
-        this.initGriddingMap();
     },
     computed: {
         ...mapState(['map', 'chart']),
     },
     methods: {
-        ...mapActions(['setGriddingMapOverlays']),
+
         createMap() {
             let inmap = new inMap.Map({
                 id: 'allmap',
@@ -116,40 +114,6 @@ export default {
             Vue.prototype.$inMap = inmap;
             Vue.prototype.$Baidu = map;
 
-        },
-        initGriddingMap() {
-            var overlay = new inMap.GriddingOverlay({
-                style: {
-                    normal: {
-                        size: 8.6,
-                        padding: 1
-                    },
-                    colors: [
-                        "rgba(254,240,217,0.5)",
-                        "rgba(253,213,158,0.5)",
-                        "rgba(254,187,132,0.5)",
-                        "rgba(252,141,89,0.5)",
-                        "rgba(227,74,51,0.5)",
-                        "rgba(179,0,0,0.5)",
-                    ]
-                },
-                legend: {
-                    show: false
-                }
-            });
-            //设定图层类型为5
-            overlay.type = 5;
-            this.inmap.add(overlay);
-            //默认初始化隐藏
-            overlay.hide();
-            overlay.setPoints(heatmapPopulation);
-
-            this.setGriddingMapOverlays({
-                payload: overlay
-            })
-        },
-        hideHeatmap() {
-            this.heatmapOverlay.hide();
         },
         setCenter(storeList) {
             //地图中心点是默认列表第一个围栏的中心点

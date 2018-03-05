@@ -1,7 +1,8 @@
 <template>
     <Modal v-model="map.newBrandModal" :closable="false" width='332px' class='brandModal' :mask-closable='false'>
             <div slot="header" class='brand_header'>
-                <span>新建选址品牌</span>
+                <span class='brand_title'>新建选址品牌</span>
+                <a class="icon-close closeBtn" @click='close'></a>
            <!--      <img src="../../assets/images/icons/mc.png"/> -->
             </div>
             <form @keyup.enter="submitData">
@@ -173,5 +174,14 @@ export default {
 }
 </script>
 <style scoped>
-@import './map/createBrand.css'
+@import './map/createBrand.css';
+</style>
+
+<style>
+    .brandModal{
+        .ivu-modal-footer{
+            border:none;
+        }
+    }
+
 </style>

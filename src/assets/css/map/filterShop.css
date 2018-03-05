@@ -23,10 +23,10 @@
             li {
                 .tag {
                     background: url(http://smartdata.b0.upaiyun.com/thinkmark/marker.png) no-repeat;
-                    width: 18px;
+                    width: 27px;
                     height: 24px;
                     display: inline-block;
-                    background-size: 15px 24px;
+                    background-size: 24px 24px;
                     margin-right: 5px;
                 }
             }

@@ -173,30 +173,39 @@ input::-webkit-input-placeholder {
     /* WebKit browsers */
     color: #909090!important;
 }
+
 .fl {
     float: left;
 }
+
 .rl {
     float: right;
 }
+
 .ml20 {
     margin-left: 20px;
 }
+
 .mr30 {
     margin-right: 30px;
 }
+
 .ml40 {
     margin-left: 40px;
 }
+
 .mt10 {
     margin-top: 10px;
 }
+
 .fs14 {
     font-size: 14px
 }
+
 .center-left {
     float: left;
 }
+
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -212,16 +221,17 @@ input::-webkit-input-placeholder {
 
 
 
-
-
 /*去掉百度左下角版权信息*/
 
 .BMap_cpyCtrl {
     display: none;
 }
+
 .anchorBL {
     display: none;
 }
+
+
 
 
 /*全局的圆角设置*/
@@ -236,37 +246,35 @@ input::-webkit-input-placeholder {
 
 
 
-
-
-
-
 /*弹出框*/
 
+.ivu-modal-wrap {
+    overflow: inherit;
+}
 .ivu-modal-content {
     border-radius: 2px;
+    @include shadow;
 }
 
 .ivu-modal-header {
-    padding: 16px 16px;
+    padding: 16px 16px 13px;
 }
+
 .ivu-modal-header-inner {
     font-size: 16px;
     width: 88%;
 }
+
 .ivu-modal-close .ivu-icon-ios-close-empty:hover {
     color: var(--color-hover);
 }
 
 
 
-
-
-
-
-
 /*放大缩小*/
 
 .inmap-scale-group {}
+
 .inmap-scale-group>a {
     width: 32px;
     height: 32px;
@@ -275,12 +283,10 @@ input::-webkit-input-placeholder {
     color: rgba(23, 35, 61, 0.55);
     margin: 0;
 }
+
 .inmap-scale-group>a:first-child {
     border-bottom: 1px solid rgba(23, 35, 61, 0.10);
 }
-
-
-
 
 
 
@@ -294,17 +300,39 @@ input::-webkit-input-placeholder {
     border-radius: 16px;
     overflow: hidden;
 }
+
 .ivu-switch:after {
     content: '';
     width: 12px;
     height: 12px;
     border-radius: 50%;
 }
+
 .ivu-switch-checked:after {
     left: 16px;
 }
 
 
+
+
+/*输入框*/
+
+.ivu-input {
+    font-size: 14px;
+}
+
+
+
+/*Checkbox*/
+
+.ivu-checkbox-inner {
+    width: 16px;
+    height: 16px;
+}
+.ivu-checkbox-checked .ivu-checkbox-inner:after {
+    top: 2px;
+    left: 5px;
+}
 
 
 /*下拉框样式同 dropdown样式一致*/
@@ -315,4 +343,32 @@ input::-webkit-input-placeholder {
     background: var(--background-color-hover);
     color: var(--font-color-hover);
     font-weight: var(--font-bold);
+}
+.ivu-select-placeholder,.ivu-select-item {
+    font-size: var(--font-size) !important;
+}
+
+.ivu-select-input,
+.ivu-select-selected-value {
+    font-size: var(--font-size);
+}
+
+.ivu-table {
+    font-size: var(--font-size);
+}
+
+.ivu-table-header th {
+    font-weight: bold;
+}
+.ivu-tabs-nav .ivu-tabs-tab {
+    padding: 8px 0;
+}
+
+.ivu-tabs-tab-active{
+    font-weight:bold;
+    color:rgba(45,140,240,1) !important;
+}
+
+.ivu-tooltip-inner{
+    max-width: 240px;
 }

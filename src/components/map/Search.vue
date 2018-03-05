@@ -78,25 +78,25 @@ export default {
                 this.iconValue = '';
             }
             if (this.searchType === '位置') {
-                // let options = {
-                //     onSearchComplete: (results) => {
-                //         this.results = [];
-                //         if (local.getStatus() == BMAP_STATUS_SUCCESS) {
-                //             var s = [];
-                //             for (var i = 0; i < results.getCurrentNumPois(); i++) {
-                //                 s.push({
-                //                     title: results.getPoi(i).title,
-                //                     city: results.getPoi(i).city,
-                //                     address: results.getPoi(i).address,
-                //                     point: results.getPoi(i).point
-                //                 });
-                //             }
-                //             this.results = s;
-                //         }
-                //     }
-                // };
-                // let local = new BMap.LocalSearch(this.$Baidu, options);
-                // local.search(this.searchValue);
+                let options = {
+                    onSearchComplete: (results) => {
+                        this.results = [];
+                        if (local.getStatus() == BMAP_STATUS_SUCCESS) {
+                            var s = [];
+                            for (var i = 0; i < results.getCurrentNumPois(); i++) {
+                                s.push({
+                                    title: results.getPoi(i).title,
+                                    city: results.getPoi(i).city,
+                                    address: results.getPoi(i).address,
+                                    point: results.getPoi(i).point
+                                });
+                            }
+                            this.results = s;
+                        }
+                    }
+                };
+                let local = new BMap.LocalSearch(this.$Baidu, options);
+                local.search(this.searchValue);
             }
         },
         emptyContent() {

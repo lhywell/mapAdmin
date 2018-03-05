@@ -69,7 +69,7 @@ export default {
     data() {
         return {
             visible: true,
-            visible_cover: false,
+            visible_cover: false, //遮罩层
             check_open: true,
             openNum: 0,
             tobeCheckbox: [],
@@ -80,7 +80,7 @@ export default {
     },
     props: {},
     computed: {
-        ...mapGetters(['switchShop', 'shopCover'])
+        ...mapGetters(['switchShop', 'shopCover', 'fenceRange'])
     },
     watch: {
         switchShop: {
@@ -115,11 +115,6 @@ export default {
         this.openNum = fenceOpen.data.storeList.length;
     },
     updated() {
-        // console.log(this.$store.state.map.switchShop)
-        // if(this.$store.state.map.switchShop == false){
-        //     this.commonClose();
-        // }
-        // console.log(this.$Baidu.getOverlays())
         //控制显示隐藏
         let list = this.$Baidu.getOverlays();
         let openList = [],
@@ -139,13 +134,6 @@ export default {
     },
     methods: {
         switchChange(status) {
-            // console.log(status)
-            // let my = document.getElementsByClassName('myshop-poptip')[0];
-            // let pop = my.getElementsByClassName('ivu-poptip-popper')[0]
-            // console.log(pop)
-            // setTimeout(function() {
-            //     pop.style.display = 'block';
-            // }, 1000)
             //打开:checkbox全选中,关闭：checkbox全不选中
             if (status == true) {
                 this.commonOpen();
@@ -194,12 +182,23 @@ export default {
         },
         openDisplayShow() {
             this.openDisplay.map((item, index) => {
-                item.show();
+                //辐射范围选中，marker、围栏全部显示；辐射范围不选中，不显示围栏，只显示marker
+                if (this.fenceRange == false && item instanceof BMap.Marker) {
+                    item.show();
+                }
+                if (this.fenceRange == true) {
+                    item.show();
+                }
             })
         },
         tobeDisplayShow() {
             this.toDisplay.map((item, index) => {
-                item.show();
+                if (this.fenceRange == false && item instanceof BMap.Marker) {
+                    item.show();
+                }
+                if (this.fenceRange == true) {
+                    item.show();
+                }
             })
         },
         tobeDisplayHide() {
@@ -212,8 +211,12 @@ export default {
             this.toDisplay.map((item, index) => {
                 item.hide()
                 this.tobeCheckbox.map((x, y) => {
-                    if (item.item.name == x) {
-                        item.show()
+                    //辐射范围选中，marker、围栏全部显示；辐射范围不选中，不显示围栏，只显示marker
+                    if (this.fenceRange == false && item instanceof BMap.Marker && item.item.name == x) {
+                        item.show();
+                    }
+                    if (this.fenceRange == true && item.item.name == x) {
+                        item.show();
                     }
                 })
             })

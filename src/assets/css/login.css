@@ -24,7 +24,7 @@
   height:438px;
   margin:auto;
   padding:43px;
-  box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 1px 8px 0 rgba(0,2,50,0.32);
   background: #ffffff;
   z-index:5;
   position: absolute;
@@ -41,12 +41,12 @@
       float:left;
       .tencent_logo{
         width:118px;
-        height:36px;
+        height:32px;
       }
     }
   
     .td_logo_container{
-      margin:5px 0 0 40px;
+      margin:0px 0 0 40px;
       float:left;
 
       .td_logo{
@@ -90,7 +90,7 @@
     margin-top:20px;
 
     .username{
-      height:40px;
+      height:48px;
       width:308px;
       display: block;
     }
@@ -117,13 +117,42 @@
     .check{
       font-size:14px;
       line-height: 22px;
+      margin-top:15px;
     }
 
     .submit_btn{
       margin-top: 15px;
+      font-size:14px;
       width:100%;
       height:40px;
       background-color: rgba(0,140,248,1);
     }
   }
+
+  .login_foot{
+   
+    text-align: center;
+    margin-top:100px;
+    font-family: HelveticaNeue;
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 0.25px;
+    line-height: 12px;
+  }
+}
+
+.login_foot{
+  /*z-index:5;
+  position: absolute;
+  width:200px;
+  left:0;
+  right:0;
+  top:300;
+
+  margin:auto;
+  font-family: HelveticaNeue;
+  font-size: 12px;
+  color: #FFFFFF;
+  letter-spacing: 0.25px;
+  line-height: 12px;*/
 }

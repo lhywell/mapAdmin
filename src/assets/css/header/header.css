@@ -28,13 +28,35 @@
     .email {
         color: #fff;
         font-size: 14px;
-        margin-right: 24px;
+        margin-right: 30px;
         .icon-account_circle {
-            font-size: 20px;
-            margin-right: 12px;
+            font-size: 22px;
+            margin-right: 10px;
         }
-        a {
-            color: #fff;
+        .com {
+            margin-right: 8px;
+        }
+        .wl {
+            margin: 0;
+            padding: 0;
+            background: #1885F1;
+            border: 0;
+            font-size: 14px;
+            .ivu-icon-chevron-down {
+                font-size: 10px;
+            }
+        }
+        .ivu-dropdown-item {
+            font-size: 14px;
+            .quit {
+                font-size: 14px;
+                display: flex;
+                .ivu-icon-android-exit {
+                    font-size: var(--font-icon);
+                    color: var(--color-icon);
+                    margin-right: 10px;
+                }
+            }
         }
     }
     .ivu-select {

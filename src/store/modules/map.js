@@ -31,6 +31,7 @@ const state = {
     currentBrandId: '',
     infoModal: '',
     infoTarget: '',
+    fenceRange:false
 }
 
 const getters = {
@@ -50,7 +51,8 @@ const getters = {
     driveListener: state => state.driveListener,
     currentBrandId: state => state.currentBrandId,
     infoModal: state => state.infoModal,
-    infoTarget: state => state.infoTarget
+    infoTarget: state => state.infoTarget,
+    fenceRange: state => state.fenceRange
 }
 
 const mutations = {
@@ -102,6 +104,9 @@ const mutations = {
     [types.SETSELFMODAL]: (state, { infoModal, infoTarget }) => {
         state.infoModal = infoModal
         state.infoTarget = infoTarget
+    },
+    [types.SETCHECKBOXRANG]: (state, fenceRange) => {
+        state.fenceRange = fenceRange
     }
 }
 
@@ -155,6 +160,9 @@ const actions = {
     },
     setSelfModal({ commit }, { infoModal, infoTarget }) {
         commit(types.SETSELFMODAL, { infoModal, infoTarget });
+    },
+    setCheckboxRang({ commit }, fenceRange) {
+        commit(types.SETCHECKBOXRANG, fenceRange);
     }
 }
 

@@ -108,7 +108,7 @@ export default {
                 this.setPosition(infoTarget, document.getElementsByClassName('mapModel')[0], type);
 
                 this.name = item.name;
-                console.log(item)
+                // console.log(item)
                 if (type == 1) {
                     this.openShop.display = true;
                     this.tobeShop.display = false;
@@ -207,7 +207,7 @@ export default {
                 id: 10000,
                 name: '西单概念店', //商店名称
                 coverage: 5, //辐射半径
-                serviceArea: 6800, //服务区域
+                serviceArea: 6.8, //服务区域
             });
             //开启右侧面板
             this.$store.dispatch('setSwitchPanel', true);

@@ -3,17 +3,17 @@
     <Modal v-model="map.brandDetailModal" :closable="false" :transition-names='animate' :styles='map.brandModalStyle' class='brand_detail_modal'  width='1006px' :mask-closable='true'>
         <div slot="header" class='detail_header'>
             <a class="icon-close closeBtn" @click='close'></a>
-            <span>{{brandBasicInfo.name}}</span>
+            <span class='brand_title'>{{brandBasicInfo.name}}</span>
             <div class='right_tools'>
                 <Poptip trigger="hover" placement="bottom-end" class="icon-more_vert my_poptip">
                     <div slot="content" class='btn_container'>
-                        <Button type="ghost" class='delete_brand_btn' @click="deleteBrand">删除品牌</Button>
+                        <Button type="text" class='delete_brand_btn' @click="deleteBrand">删除品牌</Button>
                     </div>
                 </Poptip>
             </div>
         </div>
         <div class='detail_tab_container'>
-            <Tabs :value="currentTab">
+            <Tabs :value="currentTab" @on-click="changeTab" ref="tabs">
                 <TabPane label="品牌属性" class ='attr_tab' name="attribute">
                     <Card class='basic_info' dis-hover>
                         <p slot="title" class='basic_info_title'>基本信息</p>
@@ -140,6 +140,7 @@ export default {
             };
             this.gainBrandList = {
                 title: '增益品牌设定',
+                placement:'bottom-start',
                 tableData: [{
                     id:1,
                     name: '麦当劳',
@@ -155,6 +156,7 @@ export default {
             };
             this.compeleteBrandList = {
                 title: '竞品品牌设定',
+                placement:'bottom-end',
                 tableData: [{
                     id:9,
                     name: '绝味鸭脖',
@@ -168,6 +170,17 @@ export default {
                 }],
                 tips: '待选地周边的排斥品牌会使选址评分降低'
             };
+        },
+        changeTab(val) {
+            this.$nextTick(() => {
+                setTimeout(() => {
+                    const tabs = this.$refs.tabs;
+                    const index = tabs.navList.findIndex((nav) => nav.name === tabs.activeKey);
+                    const inkBar = tabs.$refs.navScroll.children[0].children[0];
+                    const left = (tabs.barOffset ? tabs.barOffset + index * 24 : 0) + 'px';
+                    inkBar.style.transform = `translate3d(${left}, 0px, 0px)`;
+                }, 100)
+            });
         },
         close() {
             this.switchDetailModal({
@@ -231,6 +244,13 @@ export default {
                             .ivu-tabs-nav {
                                 margin-left: 50px;
                                 height:41px;
+
+                                .ivu-tabs-tab {
+                                margin-right: 40px;
+                                font-size: 14px;
+                                color: rgba(23, 35, 61, 0.75);
+                                }
+
                             }
                         }
                     }
@@ -250,6 +270,11 @@ export default {
     }
 }
 
+    .brand_detail_modal{
+        .ivu-modal-header{
+            border: none;
+        }
+    }
 /*.brand_detail_container{*/
     .vertical_center_modal{
         display: flex;
@@ -267,7 +292,8 @@ export default {
 
             .ivu-modal-header{
                 padding:10px;
-                border-bottom: none;
+                border: none;
+               /*border-bottom-width: 0px;*/
             }
 
             .vertical_modal_header{
@@ -307,8 +333,6 @@ export default {
                 }
             }
         }
-
-
     }
 /*}*/
 
@@ -325,5 +349,12 @@ export default {
         bottom:0;
     }
 }
+
+.settings_container{
+    .ivu-table-wrapper{
+        border:none;
+    }
+}
+
 
 </style>

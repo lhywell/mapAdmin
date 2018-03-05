@@ -8,15 +8,15 @@ Vue.use(Router)
 
 const routes = [{
     path: '/',
-    // name: 'login',
-    // component: Login
-    name: 'map',
-    component: Map,
-    // beforeEnter: (to, from, next) => {
-    //     console.log('beforeEnter')
-    //     localStorage.getItem('access_token') ? next() : next({ path: '/login' })
-    //     next()
-    // },
+    name: 'login',
+    component: Login,
+    // name: 'map',
+    // component: Map,
+    beforeEnter: (to, from, next) => {
+        console.log('beforeEnter')
+        localStorage.getItem('access_token') ? next() : next({ path: '/login' })
+        next()
+    },
 }, {
     path: '/login',
     name: 'login',

@@ -3,7 +3,7 @@
         <p slot="title">
             客流分析
         </p>
-        <Tabs :value="activeName" @on-click="changeTab">
+        <Tabs :value="activeName" @on-click="changeTab" ref="tabs">
             <TabPane v-for="item in tabs" :key="item.key" :label="item.value" :name="item.key"></TabPane>
         </Tabs>
         <i-chart :options="flowChart.options" :height="220" ref="chart" :noDataText="flowChart.noDataText"></i-chart>
@@ -125,6 +125,15 @@ export default {
         changeTab(val) {
             this.activeName = val;
             this.renderFlowhart();
+            this.$nextTick(() => {
+                setTimeout(() => {
+                    const tabs = this.$refs.tabs;
+                    const index = tabs.navList.findIndex((nav) => nav.name === tabs.activeKey);
+                    const inkBar = tabs.$refs.navScroll.children[0].children[0];
+                    const left = (tabs.barOffset ? tabs.barOffset + index * 8.4 : 0) + 'px';//8.4=24.4-16(iview默认margin-right)
+                    inkBar.style.transform = `translate3d(${left}, 0px, 0px)`;
+                }, 100)
+            });
         }
     }
 }

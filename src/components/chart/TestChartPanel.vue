@@ -12,12 +12,12 @@ export default {
                 id: 10000,
                 name: '西单概念店', //商店名称
                 coverage: 5, //辐射半径
-                serviceArea: 6800, //服务区域
+                serviceArea: 6.8, //服务区域
             }, {
                 id: 10001,
                 name: '东城旗舰店', //商店名称
                 coverage: 3, //辐射半径
-                serviceArea: 2300, //服务区域
+                serviceArea: 2.3, //服务区域
             }]
 
         }

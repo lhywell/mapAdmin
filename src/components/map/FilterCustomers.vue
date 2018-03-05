@@ -13,7 +13,8 @@
 import {
     mapState,
     mapGetters,
-    mapMutations
+    mapMutations,
+    mapActions
 } from 'vuex'
 
 //增益/竞品品牌
@@ -27,7 +28,7 @@ export default {
     data() {
         return {
             visible: false,
-            hotOverLay: null
+            rs: null
         }
     },
     props: {},
@@ -50,26 +51,57 @@ export default {
     mounted() {},
     updated() {},
     methods: {
+        ...mapActions(['setGriddingMapOverlays']),
+        initGriddingMap() {
+            var overlay = new inMap.GriddingOverlay({
+                style: {
+                    normal: {
+                        size: 8.6,
+                        padding: 1
+                    },
+                    colors: [
+                        "rgba(254,240,217,0.5)",
+                        "rgba(253,213,158,0.5)",
+                        "rgba(254,187,132,0.5)",
+                        "rgba(252,141,89,0.5)",
+                        "rgba(227,74,51,0.5)",
+                        "rgba(179,0,0,0.5)",
+                    ]
+                },
+                legend: {
+                    show: false
+                }
+            });
+            //设定图层类型为5
+            overlay.type = 5;
+            this.$inMap.add(overlay);
+
+            overlay.setPoints(heatmapPopulation);
+
+            this.setGriddingMapOverlays({
+                payload: overlay
+            })
+        },
         switchChange(status) {
             if (status == true) {
-                //初始化人口分布热力图
-                // this.griddingMapOverlays.setPoints(heatmapPopulation);
+                if (this.rs) {
+                    clearTimeout(this.rs);
+                }
                 if (this.griddingMapOverlays) {
                     this.griddingMapOverlays.show()
-                }
-                if (this.hotOverLay) {
-                    //显示热力图层
-                    this.hotOverLay.show();
+                } else {
+                    //初始化人口分布热力图
+                    this.initGriddingMap();
                 }
             } else {
-                let list = this.$Baidu.getOverlays();
-                list.map((item, index) => {
-                    if (item.type == 5) {
-                        this.hotOverLay = item;
-                        //隐藏热力图层
-                        item.hide()
-                    }
-                })
+                this.griddingMapOverlays.hide();
+                //10秒以后删除图层，影响地图性能
+                this.rs = setTimeout(() => {
+                    this.setGriddingMapOverlays({
+                        payload: undefined
+                    })
+                    this.$Baidu.removeOverlay(this.griddingMapOverlays)
+                }, 10000)
             }
             this.$store.dispatch('setSwitchHot', status);
         }

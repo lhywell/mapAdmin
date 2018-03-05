@@ -2,7 +2,7 @@
     <div class="populationflow-matching__flowchart">
         <div class="populationflow-matching__flowchart__con">
             <div class="population-matching__populationechart__con__head">
-                <span class="population-matching__populationechart__con__head--title">人口分析</span>
+                <span class="population-matching__populationechart__con__head--title">人口变化</span>
             </div>
             <div class="population-matching__populationechart__con__main">
                 <i-chart :options="flowChart.options" ref="chart" :height="220" :noDataText="flowChart.noDataText"></i-chart>

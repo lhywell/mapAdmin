@@ -86,6 +86,7 @@ export default {
                     this.switch_shop = true;
                 } else {
                     this.checkbox_range = false;
+                    this.$store.dispatch('setCheckboxRang', false);
                     this.visible_shop = false;
                     this.switch_shop = false;
                 }
@@ -128,6 +129,7 @@ export default {
         myshopChange(x) {
             if (x == false) {
                 this.checkbox_range = false;
+                this.$store.dispatch('setCheckboxRang', false);
                 this.swich_shop = false;
                 this.visible_shop = false;
                 this.$store.dispatch('setSwitchShop', false);
@@ -159,12 +161,14 @@ export default {
         rangeChange(x) {
             let list = this.$Baidu.getOverlays();
             if (x == true) {
+                this.$store.dispatch('setCheckboxRang', true);
                 list.map((item, index) => {
                     if (item.element) {
                         item.element.show();
                     }
                 })
             } else {
+                this.$store.dispatch('setCheckboxRang', false);
                 list.map((item, index) => {
                     if (item.element) {
                         item.element.hide();

@@ -12,6 +12,7 @@
         padding: 9px 16px;
         color: var(--color-detail);
         height: 40px;
+        border: 0;
         @include flexcenter;
         @include shadow;
     }

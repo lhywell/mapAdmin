@@ -40,8 +40,9 @@ $radius3:#F8B617;
     }
     .ivu-btn-ghost {
         background: #fff;
-        padding: 7px 11px;
+        padding: 8px 11px;
         color: var(--color-detail);
+        border: 0;
         span {
             @include flexcenter;
         }
@@ -115,6 +116,7 @@ $radius3:#F8B617;
             .child_title {
                 @mixin title;
                 color: var(--color-title);
+                border-bottom:1px solid var(--border-color);
             }
         }
         ul {

@@ -39,9 +39,9 @@
                         </div>
                         <i-button type="success" long @click="submit" @keyup.enter="submit" :disabled="waitBtn">{{ submitBtn }}</i-button>
                     </form> -->
-
+            <div class="login_foot">2011-2017 © TalkingData.com</div>
         </div>
-        <div class="login-foot"></div>
+      
     </div>
 </template>
 <script>
@@ -96,26 +96,26 @@
                     this.passwordError = '请输入密码'
                 }
                 else { 
-                    // if(this.loginModel.username === 'demo@tendcloud.com' && this.loginModel.password === 'demo'){
-                    //     this.loginError = false;
-                    //     this.$router.push('/map');
-                    // }
-                    // else{
-                    //     this.passwordError = '用户名或密码错误';
-                    // }
+                    if(this.loginModel.username === 'demo@tendcloud.com' && this.loginModel.password === 'demo'){
+                        this.loginError = false;
+                        this.$router.push('/map');
+                    }
+                    else{
+                        this.passwordError = '用户名或密码错误';
+                    }
 
-                    const form = new FormData()
-                    form.append('username', this.loginModel.username)
-                    form.append('password', this.loginModel.password)
+                    // const form = new FormData()
+                    // form.append('username', this.loginModel.username)
+                    // form.append('password', this.loginModel.password)
 
 
-                    let requestList = [];
+                    // let requestList = [];
 
-                    requestList.push(this.$axios(util.makeRequest({
-                        url: 'http://127.0.0.1:3000/test',
-                        data: form,
-                        method: 'post'
-                    })))
+                    // requestList.push(this.$axios(util.makeRequest({
+                    //     url: 'http://127.0.0.1:3000/test',
+                    //     data: form,
+                    //     method: 'post'
+                    // })))
                     // requestList.push(this.$axios(util.makeRequest({
                     //     url: 'http://127.0.0.1:3000/about',
                     //     method: 'get'
@@ -125,23 +125,26 @@
                     //     method: 'post'
                     // })))
 
-                    this.$axios.all(requestList)
-                        .then(this.$axios.spread((acct,perm,para) => {
-                            console.log('receive')
-                            if (!acct) {
-                                this.$Message.warning('lvelvelve!', 3);
-                            }
-                        })).catch((response) => {
-                        if (response.response) {
-                            if (response.response.status === 400) {
-                                this.login_error = true
-                                this.error = '用户名或密码错误，请重新输入'
-                            }
-                        } else {
-                            this.login_error = true
-                            this.error = '与服务器连接超时，请重试'
-                        }
-                    })
+                    // this.$axios.all(requestList)
+                    //     .then(this.$axios.spread((acct,perm,para) => {
+                    //         console.log('receive')
+                    //         if (!acct) {
+                    //             this.$Message.warning('lvelvelve!', 3);
+                    //         }
+                    //     })).catch((response) => {
+                    //     if (response.response) {
+                    //         if (response.response.status === 400) {
+                    //             this.login_error = true
+                    //             this.error = '用户名或密码错误，请重新输入'
+                    //         }
+                    //     } else {
+                    //         this.login_error = true
+                    //         this.error = '与服务器连接超时，请重试'
+                    //     }
+                    // })
+
+
+
 
 
                     // var url = 'http://127.0.0.1:3000/test';
@@ -178,5 +181,20 @@
 
 <style scoped>
 @import './login.css';
+</style>
+
+<style>
+.login_container{
+    .username,.password{
+        .ivu-input{
+            height:40px;
+            font-size:14px;
+            line-height:22px;
+        }
+    }
+
+}
+    
+
 </style>
 
