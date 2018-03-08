@@ -78,4 +78,23 @@ chartUtil.keyConvertName = (data = [], names) => {
         }
     });
 }
+/**
+ * [计算tooltip的位置]
+ * @param  {[type]} point  [鼠标位置]
+ * @param  {[type]} params [同 formatter 的参数相同]
+ * @param  {[type]} dom    [tooltip 的 dom 对象]
+ * @param  {[type]} rect   [只有鼠标在图形上时有效，是一个用x, y, width, height四个属性表达的图形包围盒]
+ * @param  {[type]} size   [包括 dom 的尺寸和 echarts 容器的当前尺寸，例如：{contentSize: [width, height], viewSize: [width, height]}]
+ * @return {[type]}        [[x,y]]
+ */
+chartUtil.setPosition = (point, params, dom, rect, size) => {
+    let _point = [...point];
+    const contentSize = size.contentSize; //弹出层的尺寸[w,h]
+    const viewSize = size.viewSize; //echarts容器的尺寸
+    const x = point[0],
+        y = point[1]; //鼠标
+    _point[0] = x + contentSize[0] > viewSize[0] ? x - contentSize[0] - 10 : _point[0] + 10;
+    _point[1] = y + contentSize[1] > viewSize[1] ? y - contentSize[1] - 5 : _point[1] + 5;
+    return _point;
+}
 export default chartUtil;

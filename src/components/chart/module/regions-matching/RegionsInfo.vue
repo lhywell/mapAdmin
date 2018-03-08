@@ -5,11 +5,11 @@
                 周边小区
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.community))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.community.total}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.community.total)}}</div>
                 <div class="regions-matching__info__con__subcon--title">小区总数</div>
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.community))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.community.householdNum}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.community.householdNum)}}</div>
                 <div class="regions-matching__info__con__subcon--title">总户数</div>
             </div>
         </div>
@@ -18,11 +18,11 @@
                 周边办公
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.office))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.office.total}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.office.total)}}</div>
                 <div class="regions-matching__info__con__subcon--title">写字楼</div>
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.office))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.office.householdNum}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.office.householdNum)}}</div>
                 <div class="regions-matching__info__con__subcon--title">总面积(m²)</div>
             </div>
         </div>
@@ -31,15 +31,15 @@
                 周边商业
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.commerce))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.commerce.shopping}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.commerce.shopping)}}</div>
                 <div class="regions-matching__info__con__subcon--title">购物</div>
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.commerce))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.commerce.dining}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.commerce.dining)}}</div>
                 <div class="regions-matching__info__con__subcon--title">餐饮</div>
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.commerce))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.commerce.amusement}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.commerce.amusement)}}</div>
                 <div class="regions-matching__info__con__subcon--title">休闲娱乐</div>
             </div>
         </div>
@@ -48,15 +48,15 @@
                 交通配套
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.traffic))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.traffic.bus}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.traffic.bus)}}</div>
                 <div class="regions-matching__info__con__subcon--title">公交</div>
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.traffic))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.traffic.subway}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.traffic.subway)}}</div>
                 <div class="regions-matching__info__con__subcon--title">地铁</div>
             </div>
             <div class="regions-matching__info__con__subcon" :style="{width:subConWidth/((Object.keys(info.traffic))||[]).length+'px'}">
-                <div class="regions-matching__info__con__subcon--num">{{info.traffic.park}}</div>
+                <div class="regions-matching__info__con__subcon--num">{{$utils.milliFormat(info.traffic.park)}}</div>
                 <div class="regions-matching__info__con__subcon--title">停车场</div>
             </div>
         </div>

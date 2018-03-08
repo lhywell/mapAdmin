@@ -97,44 +97,45 @@ export function drawIcon(type) {
     let icon;
     switch (type) {
         case 1:
+            icon = new BMap.Icon($static + "/dot_blue.png", new BMap.Size(10, 10));
+            icon.setImageSize(new BMap.Size(10, 10));
+            break;
+        case 2:
+            icon = new BMap.Icon($static + "/marker.png", new BMap.Size(27, 27));
+            icon.setImageSize(new BMap.Size(27, 27));
+            break;
+        case 3:
+            icon = new BMap.Icon($static + "/dot_zi.png", new BMap.Size(10, 10));
+            icon.setImageSize(new BMap.Size(10, 10));
+            break;
+        case 4:
+            icon = new BMap.Icon($static + "/dot_yellow.png", new BMap.Size(10, 10));
+            icon.setImageSize(new BMap.Size(10, 10));
+            break;
+        case 5:
             icon = new BMap.Icon($static + "/dot_blue.png", new BMap.Size(12, 12));
             icon.setImageSize(new BMap.Size(12, 12));
             break;
-        case 2:
-            icon = new BMap.Icon($static + "/marker.png", new BMap.Size(24, 24));
-            icon.setImageSize(new BMap.Size(24, 24));
+        case 6:
+            icon = new BMap.Icon($static + "/marker_blue.png", new BMap.Size(27, 27));
+            icon.setImageSize(new BMap.Size(27, 27));
             break;
-        case 3:
+        case 7:
             icon = new BMap.Icon($static + "/dot_zi.png", new BMap.Size(12, 12));
             icon.setImageSize(new BMap.Size(12, 12));
             break;
-        case 4:
+        case 8:
             icon = new BMap.Icon($static + "/dot_yellow.png", new BMap.Size(12, 12));
             icon.setImageSize(new BMap.Size(12, 12));
-            break;
-        case 5:
-            icon = new BMap.Icon($static + "/dot_blue.png", new BMap.Size(14, 14));
-            icon.setImageSize(new BMap.Size(14, 14));
-            break;
-        case 6:
-            icon = new BMap.Icon($static + "/marker_blue.png", new BMap.Size(24, 24));
-            icon.setImageSize(new BMap.Size(24, 24));
-            break;
-        case 7:
-            icon = new BMap.Icon($static + "/dot_zi.png", new BMap.Size(14, 14));
-            icon.setImageSize(new BMap.Size(14, 14));
-            break;
-        case 8:
-            icon = new BMap.Icon($static + "/dot_yellow.png", new BMap.Size(14, 14));
-            icon.setImageSize(new BMap.Size(14, 14));
             break;
     };
 
     return icon;
 }
 
+
 /**
- * 画标注.
+ * 画标记.
  * @param {BMap.Point} point - 实例一个经纬度坐标点.
  * @param {number} type - 类型.
  * 已开门店包括点和围栏,并且定义类型为1
@@ -159,6 +160,125 @@ export function drawMarker(point, type) {
             break;
 
     }
+    opts.offset = new BMap.Size(0, 0);
+
+
+    return new BMap.Marker(point, opts);
+}
+
+/**
+ * 画搜索类图标.
+ * @param {number} type - 类型.
+ * 搜索的点,并且定义类型为1
+ * 搜索点hover效果,并且定义类型为'hover'
+ */
+export function drawSearchIcon(type) {
+    let icon;
+    switch (type) {
+        case 1:
+            icon = new BMap.Icon($static + "/search-choose.png", new BMap.Size(40, 40));
+            icon.setImageSize(new BMap.Size(40, 40));
+            break;
+        case 2:
+            icon = new BMap.Icon($static + "/dot_red.png", new BMap.Size(10, 10));
+            icon.setImageSize(new BMap.Size(10, 10));
+            break;
+        case 'hover':
+            icon = new BMap.Icon($static + "/dot_red.png", new BMap.Size(12, 12));
+            icon.setImageSize(new BMap.Size(12, 12));
+            break;
+    };
+
+    return icon;
+}
+
+/**
+ * 画围栏标记.
+ * @param {BMap.Point} point - 实例一个经纬度坐标点.
+ * @param {number} type - 类型.
+ * 搜索的点,并且定义类型为1
+ */
+export function drawSearchMarker(point, type) {
+    let opts = {};
+    switch (type) {
+        case 1:
+            opts.icon = drawSearchIcon(1);
+            break;
+        case 2:
+            opts.icon = drawSearchIcon(2);
+            break;
+
+    };
+    opts.offset = new BMap.Size(0, 0);
+
+
+    return new BMap.Marker(point, opts);
+}
+
+/**
+ * 画搜索类图标.
+ * @param {number} type - 类型.
+ * 画圆,并且定义类型为1
+ * 圈步行,并且定义类型为2
+ * 圈驾车,并且定义类型为3
+ * 画圆hover效果,并且定义类型为4
+ * 圈步行效果,并且定义类型为5
+ * 圈驾车效果,并且定义类型为6
+ */
+export function drawFenceIcon(type) {
+    let icon;
+    switch (type) {
+        case 1:
+            icon = new BMap.Icon($static + "/choose-stores.png", new BMap.Size(32, 32));
+            icon.setImageSize(new BMap.Size(32, 32));
+            break;
+        case 2:
+            icon = new BMap.Icon($static + "/walk.png", new BMap.Size(32, 32));
+            icon.setImageSize(new BMap.Size(32, 32));
+            break;
+        case 3:
+            icon = new BMap.Icon($static + "/car.png", new BMap.Size(32, 32));
+            icon.setImageSize(new BMap.Size(32, 32));
+            break;
+        case 4:
+            icon = new BMap.Icon($static + "/choose-stores-hover.png", new BMap.Size(32, 32));
+            icon.setImageSize(new BMap.Size(32, 32));
+            break;
+        case 5:
+            icon = new BMap.Icon($static + "/walk-hover.png", new BMap.Size(32, 32));
+            icon.setImageSize(new BMap.Size(32, 32));
+            break;
+        case 6:
+            icon = new BMap.Icon($static + "/car-hover.png", new BMap.Size(32, 32));
+            icon.setImageSize(new BMap.Size(32, 32));
+            break;
+    };
+
+    return icon;
+}
+
+/**
+ * 画围栏标记.
+ * @param {BMap.Point} point - 实例一个经纬度坐标点.
+ * @param {number} type - 类型.
+ * 画圆,并且定义类型为1
+ * 圈步行,并且定义类型为2
+ * 圈驾车,并且定义类型为3
+ */
+export function drawFenceMarker(point, type) {
+    let opts = {};
+    switch (type) {
+        case 1:
+            opts.icon = drawFenceIcon(1);
+            break;
+        case 2:
+            opts.icon = drawFenceIcon(2);
+            break;
+        case 3:
+            opts.icon = drawFenceIcon(3);
+            break;
+
+    };
     opts.offset = new BMap.Size(0, 0);
 
 

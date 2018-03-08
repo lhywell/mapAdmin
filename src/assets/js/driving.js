@@ -4,6 +4,7 @@ import {
     mapMutations
 } from 'vuex'
 import selfModel from './selfModel'
+import setCurDefault from '@/assets/js/setCurDefault'
 
 export default {
     data() {
@@ -19,7 +20,7 @@ export default {
     computed: {
         ...mapGetters(['circleListener', 'walkListener', 'driveListener'])
     },
-    mixins: [selfModel],
+    mixins: [selfModel, setCurDefault],
     methods: {
         handler(e) {
             this.removeEvent();
@@ -27,12 +28,14 @@ export default {
             if (e.target.innerText == "步行时间") {
                 this.mode = 'walking';
                 this.reachType = 2;
+                this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/walk.cur) 32 32,default");
                 this.$Baidu.addEventListener("click", this.mapClick);
 
                 this.$store.dispatch('setWalkListener', this.mapClick);
             } else {
                 this.mode = 'driving';
                 this.reachType = 1;
+                this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/car.cur) 32 32,default");
                 this.$Baidu.addEventListener("click", this.mapClick);
 
                 this.$store.dispatch('setDriveListener', this.mapClick);
@@ -54,7 +57,13 @@ export default {
             this.center = point;
 
             //画中心点标记
-            var marker = this.$utils.drawMarker(point, 2);
+            let marker;
+            if (this.mode == 'walking') {
+                marker = this.$utils.drawFenceMarker(point, 2);
+            } else {
+                marker = this.$utils.drawFenceMarker(point, 3);
+            }
+
             marker.addEventListener("click", this.elementClick);
             /*****保存属性*****/
             //画意向门店包括点和围栏,并且定义类型为2
@@ -171,6 +180,14 @@ export default {
             })
         },
         handleSubmit(name) {
+            //在已有意向店区域内添加新意向店，添加完成后，不显示已有意向店弹层信息
+            this.$store.dispatch('setSelfModal', {
+                infoModal: false,
+                infoTarget: undefined
+            })
+
+            this.setCurDefault();
+
             //解决2次点击的问题
             this.removeEvent();
 
@@ -186,6 +203,14 @@ export default {
 
         },
         handleCancel() {
+            //在已有意向店区域内添加新意向店，添加完成后，不显示已有意向店弹层信息
+            this.$store.dispatch('setSelfModal', {
+                infoModal: false,
+                infoTarget: undefined
+            })
+
+            this.setCurDefault();
+
             //解决2次点击的问题
             this.removeEvent();
 

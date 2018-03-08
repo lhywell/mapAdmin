@@ -2,7 +2,7 @@
     position: absolute;
     top: 76px;
     left: 24px;
-    width: 356px;
+    width: 349px;
     z-index: 401;
     .box {
         display: flex;
@@ -22,9 +22,10 @@
             border-bottom-right-radius: 0;
             height: 40px;
             background: #fff;
-            border-color: var(--border-color);
-            margin: 0 -1px 0 0;
             color: var(--color-detail);
+            border: 0;
+            border-right: 1px solid var(--border-color);
+            padding: 6px 12px;
         }
         .ivu-select-dropdown {
             padding: 0;
@@ -73,6 +74,7 @@
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
             border-color: var(--border-color);
+            border: 0;
         }
         .ivu-icon-close-circled:before {
             color: var(--color-icon1);
@@ -84,30 +86,38 @@
     }
     .searchResult {
         background: #fff;
-        margin: 8px 0 0 68px;
+        margin: 8px 0 0 0;
         white-space: nowrap;
         overflow: hidden;
+        @include shadow;
         ul {
             li {
-
-                height: 36px;
-                line-height: 36px;
+                height: 32px;
+                line-height: 32px;
                 a {
+                    font-size: 12px;
                     padding: 0 12px;
-                    color: #666666;
-                    font-size: 14px;
-                    display: block;
+                    color: var(--color-detail);
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    i {
+                    @include flexcenter;
+                    .ivu-icon-search {
+                        font-size: var(--font-icon);
+                        color: var(--color-detail);
                         margin-right: 12px;
                     }
+                    .default {
+                        margin-right: 16px;
+                    }
                     em {
-                        color: #999999;
+                        color: var(--color-icon);
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
                     }
                 }
                 a:hover {
-                    background: #ebebeb;
+                    background: var(--color-hover-bg);
                 }
             }
         }

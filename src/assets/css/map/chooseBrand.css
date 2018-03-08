@@ -166,29 +166,50 @@
 			width:100%;
 			font-size:16px;
 			line-height:22px;
-			padding:15px 40px;
+			padding:10px 30px;
 
-			.chosen_brand_label{
-				float:left;
-				width:130px;
-				text-align: center;
-				border:1px solid rgba(23,35,61,0.1);
-				font-size:14px;
-			}
-			.delete_brand_btn{
-				float:left;
-				width:22px;
-				border:1px solid rgba(23,35,61,0.1);
 
-				.close_btn{
-					color:#000;
+			.one_label{
+				width:200px;
+				height:32px;
+				border:1px solid rgba(23,35,61,0.1);
+				border-radius: 4px;
+
+				.chosen_brand_label{
+					float:left;
+					width:150px;
+
+					font-size:14px;
+					margin-top:4px;
+					margin-left:10px;
+					
+					text-align: left;
+					height:30px;
 				}
-				.close_btn:hover{
-					color:#2D8CF0;
+				.delete_brand_btn{
+					padding-top:3px;
+					height:30px;
+					float:right;
+					width:30px;
+					border-left:1px solid rgba(23,35,61,0.1);
+					text-align: center;
+
+					.close_btn{
+						color:#000;
+					}
+					.close_btn:hover{
+							color:#2D8CF0;
+					}
 				}
 			}
-			.delete_brand_btn:hover{
-				
+
+			.one_label:hover{
+				color:#2D8CF0;
+				border-color:#2D8CF0;
+			}
+			.one_label:hover div{
+				color:#2D8CF0;
+				border-left-color:#2D8CF0;
 			}
 		}
 	}

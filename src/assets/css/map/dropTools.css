@@ -1,7 +1,7 @@
 .dropTools {
     position: absolute;
     top: 76px;
-    left: 380px;
+    left: 374px;
     z-index: 401;
     display: flex;
     .wl {
@@ -26,11 +26,10 @@
     }
     .ivu-dropdown {
         margin-left: 8px;
-        box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.2);
+        @include shadow;
         .ivu-btn-primary {
             height: 40px;
             width: 158px;
-            @include shadow;
         }
         .ivu-select-dropdown {
             margin: 8px 0 0 0;
@@ -76,6 +75,8 @@
         }
     }
 }
+
+
 
 
 /*自定义的弹框样式*/

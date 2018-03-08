@@ -12,7 +12,7 @@
 
     --font-icon: 18px;
     --font-bold: bold;
-    --font-size:14px;
+    --font-size: 14px;
 
     /*Colors */
     --color-title: #17233D;
@@ -27,7 +27,6 @@
     --border-color: #e7e9eb;
 
     /*hover*/
-    --background-color-hover:#f3f8fe;
-    --font-color-hover:#2d8cf0;
-
+    --background-color-hover: #f3f8fe;
+    --font-color-hover: #2d8cf0;
 }

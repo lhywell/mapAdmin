@@ -102,6 +102,18 @@ export default {
                     seriesData.push(item.value);
                 });
                 this.flowChart.options.xAxis[0].data = xAxisData;
+                chartUtil.mergeRecursive(this.flowChart.options.tooltip, {
+                    padding: [5, 5],
+                    formatter: (params) => {
+                        let str = `<div style='padding:10px;'>${params[0].axisValue}</br>`;
+                        params.forEach((item) => {
+                            const icon = this.$echarts.format.getTooltipMarker(item.color);
+                            str += `${icon}${item.seriesName}${item.value}</br>`;
+                        });
+                        return str + '</div>';
+                    },
+                    position: chartUtil.setPosition
+                });
                 chartUtil.mergeRecursive(this.flowChart.options.yAxis[0].axisLabel, {
                     formatter: (value) => {
                         return `${value}K`;

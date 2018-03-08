@@ -1,4 +1,4 @@
-﻿<template>
+<template>
     <div id="circleTool">
         <div @click="handler"><span class="icon-circular"></span>辐射半径</div>
         <!--弹出层-->
@@ -43,6 +43,7 @@ import {
 
 import qs from 'qs';
 import selfModel from '@/assets/js/selfModel'
+import setCurDefault from '@/assets/js/setCurDefault'
 
 export default {
     name: 'circleTool',
@@ -74,13 +75,15 @@ export default {
     computed: {
         ...mapGetters(['circleListener', 'walkListener', 'driveListener'])
     },
-    mixins: [selfModel],
+    mixins: [selfModel, setCurDefault],
     methods: {
         //添加点标注
         handler() {
             this.removeEvent();
 
             this.$Baidu.addEventListener("click", this.mapClick);
+
+            this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/choose-stores.cur) 32 32,default");
 
             this.$store.dispatch('setCircleListener', this.mapClick);
             // console.log(1111,this.$store.state.map.dropDownShop)
@@ -98,7 +101,7 @@ export default {
 
             let point = this.$utils.drawLngLat(lng, lat);
             //画中心点标记
-            var marker = this.$utils.drawMarker(point, 2);
+            var marker = this.$utils.drawFenceMarker(point, 1);
 
             //画圆
             let circle = this.$utils.drawCircle(point, this.range);
@@ -151,6 +154,13 @@ export default {
             circle.setRadius(item);
         },
         handleSubmit(name) {
+            //在已有意向店区域内添加新意向店，添加完成后，不显示已有意向店弹层信息
+            this.$store.dispatch('setSelfModal', {
+                infoModal: false,
+                infoTarget: undefined
+            })
+
+            this.setCurDefault();
             //解决2次点击的问题
             this.removeEvent();
 
@@ -176,6 +186,14 @@ export default {
             })
         },
         handleCancel() {
+            //在已有意向店区域内添加新意向店，添加完成后，不显示已有意向店弹层信息
+            this.$store.dispatch('setSelfModal', {
+                infoModal: false,
+                infoTarget: undefined
+            })
+
+            this.setCurDefault();
+
             //解决2次点击的问题
             this.removeEvent();
             //移除掉点和围栏

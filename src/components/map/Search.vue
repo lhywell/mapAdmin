@@ -25,10 +25,11 @@
             </Input>
         </div>
         <div>
-            <div class="searchResult" style="width: 278px;">
+            <div class="searchResult" style="width: 349px;">
                 <ul>
                     <li v-for="item in results" class="ui3-suggest-item" style="">
-                        <a @click="panto(item)"><i class="default">{{item.title}}</i><em>{{item.address}}</em></a>
+                        <a @click="panto(item)">
+                            <Icon type="search"></Icon><i class="default">{{item.name}}</i><em>{{item.address}}</em></a>
                     </li>
                 </ul>
             </div>
@@ -37,6 +38,7 @@
 </template>
 <script>
 import qs from 'qs';
+import selfModel from '@/assets/js/selfModel'
 
 export default {
     name: 'Search',
@@ -64,11 +66,29 @@ export default {
     mounted() {
 
     },
+    mixins: [selfModel],
     methods: {
         enter() {
-            if (this.results[0]) {
-                this.panto(this.results[0]);
+            if (this.results) {
+
+                this.results.map((x, y) => {
+                    let point = x.point;
+                    let marker = this.$utils.drawSearchMarker(point, 2);
+                    /*保存属性*/
+                    marker.type = 'smart_search_poi';
+                    marker.item = x;
+                    marker.addEventListener("click", this.elementClick);
+                    /*保存属性*/
+                    this.$Baidu.addOverlay(marker);
+                })
+                this.$Baidu.reset();
             }
+        },
+        elementClick(e) {
+            this.$store.dispatch('setSelfModal', {
+                infoModal: true,
+                infoTarget: e
+            })
         },
         change() {
             if (this.searchValue.length > 0) {
@@ -76,6 +96,7 @@ export default {
             }
             if (this.searchValue.length == 0) {
                 this.iconValue = '';
+                this.emptyMap();
             }
             if (this.searchType === '位置') {
                 let options = {
@@ -85,7 +106,7 @@ export default {
                             var s = [];
                             for (var i = 0; i < results.getCurrentNumPois(); i++) {
                                 s.push({
-                                    title: results.getPoi(i).title,
+                                    name: results.getPoi(i).title,
                                     city: results.getPoi(i).city,
                                     address: results.getPoi(i).address,
                                     point: results.getPoi(i).point
@@ -103,6 +124,16 @@ export default {
             this.searchValue = '';
             this.iconValue = '';
             this.results = [];
+
+            this.emptyMap();
+        },
+        emptyMap() {
+            let list = this.$Baidu.getOverlays();
+            list.map((item, index) => {
+                if (item.type == 'smart_search_poi' && item instanceof BMap.Marker) {
+                    this.$Baidu.removeOverlay(item);
+                }
+            })
         },
         searchPosition(item) {
             this.searchType = '位置';
@@ -114,9 +145,14 @@ export default {
         },
         panto(item) {
             let point = item.point;
-            let marker = this.$utils.drawMarker(point, 2);
+            let marker = this.$utils.drawSearchMarker(point, 1);
+            /*保存属性*/
+            marker.type = 'smart_search_poi';
+            marker.item = item;
+            /*保存属性*/
 
-            this.searchValue = item.title;
+            marker.addEventListener("click", this.elementClick);
+            this.searchValue = item.name;
             this.results = [];
 
             this.$Baidu.addOverlay(marker);

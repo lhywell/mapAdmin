@@ -56,6 +56,13 @@
             li:last-child {
                 border: 0;
             }
+            li.active {
+                a {
+                    background: var(--color-hover-bg);
+                    color: var(--color-hover);
+                    font-weight: var(--font-bold);
+                }
+            }
         }
     }
     .ivu-icon-ios-location {

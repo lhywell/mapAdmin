@@ -53,7 +53,9 @@ export default {
     name: 'baiduMap',
     data() {
         return {
-            inmap: null
+            inmap: null,
+            marker: null,
+            element: null
         }
     },
     components: {
@@ -76,12 +78,11 @@ export default {
         ...mapState(['map', 'chart']),
     },
     methods: {
-
         createMap() {
             let inmap = new inMap.Map({
                 id: 'allmap',
                 skin: "",
-                center: [121.473701, 31.230416], //地图中心点上海
+                center: [114.057865,22.543096], //地图中心点深圳
                 zoom: {
                     value: 12, //当前地图级别
                     show: true, //放大缩小按钮显示
@@ -98,10 +99,12 @@ export default {
             map.setMapStyle({
                 styleJson: BAIDU_MAP_STYLE
             });
-            map.addEventListener('click', e => {
+
+            document.addEventListener('click', e => {
                 this.closePanel();
                 this.closeDropDown();
-            });
+            }, true)
+
             //锁定城市，不可以移动到所选城市之外的区域
             // let b = new BMap.Bounds(new BMap.Point(120.629629, 30.410977), new BMap.Point(122.015846, 31.839066));
             // try {
@@ -212,6 +215,8 @@ export default {
                     marker.type = 2;
                     element.type = 2;
                 }
+                this.marker = marker;
+                this.element = element;
                 /*****保存属性*****/
 
                 this.drawPoint(marker);

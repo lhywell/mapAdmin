@@ -14,19 +14,14 @@
             <div class="email">
                 <span class="icon-account_circle"></span>
                 <span class="com">demo@tendcloud.com</span>
-                <Dropdown placement="bottom-end">
-                    <Button type="primary" class="wl">
-                        <span class="icon-fence"></span>
+                <Poptip placement="bottom-end">
+                    <Button>
                         <Icon type="chevron-down"></Icon>
                     </Button>
-                    <Dropdown-menu slot="list">
-                        <Dropdown-item>
-                            <div class="quit" @click="quit">
-                                <Icon type="android-exit"></Icon>退出登录
-                            </div>
-                        </Dropdown-item>
-                    </Dropdown-menu>
-                </Dropdown>
+                    <div class="quit" slot="content" @click="quit">
+                        <Icon type="android-exit"></Icon>退出登录
+                    </div>
+                </Poptip>
             </div>
         </div>
     </div>
@@ -62,5 +57,18 @@ export default {
 </script>
 <style scoped>
 @import './header/header.css';
+
+</style>
+<style type="text/css">
+.headerTop {
+    .email {
+        .ivu-poptip-popper {
+            min-width: 124px
+        }
+        .ivu-poptip-body {
+            padding: 13px 16px;
+        }
+    }
+}
 
 </style>

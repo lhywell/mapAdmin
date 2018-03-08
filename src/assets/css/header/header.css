@@ -34,23 +34,24 @@
             margin-right: 10px;
         }
         .com {
-            margin-right: 8px;
+            /*margin-right: 8px;*/
         }
-        .wl {
-            margin: 0;
-            padding: 0;
-            background: #1885F1;
-            border: 0;
+        .ivu-poptip {
             font-size: 14px;
-            .ivu-icon-chevron-down {
-                font-size: 10px;
+            .ivu-btn {
+                background: #1885F1;
+                border: 0;
+                font-size: 14px;
+                color: #fff;
+                .ivu-icon-chevron-down {
+                    font-size: 10px;
+                }
             }
-        }
-        .ivu-dropdown-item {
-            font-size: 14px;
+
             .quit {
                 font-size: 14px;
                 display: flex;
+                color: var(--color-detail);
                 .ivu-icon-android-exit {
                     font-size: var(--font-icon);
                     color: var(--color-icon);

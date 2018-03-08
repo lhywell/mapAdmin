@@ -16,7 +16,7 @@
             <div class='month_trade_container'>
                 <Card class='month_trade' dis-hover>
                     <div class='label'>月总流水</div>
-                    <div class='content'>￥{{openShopsBasicInfo.incomeSum}}</div>
+                    <div class='content'>￥{{totalIncomeSum}}</div>
                 </Card>
             </div>
             <div class='clear_float'></div>
@@ -70,7 +70,10 @@ export default {
                     },{
                         title:'月流水',
                         key:'incomeMonthly',
-                        sortable: true
+                        sortable: true,
+                        render: (h, params) => {
+                            return util.milliFormat(parseFloat(params.row.incomeMonthly))
+                        }
                     }],
                     data:[]
                 }
@@ -91,6 +94,12 @@ export default {
                 total += parseFloat(val['trade'])
             }
             return total;
+        },
+        totalIncomeSum:function(){
+            if(this.openShopsBasicInfo.incomeSum)
+                return util.milliFormat(this.openShopsBasicInfo.incomeSum)
+            else
+                return 0;
         }
     },
     mounted() {

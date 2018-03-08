@@ -34,7 +34,10 @@
             position: relative;
             .icon-add {
                 font-size: 22px;
-                color: #2D8CF0;
+                color: var(--color-icon1);
+            }
+            .icon-add:hover {
+                color: var(--color-hover);
             }
         }
         ul {
@@ -64,6 +67,13 @@
                 img {
                     margin-right: 14px;
                     border-radius: 50%;
+                }
+            }
+            li.active {
+                a {
+                    background: var(--color-hover-bg);
+                    color: var(--color-hover);
+                    font-weight: var(--font-bold);
                 }
             }
         }

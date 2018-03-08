@@ -23,7 +23,7 @@
             </form>
              <div slot="footer">
                 <Button type="text" v-show='showCancel' size="large" @click="close">取消</Button>
-                <Button type="info" size="large" @click="submitData">提交</Button>
+                <Button type="info" size="large" @click="submitData" class='submit_btn'>确认</Button>
             </div>
         </Modal>
 </template>
@@ -182,6 +182,25 @@ export default {
         .ivu-modal-footer{
             border:none;
         }
+        .ivu-modal-header {
+            padding: 16px;
+        }
+        .ivu-modal-body{
+           padding:0 16px 16px 22px;
+        }
     }
+
+    .brand_name_value{
+        .ivu-select-input{
+            color: rgba(23,35,61,0.25);
+        }
+    }
+
+    .brand_position_value{
+        .ivu-select-placeholder{
+            color: rgba(28,36,56,0.56) !important;
+        }
+    }
+    
 
 </style>

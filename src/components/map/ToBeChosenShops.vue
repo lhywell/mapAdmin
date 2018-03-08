@@ -66,11 +66,11 @@ export default {
                                 re = address
                             }
                             return h('span', {
-                                attrs: {
-                                    title: address
-                                }
-                            },
-                            re);
+                                    attrs: {
+                                        title: address
+                                    }
+                                },
+                                re);
                         }
                     }, {
                         title: '服务范围',
@@ -98,11 +98,11 @@ export default {
                                         border: 'none',
                                         pointer: 'cursor',
                                         fontSize: '20px',
-                                        visibility:'hidden'
+                                        visibility: 'hidden'
                                     },
                                     on: {
                                         click: () => {
-                                          //调用接口deleteIntentionStore，删除意向门店
+                                            //调用接口deleteIntentionStore，删除意向门店
                                             this.removeRow(params.index);
                                         }
                                     }
@@ -129,12 +129,11 @@ export default {
             setDropDownShop: 'setDropDownShop'
         }),
         init() {
-            var vm = this;
-            this.defaults.table.callback = function() {
-                vm.swtichBrandDetailModal({
+            this.defaults.table.callback = () => {
+                this.swtichBrandDetailModal({
                     modalState: false
                 });
-                //vm.setDropDownShop(true);
+                this.setDropDownShop(true);
             };
             this.toBeChosenShopsBasicInfo = {
                 cityNum: 1,
@@ -172,9 +171,11 @@ export default {
         },
     }
 }
+
 </script>
 <style scoped>
 @import './map/toBeChosenShops.css';
+
 </style>
 <style>
 .table_container {
@@ -183,19 +184,20 @@ export default {
     }
 }
 
-.ivu-table-cell{
-    .icon-delete{
-        color:rgba(23,35,61,0.55);
+.ivu-table-cell {
+    .icon-delete {
+        color: rgba(23, 35, 61, 0.55);
     }
-    .icon-delete:hover{
-       
-        color:#2D8CF0;
+    .icon-delete:hover {
+
+        color: #2D8CF0;
     }
 }
 
-.table_container{
-    .ivu-table-row:hover a{
-         visibility:visible !important;
+.table_container {
+    .ivu-table-row:hover a {
+        visibility: visible !important;
     }
 }
+
 </style>

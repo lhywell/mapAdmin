@@ -18,6 +18,7 @@
 }
 
 
+
 /*自定义的弹框样式*/
 
 .infoModel {
@@ -25,25 +26,36 @@
         top: 0;
     }
     .ivu-modal-body {
-        font-size: 14px;
+        font-size: 12px;
         color: var(--color-title);
-        ul {
-            li {
-                height: 40px;
-                line-height: 40px;
-                span {
-                    width: 56px;
-                    display: inline-block;
-                    text-align: right;
-                    margin-right: 40px;
+        padding: 0;
+        .storeinfo {
+            padding: 10px;
+            ul {
+                li {
+                    height: 30px;
+                    line-height: 30px;
+                    span {
+                        width: 56px;
+                        display: inline-block;
+                        text-align: right;
+                        margin-right: 40px;
+                    }
                 }
             }
-        }
-        .toLocation {
-            border-radius: 4px;
-            margin-top: 8px;
-            padding: 4px 15px 4px 15px;
-            width: 100%;
+            .search {
+                span {
+                    margin-right: 10px;
+                }
+            }
+            .toLocation {
+                font-size: 12px;
+                border-radius: 4px;
+                margin-top: 8px;
+                padding: 4px 15px 4px 15px;
+                width: 100%;
+                margin-bottom: 10px;
+            }
         }
     }
     .ivu-modal-footer {

@@ -24,6 +24,7 @@
                 cursor: pointer;
             }
             .delete_brand_btn {
+                font-size:var(--font-size);
                 color: red;
                 margin: -5px 20px 0 0;
             }
@@ -33,6 +34,8 @@
         background-color: white;
         .attr_tab{
             background-color: rgba(23,35,61,0.06);
+            overflow-x:hidden;
+            overflow-y:auto;
             .basic_info {
                 font-size: 14px;
                 margin: 25px 45px 0 45px;
@@ -86,7 +89,7 @@
                 margin-top:30px;
        /*         height:400px;*/
                 height:calc(100% - 243px);
-                overflow-y :auto;
+               /* overflow-y :auto;*/
                /* background-color: rgba(23,35,61,0.06);*/
    /*             background-color: white;*/
 

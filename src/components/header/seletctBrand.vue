@@ -13,7 +13,7 @@
                             <a class="addbrand" @click="addBrand"><i class="icon-add"></i></a>
                         </div>
                         <ul>
-                            <li v-for="item in brandList">
+                            <li v-for="item in brandList" :class="{active:item.active}">
                                 <a href="#" @click="selectBrand">
                                     <div><img src="http://smartdata.b0.upaiyun.com/thinkmark/zhouheiya.png" width="32" height="32">{{item.name}}</div>
                                 </a>
@@ -33,6 +33,7 @@ export default {
             visible: false,
             brandList: [{
                 "name": "周黑鸭",
+                "active": true
             }],
             initText: '请选择',
         }

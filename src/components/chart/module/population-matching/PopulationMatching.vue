@@ -1,13 +1,11 @@
 <template>
     <div class="flow-matching">
-        <population-info :data="info"></population-info>
-        <population-flow-chart :data="flow"></population-flow-chart>
+        <population-flow-chart :data="flow" :info="info"></population-flow-chart>
         <population-chart :data="population"></population-chart>
     </div>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
-import PopulationInfo from './PopulationInfo';
 import PopulationFlowChart from './PopulationFlowChart';
 import PopulationChart from './PopulationChart';
 import chartUtil from '../chart.util';
@@ -23,7 +21,6 @@ export default {
         }
     },
     components: {
-        PopulationInfo,
         PopulationFlowChart,
         PopulationChart
     },

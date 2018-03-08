@@ -1,52 +1,55 @@
 <template>
-    <Modal v-model="infoModel" width="262" :mask-closable="true" :title="name" id="infoModel" class-name="infoModel mapModel" @on-cancel="cancel">
+    <Modal v-model="infoModel" width="240" :mask-closable="true" :title="name" id="infoModel" class-name="infoModel mapModel" @on-cancel="cancel">
         <template v-if="openShop.display">
-            <ul>
-                <li>
-                    <span>所在城市</span>{{openShop.city}}
-                </li>
-                <li>
-                    <span>月流水</span>{{this.$utils.milliFormat(openShop.amount)}}
-                </li>
-                <li>
-                    <span>辐射半径</span>{{openShop.range}}m
-                </li>
-                <li>
-                    <span>服务区域</span>{{this.$utils.milliFormat(openShop.area)}}㎡
-                </li>
-            </ul>
-            <div class="">
-                <Button type="ghost" size="large" class="toLocation" @click="toLocation()">区域洞察</Button>
+            <div class="storeinfo">
+                <ul>
+                    <li>
+                        <span>所在城市</span>{{openShop.city}}
+                    </li>
+                    <li>
+                        <span>月流水</span>{{this.$utils.milliFormat(openShop.amount)}}
+                    </li>
+                    <li>
+                        <span>辐射半径</span>{{openShop.range}}m
+                    </li>
+                    <li>
+                        <span>服务区域</span>{{this.$utils.milliFormat(openShop.area)}}㎡
+                    </li>
+                </ul>
+                <div class="">
+                    <Button type="ghost" size="large" class="toLocation" @click="toLocation()">区域洞察</Button>
+                </div>
             </div>
         </template>
         <template v-else-if="tobeShop.display">
-            <ul>
-                <li>
-                    <span>所在城市</span>{{tobeShop.city}}
-                </li>
-                <li v-show="this.circle">
-                    <span>辐射半径</span>{{tobeShop.range}}m
-                </li>
-                <li v-show="this.walking">
-                    <span>步行时间</span>{{tobeShop.time}}分钟
-                </li>
-                <li v-show="this.driving">
-                    <span>驾车时间</span>{{tobeShop.time}}分钟
-                </li>
-                <li>
-                    <span>服务区域</span>{{this.$utils.milliFormat(tobeShop.area)}}㎡
-                </li>
-            </ul>
-            <div class="">
-                <Button type="ghost" size="large" class="toLocation" @click="toLocation()">区域洞察</Button>
+            <div class="storeinfo">
+                <ul>
+                    <li>
+                        <span>所在城市</span>{{tobeShop.city}}
+                    </li>
+                    <li v-show="this.circle">
+                        <span>辐射半径</span>{{tobeShop.range}}m
+                    </li>
+                    <li v-show="this.walking">
+                        <span>步行时间</span>{{tobeShop.time}}分钟
+                    </li>
+                    <li v-show="this.driving">
+                        <span>驾车时间</span>{{tobeShop.time}}分钟
+                    </li>
+                    <li>
+                        <span>服务区域</span>{{this.$utils.milliFormat(tobeShop.area)}}㎡
+                    </li>
+                </ul>
+                <div class="">
+                    <Button type="ghost" size="large" class="toLocation" @click="toLocation()">区域洞察</Button>
+                </div>
             </div>
         </template>
-        <template v-else="other.display">
-            <ul>
-                <li>
-                    <span>所在城市</span>{{other.city}}
-                </li>
-            </ul>
+        <template v-else-if="other.display"></template>
+        <template v-else="search.display">
+            <div class="storeinfo">
+                <div class="search">{{search.address}}</div>
+            </div>
         </template>
     </Modal>
 </template>
@@ -81,7 +84,11 @@ export default {
             },
             other: {
                 display: false,
-                city: '',
+                city: ''
+            },
+            search: {
+                display: false,
+                address: ''
             },
             circle: false,
             walking: false,
@@ -112,6 +119,8 @@ export default {
                 if (type == 1) {
                     this.openShop.display = true;
                     this.tobeShop.display = false;
+                    this.other.display = false;
+                    this.search.display = false;
                     this.openShop.city = item.city;
                     this.openShop.amount = item.amount;
                     this.openShop.area = item.area;
@@ -121,6 +130,8 @@ export default {
                 if (type == 2 && item.mode != 'circle' && item.mode != 'walking' && item.mode != 'driving') {
                     this.tobeShop.display = true;
                     this.openShop.display = false;
+                    this.other.display = false;
+                    this.search.display = false;
                     this.circle = true;
                     this.driving = false;
                     this.walking = false;
@@ -133,6 +144,8 @@ export default {
                 if (type == 2 && item.mode == 'circle') {
                     this.tobeShop.display = true;
                     this.openShop.display = false;
+                    this.other.display = false;
+                    this.search.display = false;
                     this.circle = true;
                     this.driving = false;
                     this.walking = false;
@@ -145,6 +158,8 @@ export default {
                 if (type == 2 && item.mode == 'walking') {
                     this.tobeShop.display = true;
                     this.openShop.display = false;
+                    this.other.display = false;
+                    this.search.display = false;
                     this.walking = true;
                     this.driving = false;
                     this.circle = false;
@@ -157,6 +172,8 @@ export default {
                 if (type == 2 && item.mode == 'driving') {
                     this.tobeShop.display = true;
                     this.openShop.display = false;
+                    this.other.display = false;
+                    this.search.display = false;
                     this.driving = true;
                     this.walking = false;
                     this.circle = false;
@@ -170,7 +187,14 @@ export default {
                     this.other.display = true;
                     this.openShop.display = false;
                     this.tobeShop.display = false;
-                    this.other.city = item.city;
+                    this.search.display = false;
+                }
+                if (type == 'smart_search_poi') {
+                    this.search.display = true;
+                    this.other.display = false;
+                    this.openShop.display = false;
+                    this.tobeShop.display = false;
+                    this.search.address = item.address;
                 }
             }
 

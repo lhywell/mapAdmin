@@ -15,7 +15,23 @@
             }
         }
         &__main {
+            position:relative;
             padding: 18px 24px;
+            &__info {
+                position: absolute;
+                &--title {
+                    font-family: PingFangSC-Regular;
+                    font-size: 14px;
+                    color: rgba(23, 35, 61, 0.75);
+                }
+                &--num {
+                    padding-left: 12px;
+                    line-height: 32px;
+                    font-family: HelveticaNeue;
+                    font-size: 20px;
+                    color: #17233D;
+                }
+            }
             &__sex,
             &__age {
                 height: 214px;
@@ -26,22 +42,26 @@
                 float: left;
                 width: 226px;
             }
-            &__age,&__income {
+            &__age,
+            &__income {
                 float: left;
                 width: 337px;
                 padding: 0 0 0 24px;
                 border-left: 1px solid rgba(23, 35, 61, 0.10);
             }
-            &__consume,&__income {
+            &__consume,
+            &__income {
                 height: 220px;
                 margin: 20px 0;
-            },
-            &__education{
+            }
+            ,
+            &__education {
                 height: 206px;
                 margin: 20px 0;
-            },
-            &__other{
-                margin:20px 0;
+            }
+            ,
+            &__other {
+                margin: 20px 0;
             }
         }
     }

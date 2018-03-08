@@ -39,7 +39,7 @@
                         </div>
                         <i-button type="success" long @click="submit" @keyup.enter="submit" :disabled="waitBtn">{{ submitBtn }}</i-button>
                     </form> -->
-            <div class="login_foot">2011-2017 © TalkingData.com</div>
+            <div class="login_foot">2011-2018 © TalkingData.com</div>
         </div>
       
     </div>

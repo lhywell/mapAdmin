@@ -7,7 +7,7 @@
                 <!-- <Poptip trigger="hover" placement="top" class='tips' transfer>
                     <Icon type="ios-help-outline" class="helpIcon"></Icon>
                     <div slot="title">说明</div>
-                    <div slot="content">                 
+                    <div slot="content">
                         {{this.defaults.table.tips}}
                     </div>
                 </Poptip> -->
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class='table_container'>
-            <Table     
+            <Table
                :height='defaults.table.height'
                :columns="defaults.table.columns"
                :data="defaults.table.showData"
@@ -26,12 +26,12 @@
             </Table>
         </div>
         <div class='page_container'>
-            <Page :total="defaults.table.newData.length"     
+            <Page :total="defaults.table.newData.length"
                     :current="defaults.table.currentPage"
-                    @on-change="changePage" 
-                    :page-size="defaults.table.pageSize" 
+                    @on-change="changePage"
+                    :page-size="defaults.table.pageSize"
                     @on-page-size-change = 'pageSizeChange'
-                    show-sizer class ='page' 
+                    show-sizer class ='page'
                     placement = 'top'
                     >
             </Page>
@@ -112,7 +112,7 @@ export default {
         // },
         init() {
             if (this.defaults.table.columns.length) {
-          
+
             }
             if (this.defaults.table.data.length) {
                 this.defaults.table.newData = this.defaults.table.data;
@@ -150,7 +150,7 @@ export default {
                 this.defaults.table.newData = result;
                 this.changePage(1);
             }
-            
+
         }
     }
 }

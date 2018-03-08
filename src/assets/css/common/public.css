@@ -257,12 +257,17 @@ input::-webkit-input-placeholder {
 }
 
 .ivu-modal-header {
-    padding: 16px 16px 13px;
+    padding: 10px 16px 6px;
 }
 
 .ivu-modal-header-inner {
-    font-size: 16px;
+    font-size: 14px;
     width: 88%;
+}
+
+.ivu-modal-close .ivu-icon-ios-close-empty {
+    font-size: 28px;
+    top: -2px;
 }
 
 .ivu-modal-close .ivu-icon-ios-close-empty:hover {
@@ -287,6 +292,12 @@ input::-webkit-input-placeholder {
 .inmap-scale-group>a:first-child {
     border-bottom: 1px solid rgba(23, 35, 61, 0.10);
 }
+.inmap-scale-group>a:last-child {
+    font-size: 42px;
+}
+
+
+
 
 
 
@@ -344,14 +355,18 @@ input::-webkit-input-placeholder {
     color: var(--font-color-hover);
     font-weight: var(--font-bold);
 }
-.ivu-select-placeholder,.ivu-select-item {
+.ivu-select-placeholder,
+.ivu-select-item {
     font-size: var(--font-size) !important;
 }
 
 .ivu-select-input,
-.ivu-select-selected-value {
+.ivu-select-selected-value
+.ivu-select-single .ivu-select-selection .ivu-select-placeholder,
+.ivu-select-single .ivu-select-selection .ivu-select-selected-value {
     font-size: var(--font-size);
 }
+
 
 .ivu-table {
     font-size: var(--font-size);
@@ -364,11 +379,16 @@ input::-webkit-input-placeholder {
     padding: 8px 0;
 }
 
-.ivu-tabs-tab-active{
-    font-weight:bold;
-    color:rgba(45,140,240,1) !important;
+.ivu-tabs-tab-active {
+    font-weight: bold;
+    color: rgba(45, 140, 240, 1) !important;
 }
 
-.ivu-tooltip-inner{
+.ivu-tooltip-inner {
     max-width: 240px;
+}
+
+/*地图围栏的层级*/
+svg[type="system"] {
+    z-index: 2;
 }
