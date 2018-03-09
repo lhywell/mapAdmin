@@ -83,7 +83,8 @@ export default {
 
             this.$Baidu.addEventListener("click", this.mapClick);
 
-            this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/choose-stores.cur) 32 32,default");
+            //设置鼠标样式
+            this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/choose-stores.cur) 16 16,default");
 
             this.$store.dispatch('setCircleListener', this.mapClick);
             // console.log(1111,this.$store.state.map.dropDownShop)

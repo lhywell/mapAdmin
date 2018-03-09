@@ -7,6 +7,7 @@
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
+import resource from '../../../../assets/js/resource';
 import FlowInfo from './FlowInfo';
 import FlowChart from './FlowChart';
 import FlowPopulationChart from './FlowPopulationChart';
@@ -72,7 +73,7 @@ export default {
          * [getPassengerSumWeek 周总客流]
          */
         getPassengerSumWeek() {
-            // this.$axios.get('/passenger/sum', {
+            // this.$axios.get(resource.passengerSum, {
             //     params: {
             //         storeId: 10000,
             //         startDate: this.preWeek,
@@ -87,7 +88,7 @@ export default {
          * [getPassengerSumMonth 月总客流]
          */
         getPassengerSumMonth() {
-            // this.$axios.get('/passenger/sum', {
+            // this.$axios.get(resource.passengerSum, {
             //     params: {
             //         storeId: 10000,
             //         startDate: this.preMonth,
@@ -102,7 +103,7 @@ export default {
          * [getPassengerAvgHourlyWeek 周平均客流]
          */
         getPassengerAvgHourlyWeek() {
-            // this.$axios.get('/passenger/avg/hourly', {
+            // this.$axios.get(resource.passengerAvgHourly, {
             //     params: {
             //         storeId: 10000,
             //         startDate: this.preWeek,
@@ -117,7 +118,7 @@ export default {
          * [getPassengerAvgHourlyMonth 月平均客流]
          */
         getPassengerAvgHourlyMonth() {
-            // this.$axios.get('/passenger/avg/hourly', {
+            // this.$axios.get(resource.passengerAvgHourly, {
             //     params: {
             //         storeId: 10000,
             //         startDate: this.preMonth,
@@ -132,7 +133,7 @@ export default {
          * [getPassengerDailyWeek 周每日客流]
          */
         getPassengerDailyWeek() {
-            // this.$axios.get('/passenger/daily', {
+            // this.$axios.get(resource.passengerDaily, {
             //     params: {
             //         storeId: 10000,
             //         startDate: this.preWeek,
@@ -147,7 +148,7 @@ export default {
          * [getPassengerDailyMonth 月每日客流]
          */
         getPassengerDailyMonth() {
-            // this.$axios.get('/passenger/daily', {
+            // this.$axios.get(resource.passengerDaily, {
             //     params: {
             //         storeId: 10000,
             //         startDate: this.preMonth,
@@ -162,7 +163,7 @@ export default {
          * [getPassengerLabelData 获取人口画像]
          */
         getPassengerLabelData() {
-            // this.$axios.get('/label/passenger', {
+            // this.$axios.get(resource.passengerLabelData, {
             //     params: {
             //         storeId: 10000,
             //         time: (new Date().getFullYear()) + '01'

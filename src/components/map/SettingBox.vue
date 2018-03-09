@@ -97,6 +97,7 @@ import {
     mapMutations
 } from 'vuex'
 import util from '@/assets/js/util'
+import _resource from '@/assets/js/resource'
 import ChooseBrand from '@/components/map/ChooseBrand'
 
 export default {
@@ -205,7 +206,9 @@ export default {
         'map.currentBrandId': {
             handler: function(val, oldVal) {
                 if (val) {
-                    //发送请求查询全部品牌列表，用于初始化添加增益品牌、竞品品牌列表，调用接口standardBrandList 
+                    //发送请求查询品牌的增益品牌和精品品牌；查询全部品牌列表，用于初始化添加增益品牌、竞品品牌列表，调用接口brandRelation*2，standardBrandList 
+                    //this.queryBrandsRelations('0')
+                    //this.queryBrandsRelations('1')
                 }
             },
             deep: false,
@@ -383,6 +386,65 @@ export default {
                 }],
             }]
         },
+        queryBrandsRelations(mark){
+            var url = _resource.brandRelation.replace('{brandId}',brandId).replace('{category}',mark)
+            var ax = this.$axios(util.makeRequest({
+                url: url,
+                //method:'get'
+            }))
+            this.$axios.get(ax)
+                .then(response => {
+                    if(response && response.data){
+                        var responseData = response.data
+                        if(mark === '0'){
+                            this.competitiveBrandList.tableData = [];
+                            for(var val of responseData){
+                                this.competitiveBrandList.tableData.push(val)
+                            }
+                        }
+                        else if(mark === '1'){
+                            this.gainBrandList.tableData = [];
+                            for(var val of responseData){
+                                this.gainBrandList.tableData.push(val)
+                            }
+                        }
+                    }
+                })
+                .catch((response) => {
+                    if (response.response) {
+                        if (response.response.status === 400) {
+                           
+                        }
+                    } else {
+
+                    }
+                })
+        },
+        queryBrandList(){
+            var url = _resource.standardBrandList
+            var ax = this.$axios(util.makeRequest({
+                url: url,
+                //method:'get'
+            }))
+
+            this.$axios.get(ax)
+                .then(response => {
+                    if(response && response.data){
+                        var responseData = response.data
+                    
+                       
+                    }
+                })
+                .catch((response) => {
+                    if (response.response) {
+                        if (response.response.status === 400) {
+                           
+                        }
+                    } else {
+
+                    }
+                })
+        },
         add() {
             if (this.datas.length > 0) {
                 var table = this.settings.tableData;
@@ -493,7 +555,46 @@ export default {
 
                 //this.error_tips = '选择的品牌数量不能超过5个'
             } else {
-                //提交所选择品牌，调用接口createBrandRelation,创建成功后调用brandRelation查询品牌数据
+                // var mark = this.settings.title === '增益品牌设定' ? 1 : 0;
+                // var relationBrandIds = [];
+                // for(var val of this.allSelectedBrands)
+                //     relationBrandIds.push(val.id)
+
+                // var params = {
+                //     userId:map.userId,
+                //     brandId:map.currentBrandId,
+                //     category:mark,
+                //     relationBrandIds:relationBrandIds,
+                // }
+                // //提交所选择品牌，调用接口createBrandRelation,创建成功后调用brandRelation查询品牌数据
+                // var url = _resource.createBrandRelation
+                // var ax = this.$axios(util.makeRequest({
+                //     url: url,
+                //     method:'post',
+                //     data:params
+                // }))
+
+                // this.$axios.post(ax)
+                //     .then(response => {
+                //         if(response && response.data){
+                //             var responseData = response.data
+                //             //刷新品牌列表
+                //             queryBrandsRelations(mark)
+                            
+                //             this.allSelectedBrands = [];
+                //             this.close();
+                           
+                //         }
+                //     })
+                //     .catch((response) => {
+                //         if (response.response) {
+                //             if (response.response.status === 400) {
+                               
+                //             }
+                //         } else {
+
+                //         }
+                //     })
                 this.allSelectedBrands = [];
                 this.close();
             }

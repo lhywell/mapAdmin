@@ -6,6 +6,7 @@
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
+import resource from '../../../../assets/js/resource';
 import PopulationFlowChart from './PopulationFlowChart';
 import PopulationChart from './PopulationChart';
 import chartUtil from '../chart.util';
@@ -46,7 +47,7 @@ export default {
         getPopulationSummaryInfo() {
             // const year = new Date().getFullYear();
 
-            // this.$axios.get('/population/summary', {
+            // this.$axios.get(resource.populationSummary, {
             //     params: {
             //         storeId: 10000,
             //         times: `${year-1}01`
@@ -70,7 +71,7 @@ export default {
         getPopulationSummary() {
             // const year = new Date().getFullYear();
 
-            // this.$axios.get('/population/summary', {
+            // this.$axios.get(resource.populationSummary, {
             //     params: {
             //         storeId: 10000,
             //         times: `${year-2}01,${year-2}02,${year-1}01,${year-1}02`
@@ -85,7 +86,7 @@ export default {
          * [getPopulationLabelData 获取人口画像]
          */
         getPopulationLabelData() {
-            // this.$axios.get('/label/population', {
+            // this.$axios.get(resource.populationLabelData, {
             //     params: {
             //         storeId: 10000,
             //         time: (new Date().getFullYear()) + '01'

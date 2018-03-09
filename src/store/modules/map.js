@@ -31,7 +31,10 @@ const state = {
     currentBrandId: '',
     infoModal: '',
     infoTarget: '',
-    fenceRange:false
+    fenceRange:false,
+    //用于标识意向门店做过删除操作，提示地图需重新获取意向门店数据
+    isDeleteIntentionShops:false,
+    userId:1000
 }
 
 const getters = {
@@ -52,7 +55,8 @@ const getters = {
     currentBrandId: state => state.currentBrandId,
     infoModal: state => state.infoModal,
     infoTarget: state => state.infoTarget,
-    fenceRange: state => state.fenceRange
+    fenceRange: state => state.fenceRange,
+    isDeleteIntentionShops: state => state.isDeleteIntentionShops
 }
 
 const mutations = {
@@ -107,6 +111,9 @@ const mutations = {
     },
     [types.SETCHECKBOXRANG]: (state, fenceRange) => {
         state.fenceRange = fenceRange
+    },
+    [types.ISDELETEINTENTIONSHOPS]: (state, payload) => {
+        state.isDeleteIntentionShops = payload.isDeleteIntentionShops
     }
 }
 
@@ -163,6 +170,10 @@ const actions = {
     },
     setCheckboxRang({ commit }, fenceRange) {
         commit(types.SETCHECKBOXRANG, fenceRange);
+    },
+    //删除意向店铺
+    setDeleteIntentionShops({ commit }, payload) {
+        commit(types.ISDELETEINTENTIONSHOPS, payload);
     }
 }
 

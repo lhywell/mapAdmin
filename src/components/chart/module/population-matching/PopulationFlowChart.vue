@@ -106,7 +106,7 @@ export default {
                         let str = `<div style='padding:10px;'>${params[0].axisValue}</br>`;
                         params.forEach((item) => {
                             const icon = this.$echarts.format.getTooltipMarker(item.color);
-                            str += `${icon}${item.seriesName}:${item.value}</br>`;
+                            str += `${icon}${item.seriesName}:${this.$utils.milliFormat(item.value)}</br>`;
                         });
                         return str + '</div>';
                     },

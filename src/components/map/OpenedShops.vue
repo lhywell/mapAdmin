@@ -28,17 +28,28 @@
 </template>
 <script>
 import PageTable from '@/components/map/PageTable'
+import _resource from '@/assets/js/resource'
 import util from '@/assets/js/util'
+import {
+    mapState,
+    mapActions,
+    mapGetters,
+    mapMutations
+} from 'vuex'
+
 export default {
-    name: 'openShops',
+    name: 'openedShops',
     data() {
         return {
             defaults:{
                 table:{
+                    yeah:'',
                     btnWords:'文件上传',
+                    uploadUrl:'',
                     tips:'文件上传',
                     callback:function(){
-                        console.log('open')
+                        console.log('openshops')
+
                     },
                     columns:[{
                         title:'店名',
@@ -84,7 +95,22 @@ export default {
     components: {
         PageTable,
     },
+    watch: {
+        'map.currentBrandId': {
+            handler: function(val, oldVal) {
+                //console.log('map.currentBrandId state change,val is ',val)
+                if (val) {
+                    //发送请求查询该brandId对应的待选门店基本信息
+                    //this.queryOpenedShopsBasicInfo(val)
+                    //this.queryOpenedShopsDetailInfo(val)
+                }
+            },
+            deep: false,
+            immediate: true
+        }
+    },
     computed: {
+        ...mapState(['map']),
         shopCount:function(){
             return this.defaults.table.data.length
         },
@@ -107,6 +133,8 @@ export default {
     },
     methods: {
         init() {
+            //配置上传文件url
+            this.defaults.table.uploadUrl = _resource.uploadExistedStores.replace('{brandId}',this.map.currentBrandId).replace('{userId}',this.map.userId)
             //调用接口existedStoresSummary、existedStores获取已开店铺信息
             this.defaults.table.data = [
                     {
@@ -246,6 +274,58 @@ export default {
                 incomeSum: 260000
             }
         },
+        queryOpenedShopsBasicInfo(brandId){
+            var url = _resource.existedStoresSummary.replace('{brandId}',brandId)
+
+            var ax = this.$axios(util.makeRequest({
+                url: url,
+                method:'get'
+            }))
+            this.$axios.get(ax)
+                .then(response => {
+                    if(response && response.data){
+                        var responseData = response.data
+                         this.openShopsBasicInfo = {
+                            cityNum: responseData.cityNum,
+                            storeNum: responseData.storeNum,
+                            incomeSum: responseData.incomeSum
+                        }
+                    }
+                })
+                .catch((response) => {
+                    if (response.response) {
+                        if (response.response.status === 400) {
+                           
+                        }
+                    } else {
+
+                    }
+                })
+        },
+        queryOpenedShopsDetailInfo(brandId){
+            var url = _resource.existedStores.replace('{brandId}',brandId)
+
+            var ax = this.$axios(util.makeRequest({
+                url: url,
+                method:'get'
+            }))
+            this.$axios.get(ax)
+                .then(response => {
+                    if(response && response.data){
+                        var responseData = response.data
+                        this.defaults.table.data = responseData
+                    }
+                })
+                .catch((response) => {
+                    if (response.response) {
+                        if (response.response.status === 400) {
+                           
+                        }
+                    } else {
+
+                    }
+                })
+        }
     }
 }
 </script>

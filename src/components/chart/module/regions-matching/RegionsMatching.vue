@@ -6,6 +6,7 @@
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
+import resource from '../../../../assets/js/resource';
 import RegionsInfo from './RegionsInfo';
 import RegionsAnalyse from './RegionsAnalyse';
 import rawData from './regions-matching.json';
@@ -39,7 +40,7 @@ export default {
          * [getPeripheryCompetitive 获取竞品列表]
          */
         getPeripheryCompetitive() {
-            // this.$axios.get('/periphery/competitive/list', {}).then((res) => {
+            // this.$axios.get(resource.peripheryCompetitive, {}).then((res) => {
             //     this.info = res && res.data ? res.data : {};
             //     if (res && res.data && res.data.length) {
             //         let set = new Set();
@@ -71,7 +72,7 @@ export default {
          * [getPeripheryFacilities 获取区域周边配套设施]
          */
         getPeripheryFacilities() {
-            // this.$axios.get('/periphery/facilities', {
+            // this.$axios.get(resource.peripheryFacilities, {
             //     params: {
             //         storeId: 10000
             //     }

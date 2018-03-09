@@ -101,9 +101,9 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                     @include flexcenter;
-                    .ivu-icon-search {
+                    .ivu-icon-ios-search-strong {
                         font-size: var(--font-icon);
-                        color: var(--color-detail);
+                        color: #808695;
                         margin-right: 12px;
                     }
                     .default {

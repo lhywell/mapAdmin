@@ -36,7 +36,7 @@ const makeRequest = (config) => {
     //url可根据环境配置或者config传入
     var url = '';
     const defaults = {
-        method: 'post',
+        method: 'get',
         url: url,
         // headers: {
         //     'authorization': (getAccessToken())

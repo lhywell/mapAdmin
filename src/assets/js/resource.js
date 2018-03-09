@@ -14,7 +14,7 @@ let createBrand = '/brand/create'
 let createBrandRelation = '/brand/relation/create'
 
 //删除用户自建品牌,delete
-let deleteBrand	= '/brand/delete?brandId={brandId}&userId={userId}'
+let deleteBrand = '/brand/delete?brandId={brandId}&userId={userId}'
 
 //删除某品牌的关系品牌,delete
 let deleteBrandRelation = '/brand/relation/delete?relationId={relationId}&userId={userId}'
@@ -37,18 +37,53 @@ let intentionStores = '/store/intention/list?brandId={brandId}'
 //获取某品牌下的意向店铺概览数据,Get
 let intentionStoresSummary = '/store/intention/summary?brandId={brandId}'
 
-export default{
-	brandInfo,
-	brandList,
-	brandRelation,
-	createBrand,
-	createBrandRelation,
-	deleteBrand,
-	deleteBrandRelation,
-	standardBrandList,
-	userLogin,
-	existedStores,
-	existedStoresSummary,
-	intentionStores,
-	intentionStoresSummary
+//删除用户意向门店,Delete
+let deleteIntentionStore = '/store/intention/delete?storeId={storeId}&userId={userId}'
+
+//上传固定格式的已开店铺列表csv文件,Post
+let uploadExistedStores = '/store/existed/upload?brandId={brandId}&userId={userId}'
+
+/*start 右侧面板*/
+//周总客流、月总客流
+const passengerSum = '/passenger/sum';
+//周平均客流、月平均客流
+const passengerAvgHourly = '/passenger/avg/hourly';
+//周每日、月每日
+const passengerDaily = '/passenger/daily';
+//人口画像
+const passengerLabelData = '/label/passenger';
+//人口分析|区域总人口、居住人口、工作人口
+const populationSummary = '/population/summary';
+//人口画像
+const populationLabelData = '/label/population';
+//竞品列表
+const peripheryCompetitive = '/periphery/competitive/list';
+//区域周边配套设施
+const peripheryFacilities = '/periphery/facilities';
+
+/*end 右侧面板*/
+export default {
+    brandInfo,
+    brandList,
+    brandRelation,
+    createBrand,
+    createBrandRelation,
+    deleteBrand,
+    deleteBrandRelation,
+    standardBrandList,
+    userLogin,
+    existedStores,
+    existedStoresSummary,
+    intentionStores,
+    intentionStoresSummary,
+    deleteIntentionStore,
+    uploadExistedStores,
+    passengerSum,
+    passengerAvgHourly,
+    passengerDaily,
+    passengerLabelData,
+    populationSummary,
+    populationLabelData,
+    peripheryCompetitive,
+    peripheryFacilities
 }

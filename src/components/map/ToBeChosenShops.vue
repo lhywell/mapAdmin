@@ -28,6 +28,7 @@
 </template>
 <script>
 import PageTable from '@/components/map/PageTable'
+import _resource from '@/assets/js/resource'
 import util from '@/assets/js/util'
 import {
     mapState,
@@ -36,7 +37,7 @@ import {
     mapMutations
 } from 'vuex'
 export default {
-    name: 'openShops',
+    name: 'toBeChosenShops',
     data() {
         return {
             defaults: {
@@ -103,7 +104,9 @@ export default {
                                     on: {
                                         click: () => {
                                             //调用接口deleteIntentionStore，删除意向门店
+                                            var shopId = params.row.id;
                                             this.removeRow(params.index);
+                                            //this.deleteIntentionShop(shopId,params.index)
                                         }
                                     }
                                 }, '')
@@ -119,7 +122,23 @@ export default {
     components: {
         PageTable,
     },
-    computed: {},
+    watch: {
+        'map.currentBrandId': {
+            handler: function(val, oldVal) {
+                //console.log('map.currentBrandId state change,val is ',val)
+                if (val) {
+                    //发送请求查询该brandId对应的待选门店基本信息
+                    //this.queryIntentionShopsBasicInfo(val)
+                    //this.queryIntentionShopsDetailInfo(val)
+                }
+            },
+            deep: false,
+            immediate: true
+        }
+    },
+    computed: {
+        ...mapState(['map']),
+    },
     mounted() {
         this.init()
     },
@@ -129,6 +148,7 @@ export default {
             setDropDownShop: 'setDropDownShop'
         }),
         init() {
+            //初始化回调函数
             this.defaults.table.callback = () => {
                 this.swtichBrandDetailModal({
                     modalState: false
@@ -141,24 +161,28 @@ export default {
                 serviceAreaSum: 49.7,
             };
             this.defaults.table.data = [{
+                id:1,
                 name: '万豪意向店',
                 city: '深圳',
                 address: '广东省深圳市南山区粤海街道海珠社区东方向',
                 serviceScope: '驾车30分钟',
                 serviceArea: '24'
             }, {
+                id:2,
                 name: '后海意向店',
                 city: '深圳',
                 address: '中国广东省深圳市南山区海德三道13号',
                 serviceScope: '半径 500米',
                 serviceArea: '7.85'
             }, {
+                id:3,
                 name: '太阳广场意向店',
                 city: '深圳',
                 address: '中国广东省深圳市罗湖区解放路2001号',
                 serviceScope: '步行时间 15分钟',
                 serviceArea: '10'
             }, {
+                id:4,
                 name: '鸿展中心意向店',
                 city: '深圳',
                 address: '中国广东省深圳市罗湖区人民北路2022号',
@@ -169,6 +193,83 @@ export default {
         removeRow(index) {
             this.defaults.table.data.splice(index, 1);
         },
+        queryIntentionShopsBasicInfo(brandId){
+            var url = _resource.intentionStores.replace('{brandId}',brandId)
+
+            var ax = this.$axios(util.makeRequest({
+                url: url,
+                method:'get'
+            }))
+            this.$axios.get(ax)
+                .then(response => {
+                    if(response && response.data){
+                        var responseData = response.data
+                        this.toBeChosenShopsBasicInfo = {
+                            cityNum: responseData.cityNum,
+                            storeNum: responseData.storeNum,
+                            serviceAreaSum: responseData.serviceAreaSum,
+                        }
+                    }
+                })
+                .catch((response) => {
+                    if (response.response) {
+                        if (response.response.status === 400) {
+                           
+                        }
+                    } else {
+
+                    }
+                })
+        },
+        queryIntentionShopsDetailInfo(brandId){
+            var url = _resource.intentionStoresSummary.replace('{brandId}',brandId)
+
+            var ax = this.$axios(util.makeRequest({
+                url: url,
+                method:'get'
+            }))
+            this.$axios.get(ax)
+                .then(response => {
+                    if(response && response.data){
+                        var responseData = response.data
+                        this.defaults.table.data = responseData
+                    }
+                })
+                .catch((response) => {
+                    if (response.response) {
+                        if (response.response.status === 400) {
+                           
+                        }
+                    } else {
+
+                    }
+                })
+        },
+        deleteIntentionShop(shopId,index){
+            var url = _resource.deleteIntentionStore.replace('{storeId}',shopId).replace('{userId}',this.map.userId)
+
+            var ax = this.$axios(util.makeRequest({
+                url: url,
+                method:'delete'
+            }))
+            this.$axios.delete(ax)
+                .then(response => {
+                    if(response && response.data){
+                        var responseData = response.data
+                        
+                        this.removeRow(index);
+                    }
+                })
+                .catch((response) => {
+                    if (response.response) {
+                        if (response.response.status === 400) {
+                           
+                        }
+                    } else {
+
+                    }
+                })
+        }
     }
 }
 

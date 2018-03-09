@@ -2,7 +2,9 @@
     <div class='page_table'>
         <div class='header_tool'>
             <div class='upload'>
-                <Button v-if='defaults.table.btnWords==="文件上传"' type="primary" @click='doIt' style='width:102px'>{{defaults.table.btnWords}}</Button>
+                <Upload v-if='defaults.table.btnWords==="文件上传"' :action="defaults.table.uploadUrl" :show-upload-list=false accept=".csv" :format="['csv']" clearFiles>
+                    <Button type="primary" @click='doIt' style='width:102px'>{{defaults.table.btnWords}}</Button>
+                </Upload>
                 <Button v-else type="primary" icon="ios-plus-outline" @click='doIt' style='width:138px'>{{defaults.table.btnWords}}</Button>
                 <!-- <Poptip trigger="hover" placement="top" class='tips' transfer>
                     <Icon type="ios-help-outline" class="helpIcon"></Icon>
@@ -47,6 +49,7 @@ import {
     mapMutations
 } from 'vuex'
 export default {
+    name: 'pageTable',
     props: {
         options: {}
     },
@@ -118,9 +121,9 @@ export default {
                 this.defaults.table.newData = this.defaults.table.data;
                 this.changePage(1);
             }
-            document.getElementsByTagName('tr').onmouseover=function(){
-                alert('mouseover')
-            }
+            // document.getElementsByTagName('tr').onmouseover=function(){
+            //     alert('mouseover')
+            // }
         },
         changePage(pageNum) {                     //页码改变的回调
            const size = this.defaults.table.pageSize;

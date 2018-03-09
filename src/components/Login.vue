@@ -46,7 +46,10 @@
 </template>
 <script>
     import util from '@/assets/js/util'
+    import _resource from '@/assets/js/resource'
+    
     export default {
+        name:'login',
         props: {
             findPw: { // true 保留忘记密码功能  false 删除忘记密码功能
                 type: Boolean,
@@ -105,31 +108,20 @@
                     }
 
                     // const form = new FormData()
-                    // form.append('username', this.loginModel.username)
+                    // form.append('userCertificate', this.loginModel.username)
                     // form.append('password', this.loginModel.password)
 
-
                     // let requestList = [];
-
                     // requestList.push(this.$axios(util.makeRequest({
-                    //     url: 'http://127.0.0.1:3000/test',
+                    //     url: _resource.userLogin,
                     //     data: form,
-                    //     method: 'post'
-                    // })))
-                    // requestList.push(this.$axios(util.makeRequest({
-                    //     url: 'http://127.0.0.1:3000/about',
-                    //     method: 'get'
-                    // })))
-                    //  requestList.push(this.$axios(util.makeRequest({
-                    //     url: 'http://127.0.0.1:3000/third',
                     //     method: 'post'
                     // })))
 
                     // this.$axios.all(requestList)
                     //     .then(this.$axios.spread((acct,perm,para) => {
-                    //         console.log('receive')
-                    //         if (!acct) {
-                    //             this.$Message.warning('lvelvelve!', 3);
+                    //         if (acct) {
+                    //             
                     //         }
                     //     })).catch((response) => {
                     //     if (response.response) {

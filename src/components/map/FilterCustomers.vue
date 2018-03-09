@@ -27,8 +27,7 @@ export default {
     name: 'FilterCustomers',
     data() {
         return {
-            visible: false,
-            rs: null
+            visible: false
         }
     },
     props: {},
@@ -84,24 +83,14 @@ export default {
         },
         switchChange(status) {
             if (status == true) {
-                if (this.rs) {
-                    clearTimeout(this.rs);
-                }
-                if (this.griddingMapOverlays) {
-                    this.griddingMapOverlays.show()
-                } else {
-                    //初始化人口分布热力图
-                    this.initGriddingMap();
-                }
+                //初始化人口分布热力图
+                this.initGriddingMap();
             } else {
-                this.griddingMapOverlays.hide();
-                //10秒以后删除图层，影响地图性能
-                this.rs = setTimeout(() => {
-                    this.setGriddingMapOverlays({
-                        payload: undefined
-                    })
-                    this.$Baidu.removeOverlay(this.griddingMapOverlays)
-                }, 10000)
+                //直接删除图层
+                this.$Baidu.removeOverlay(this.griddingMapOverlays)
+                this.setGriddingMapOverlays({
+                    payload: undefined
+                })
             }
             this.$store.dispatch('setSwitchHot', status);
         }

@@ -99,9 +99,10 @@ export default {
             map.setMapStyle({
                 styleJson: BAIDU_MAP_STYLE
             });
-
-            document.addEventListener('click', e => {
+            map.addEventListener('click', e => {
                 this.closePanel();
+            });
+            document.addEventListener('click', e => {
                 this.closeDropDown();
             }, true)
 

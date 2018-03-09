@@ -28,14 +28,14 @@ export default {
             if (e.target.innerText == "步行时间") {
                 this.mode = 'walking';
                 this.reachType = 2;
-                this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/walk.cur) 32 32,default");
+                this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/walk.cur) 16 16,default");
                 this.$Baidu.addEventListener("click", this.mapClick);
 
                 this.$store.dispatch('setWalkListener', this.mapClick);
             } else {
                 this.mode = 'driving';
                 this.reachType = 1;
-                this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/car.cur) 32 32,default");
+                this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/car.cur) 16 16,default");
                 this.$Baidu.addEventListener("click", this.mapClick);
 
                 this.$store.dispatch('setDriveListener', this.mapClick);

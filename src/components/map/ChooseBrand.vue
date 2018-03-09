@@ -1,3 +1,4 @@
+<!--此文件仅供开发时测试使用，具体功能已合并到SettingBox.vue中-->
 <template>
      <Modal v-model="showModal" :closable="false" :styles='modalStyle' class='choose_brand_container modal_layer' width='712px' :mask-closable='false'>
         <div slot="header" class='header'>

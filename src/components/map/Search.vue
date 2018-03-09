@@ -29,7 +29,7 @@
                 <ul>
                     <li v-for="item in results" class="ui3-suggest-item" style="">
                         <a @click="panto(item)">
-                            <Icon type="search"></Icon><i class="default">{{item.name}}</i><em>{{item.address}}</em></a>
+                            <Icon type="ios-search-strong"></Icon><i class="default">{{item.name}}</i><em>{{item.address}}</em></a>
                     </li>
                 </ul>
             </div>
@@ -56,7 +56,9 @@ export default {
             iconValue: '',
             searchType: '位置',
             results: [],
-            place: '请输入位置'
+            enterResults: [],
+            place: '请输入位置',
+            numpages: 0
 
         }
     },
@@ -69,20 +71,45 @@ export default {
     mixins: [selfModel],
     methods: {
         enter() {
-            if (this.results) {
+            let options = {
+                pageCapacity: 100,
+                onSearchComplete: (results) => {
+                    if (local.getStatus() == BMAP_STATUS_SUCCESS) {
+                        if (results.getPageIndex() < results.getNumPages()) {
+                            // console.time()
+                            for (let i = 0; i < results.getCurrentNumPois(); i++) {
+                                this.enterResults.push({
+                                    name: results.getPoi(i).title,
+                                    city: results.getPoi(i).city,
+                                    address: results.getPoi(i).address,
+                                    point: results.getPoi(i).point
+                                });
+                            }
+                            // console.timeEnd()
+                            if (results.getPageIndex() >= 2) {
+                                // console.log('finitsh')
+                                this.enterResults.map((x, y) => {
+                                    let point = x.point;
+                                    let marker = this.$utils.drawSearchMarker(point, 2);
+                                    /*保存属性*/
+                                    marker.type = 'smart_search_poi';
+                                    marker.item = x;
+                                    marker.addEventListener("click", this.elementClick);
+                                    /*保存属性*/
+                                    this.$Baidu.addOverlay(marker);
+                                    this.$Baidu.reset();
+                                })
+                                return;
+                            }
+                            //继续检索下一页
+                            local.gotoPage(results.getPageIndex() + 1);
+                        }
 
-                this.results.map((x, y) => {
-                    let point = x.point;
-                    let marker = this.$utils.drawSearchMarker(point, 2);
-                    /*保存属性*/
-                    marker.type = 'smart_search_poi';
-                    marker.item = x;
-                    marker.addEventListener("click", this.elementClick);
-                    /*保存属性*/
-                    this.$Baidu.addOverlay(marker);
-                })
-                this.$Baidu.reset();
-            }
+                    }
+                }
+            };
+            let local = new BMap.LocalSearch(this.$Baidu, options);
+            local.search(this.searchValue);
         },
         elementClick(e) {
             this.$store.dispatch('setSelfModal', {
@@ -103,8 +130,8 @@ export default {
                     onSearchComplete: (results) => {
                         this.results = [];
                         if (local.getStatus() == BMAP_STATUS_SUCCESS) {
-                            var s = [];
-                            for (var i = 0; i < results.getCurrentNumPois(); i++) {
+                            let s = [];
+                            for (let i = 0; i < results.getCurrentNumPois(); i++) {
                                 s.push({
                                     name: results.getPoi(i).title,
                                     city: results.getPoi(i).city,
@@ -117,6 +144,7 @@ export default {
                     }
                 };
                 let local = new BMap.LocalSearch(this.$Baidu, options);
+
                 local.search(this.searchValue);
             }
         },
@@ -151,6 +179,18 @@ export default {
             marker.item = item;
             /*保存属性*/
 
+            // let b = this.$Baidu.getMapType().getProjection().lngLatToPoint(this.$utils.drawLngLat(point.lng, point.lat));
+            // console.log(b)
+            // let obj = {};
+            // obj.clientX = b.x;
+            // obj.clientY = b.y;
+            // obj.target = {};
+            // obj.target.type = 'smart_search_poi';
+            // obj.target.item = item;
+            // this.$store.dispatch('setSelfModal', {
+            //     infoModal: true,
+            //     infoTarget: obj
+            // })
             marker.addEventListener("click", this.elementClick);
             this.searchValue = item.name;
             this.results = [];

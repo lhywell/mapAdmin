@@ -34,7 +34,7 @@
                         </Card>
                         <div class='settings_container'>
                             <SettingBox :outerDatas='gainBrandList' class='gain_brand_setting'></SettingBox>
-                            <SettingBox :outerDatas='compeleteBrandList' class='compete_brand_setting'></SettingBox>
+                            <SettingBox :outerDatas='competitiveBrandList' class='compete_brand_setting'></SettingBox>
                             <div class='clear_float'></div>
                         </div>
                     </TabPane>
@@ -66,6 +66,7 @@ import {
     mapMutations
 } from 'vuex'
 import util from '@/assets/js/util'
+import _resource from '@/assets/js/resource'
 import SettingBox from './SettingBox'
 import ChooseBrand from '@/components/map/ChooseBrand'
 import OpenedShops from '@/components/map/OpenedShops'
@@ -86,7 +87,7 @@ export default {
             gainData: {},
             competeData: {},
             gainBrandList: {},
-            compeleteBrandList: {},
+            competitiveBrandList: {},
         }
     },
     components: {
@@ -100,7 +101,8 @@ export default {
             handler: function(val, oldVal) {
                 //console.log('map.currentBrandId state change,val is ',val)
                 if (val) {
-                    //发送请求查询该brandId对应的品牌信息,调用接口brandInfo，brandRelation*2
+                    //发送请求查询该brandId对应的品牌基本信息,调用接口brandInfo
+                    //this.queryBrandBasicInfo(val)
                 }
             },
             deep: false,
@@ -140,7 +142,7 @@ export default {
                 }],
                 tips: '待选地周边的增益品牌会使选址评分增加'
             };
-            this.compeleteBrandList = {
+            this.competitiveBrandList = {
                 title: '竞品品牌设定',
                 placement: 'bottom-start',
                 tableData: [{
@@ -156,6 +158,32 @@ export default {
                 }],
                 tips: '待选地周边的排斥品牌会使选址评分降低'
             };
+        },
+        queryBrandBasicInfo(brandId){
+            var url = _resource.brandInfo.replace('{brandId}',brandId)
+
+            var ax = this.$axios(util.makeRequest({
+                url: url,
+                method:'get'
+            }))
+            this.$axios.get(ax)
+                .then(response => {
+                    if(response && response.data){
+                        var responseData = response.data
+                        this.brandBasicInfo['name'] = responseData.name
+                        this.brandBasicInfo['type'] = responseData.type
+                        this.brandBasicInfo['locate'] = responseData.locate
+                    }
+                })
+                .catch((response) => {
+                    if (response.response) {
+                        if (response.response.status === 400) {
+                           
+                        }
+                    } else {
+
+                    }
+                })
         },
         changeTab(val) {
             this.$nextTick(() => {
@@ -183,8 +211,10 @@ export default {
         confirmSuccess() {
             //调用deleteBrand接口
             //console.log('success')
+            
         },
         confirmFail() {
+            //this.showConfirmModal = false;
             //console.log('fail')
         }
 
