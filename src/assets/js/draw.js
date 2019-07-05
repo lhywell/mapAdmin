@@ -97,36 +97,36 @@ export function drawIcon(type) {
     let icon;
     switch (type) {
         case 1:
-            icon = new BMap.Icon($static + "/dot_blue.png", new BMap.Size(10, 10));
-            icon.setImageSize(new BMap.Size(10, 10));
+            icon = new BMap.Icon($static + "/dot_mine.png", new BMap.Size(24, 24));
+            icon.setImageSize(new BMap.Size(24, 24));
             break;
         case 2:
-            icon = new BMap.Icon($static + "/marker.png", new BMap.Size(27, 27));
+            icon = new BMap.Icon($static + "/choose-stores.png", new BMap.Size(27, 27));
             icon.setImageSize(new BMap.Size(27, 27));
             break;
         case 3:
-            icon = new BMap.Icon($static + "/dot_zi.png", new BMap.Size(10, 10));
-            icon.setImageSize(new BMap.Size(10, 10));
+            icon = new BMap.Icon($static + "/dot_zy.png", new BMap.Size(24, 24));
+            icon.setImageSize(new BMap.Size(24, 24));
             break;
         case 4:
-            icon = new BMap.Icon($static + "/dot_yellow.png", new BMap.Size(10, 10));
-            icon.setImageSize(new BMap.Size(10, 10));
+            icon = new BMap.Icon($static + "/dot_pc.png", new BMap.Size(24, 24));
+            icon.setImageSize(new BMap.Size(24, 24));
             break;
         case 5:
-            icon = new BMap.Icon($static + "/dot_blue.png", new BMap.Size(12, 12));
-            icon.setImageSize(new BMap.Size(12, 12));
+            icon = new BMap.Icon($static + "/dot_mine.png", new BMap.Size(24, 24));
+            icon.setImageSize(new BMap.Size(24, 24));
             break;
         case 6:
-            icon = new BMap.Icon($static + "/marker_blue.png", new BMap.Size(27, 27));
+            icon = new BMap.Icon($static + "/choose-stores-hover.png", new BMap.Size(27, 27));
             icon.setImageSize(new BMap.Size(27, 27));
             break;
         case 7:
-            icon = new BMap.Icon($static + "/dot_zi.png", new BMap.Size(12, 12));
-            icon.setImageSize(new BMap.Size(12, 12));
+            icon = new BMap.Icon($static + "/dot_zy.png", new BMap.Size(24, 24));
+            icon.setImageSize(new BMap.Size(24, 24));
             break;
         case 8:
-            icon = new BMap.Icon($static + "/dot_yellow.png", new BMap.Size(12, 12));
-            icon.setImageSize(new BMap.Size(12, 12));
+            icon = new BMap.Icon($static + "/dot_pc.png", new BMap.Size(24, 24));
+            icon.setImageSize(new BMap.Size(24, 24));
             break;
     };
 
