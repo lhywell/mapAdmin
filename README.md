@@ -43,4 +43,4 @@ npm run build --report
 - Support guest flow statistics ratio, guest flow trend chart.
 
 ### Live DEMO
-Live Demo http://smartdata.b0.upaiyun.com/mapAdmin/
+Live Demo https://focused-yonath-daa42c.netlify.com/dist/
