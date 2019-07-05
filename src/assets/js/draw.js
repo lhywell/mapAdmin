@@ -1,7 +1,7 @@
 /**
  * 静态图片服务器地址
  */
-const $static = 'http://smartdata.b0.upaiyun.com/thinkmark';
+const $static = 'http://www.wulihub.com.cn/go/JPVkkW/';
 
 /**
  * 实例化一个经纬度坐标.

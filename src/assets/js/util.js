@@ -1,7 +1,7 @@
 /**
  * 静态图片服务器地址
  */
-const $static = 'http://smartdata.b0.upaiyun.com/thinkmark';
+const $static = 'http://www.wulihub.com.cn/go/JPVkkW/';
 
 /**
  * 立得空间的key-用于等时圈

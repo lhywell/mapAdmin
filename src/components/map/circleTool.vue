@@ -84,7 +84,7 @@ export default {
             this.$Baidu.addEventListener("click", this.mapClick);
 
             //设置鼠标样式
-            this.$Baidu.setDefaultCursor("url(http://smartdata.b0.upaiyun.com/thinkmark/choose-stores.cur) 16 16,default");
+            this.$Baidu.setDefaultCursor("url(http://www.wulihub.com.cn/go/JPVkkW/choose-stores.cur) 16 16,default");
 
             this.$store.dispatch('setCircleListener', this.mapClick);
             // console.log(1111,this.$store.state.map.dropDownShop)

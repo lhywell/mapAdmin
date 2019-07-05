@@ -5,10 +5,10 @@
         <div class="login_layer">
            <div class='company_label'>
                <div class='tencent_logo_container'>
-                   <img class='tencent_logo' src='http://smartdata.b0.upaiyun.com/thinkmark/login-logo.png' alt='腾讯云'></img>
+                   <img class='tencent_logo' src='http://www.wulihub.com.cn/go/JPVkkW/login-logo.png' alt='腾讯云'></img>
                </div>
                <div class='td_logo_container'>
-                   <img class='td_logo' src='http://smartdata.b0.upaiyun.com/thinkmark/td-logo.png' alt='TalkingData'></img>
+                   <img class='td_logo' src='http://www.wulihub.com.cn/go/JPVkkW/td-logo.png' alt='TalkingData'></img>
                </div>
                <div class='clear_float'></div>
            </div>
@@ -41,13 +41,13 @@
                     </form> -->
             <div class="login_foot">2011-2018 © TalkingData.com</div>
         </div>
-      
+
     </div>
 </template>
 <script>
     import util from '@/assets/js/util'
     import _resource from '@/assets/js/resource'
-    
+
     export default {
         name:'login',
         props: {
@@ -98,7 +98,7 @@
                     this.loginError = true
                     this.passwordError = '请输入密码'
                 }
-                else { 
+                else {
                     if(this.loginModel.username === 'demo@tendcloud.com' && this.loginModel.password === 'demo'){
                         this.loginError = false;
                         this.$router.push('/map');
@@ -121,7 +121,7 @@
                     // this.$axios.all(requestList)
                     //     .then(this.$axios.spread((acct,perm,para) => {
                     //         if (acct) {
-                    //             
+                    //
                     //         }
                     //     })).catch((response) => {
                     //     if (response.response) {
@@ -186,7 +186,7 @@
     }
 
 }
-    
+
 
 </style>
 

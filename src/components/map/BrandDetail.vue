@@ -133,12 +133,12 @@ export default {
                     id: 1,
                     name: '麦当劳',
                     type: '餐饮',
-                    icon: 'http://smartdata.b0.upaiyun.com/thinkmark/mc.png'
+                    icon: 'http://www.wulihub.com.cn/go/JPVkkW/mc.png'
                 }, {
                     id: 2,
                     name: '肯德基',
                     type: '餐饮',
-                    icon: 'http://smartdata.b0.upaiyun.com/thinkmark/kfc.png'
+                    icon: 'http://www.wulihub.com.cn/go/JPVkkW/kfc.png'
                 }],
                 tips: '待选地周边的增益品牌会使选址评分增加'
             };
@@ -149,12 +149,12 @@ export default {
                     id: 9,
                     name: '绝味鸭脖',
                     type: '餐饮',
-                    icon: 'http://smartdata.b0.upaiyun.com/thinkmark/jw.png'
+                    icon: 'http://www.wulihub.com.cn/go/JPVkkW/jw.png'
                 }, {
                     id: 8,
                     name: '久久丫',
                     type: '餐饮',
-                    icon: 'http://smartdata.b0.upaiyun.com/thinkmark/jjy.png'
+                    icon: 'http://www.wulihub.com.cn/go/JPVkkW/jjy.png'
                 }],
                 tips: '待选地周边的排斥品牌会使选址评分降低'
             };
@@ -178,7 +178,7 @@ export default {
                 .catch((response) => {
                     if (response.response) {
                         if (response.response.status === 400) {
-                           
+
                         }
                     } else {
 
@@ -211,7 +211,7 @@ export default {
         confirmSuccess() {
             //调用deleteBrand接口
             //console.log('success')
-            
+
         },
         confirmFail() {
             //this.showConfirmModal = false;

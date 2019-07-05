@@ -1,7 +1,7 @@
 <template>
     <div id="seletctBrand">
         <Poptip placement="bottom-start" width="278" class="poptip" v-model="visible">
-            <img src="http://smartdata.b0.upaiyun.com/thinkmark/zhouheiya.png" width="32" height="32" class="brand">
+            <img src="http://www.wulihub.com.cn/go/JPVkkW/zhouheiya.png" width="32" height="32" class="brand">
             <Button type="ghost">{{initText}}
                 <Icon type="chevron-down"></Icon>
             </Button>
@@ -15,7 +15,7 @@
                         <ul>
                             <li v-for="item in brandList" :class="{active:item.active}">
                                 <a href="#" @click="selectBrand">
-                                    <div><img src="http://smartdata.b0.upaiyun.com/thinkmark/zhouheiya.png" width="32" height="32">{{item.name}}</div>
+                                    <div><img src="http://www.wulihub.com.cn/go/JPVkkW/zhouheiya.png" width="32" height="32">{{item.name}}</div>
                                 </a>
                             </li>
                         </ul>
