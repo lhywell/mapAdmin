@@ -11,7 +11,7 @@
     "postcss": "postcss --config postcss.json"
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "echarts": "^4.0.2",
     "inmap": "^1.2.8",
     "iview": "^2.8.0",
